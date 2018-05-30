@@ -4,8 +4,9 @@
   "description": "Social hub and event finder for music lovers",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js",
-    "test": "node index.js"
+    "start": "npm run dev | npm run test",
+    "dev": "webpack -d --watch",
+    "test": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,10 @@
   },
   "dependencies": {
     "body-parser": "1.18.3",
-    "express": "4.16.3"
+    "cors": "^2.8.4",
+    "express": "4.16.3",
+    "install": "^0.11.0",
+    "nodemon": "^1.17.5",
+    "webpack-cli": "^2.1.4"
   }
 }
