@@ -1,0 +1,36 @@
+{
+  "name": "black-widow",
+  "version": "1.0.0",
+  "description": "Social hub and event finder for music lovers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Black-Widow15/bwMeetup.git"
+  },
+  "author": "Michael Cortez, Mandy Mak, Ian Schmidt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Black-Widow15/bwMeetup/issues"
+  },
+  "homepage": "https://github.com/Black-Widow15/bwMeetup#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.10.2",
+    "mysql": "2.15.0",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-thunk": "^1.0.0",
+    "redux": "^4.0.0"
+  },
+  "dependencies": {
+    "body-parser": "1.18.3",
+    "express": "4.16.3"
+  }
+}
