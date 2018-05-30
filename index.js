@@ -1,15 +1,15 @@
-import express from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import router from './server/routes.js'
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const {router} = require('./server/routes.js')
 const app = express()
 
 const port = 8000
 
-app.use(cors)
 app.use(bodyParser.json())
+app.use(cors())
 app.use(router)
 
 app.listen(port, () => {
-    `Magic happens on port ${port}`
+    console.log(`Magic happens on port ${port}`)
 })
