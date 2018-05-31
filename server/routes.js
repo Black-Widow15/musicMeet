@@ -2,10 +2,6 @@ const express = require('express')
 const registerController = require('../server/controllers/_registerController.js')
 const router = express.Router()
 
-router.get('/', (req, res, next) => {
-    res.send('<h1>Home page</h1>')
-})
-
 router.get('/register', registerController.register)
 
 router.get('/events', (req, res, next) => {
@@ -28,10 +24,6 @@ router.get('/users', (req, res, next) => {
 router.post('/users', (req, res, next) => {
     // respond to users post
     next()
-})
-
-router.get('/', (req, res, next) => {
-    res.status(404).send('Error!')
 })
 
 module.exports = {
