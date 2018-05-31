@@ -1,8 +1,9 @@
 /*
-let userLogin = function (user, password) {
+let userLogin = function (user, password, boolMusician) {
 	axios.post('/users', {
 		user: user,
 		password: password,
+		musician: boolMusician,
 	})
 	.then( (response) => {
 		// The response should indicate this is a valid user/pw
@@ -17,7 +18,7 @@ let userLogin = function (user, password) {
 
 let newUserSignUp = function (newUserDataObj) {
 	// The user data object should include:
-	// username, password, email
+	// username, password, email, and a boolean to indicate if they're a musician.
 	// Other info such as avatar will probably
 	// be added by the user in their profile
 	// afterward.
