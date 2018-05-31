@@ -2,7 +2,7 @@ CREATE DATABASE 909;
 
 USE 909;
 
-DROP TABLE IF EXISTS 'users';
+DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
   `id`                    INT(10) NOT NULL AUTO_INCREMENT,
