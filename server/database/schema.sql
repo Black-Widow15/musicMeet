@@ -5,15 +5,14 @@ USE beatsmeet;
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
-  `username`              VARCHAR(100) NOT NULL,
-  `display_name`          VARCHAR(100) NOT NULL,
+  `username`              VARCHAR(100) NOT NULL UNIQUE,
+  `display_name`          VARCHAR(100) DEFAULT NULL,
   `password`              VARCHAR(100) NOT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
   `email`                 VARCHAR(300) NOT NULL,
   `bio`                   VARCHAR(500) DEFAULT NULL,
   `musician`              TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`),
-  CONSTRAINT UC_User UNIQUE (id, username)
+  PRIMARY KEY (`id`)
 );
 
 DROP TABLE IF EXISTS `messages`;
@@ -39,11 +38,11 @@ CREATE TABLE `events` (
   `name`                  VARCHAR(100) NOT NULL,
   `date`                  DATE NOT NULL,
   `time`                  TIME NOT NULL,
+  `description`           VARCHAR(500) DEFAULT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
   `id_location`           VARCHAR(300) NOT NULL,
   `host`                  SMALLINT(10) NOT NULL,       
-  PRIMARY KEY(`id`),
-  CONSTRAINT UC_Events UNIQUE (id, name)
+  PRIMARY KEY(`id`)
 );
 
 DROP TABLE IF EXISTS `event_comments`;

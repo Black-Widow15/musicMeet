@@ -10,8 +10,6 @@ const {connection} = require('./index.js');
 
 const checkUserPasswordMatch = (username, password, callback) => {
   let queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
-  console.log('username = ', username);
-  console.log('password =', password);
   connection.query(queryString, (err, result) => {
     if (result.length === 0) {
       console.error('invalid username');
@@ -34,7 +32,7 @@ const checkUserPasswordMatch = (username, password, callback) => {
 console.log(checkUserPasswordMatch('josephmartin', 'sickPassword', () => {
   console.log('callback handled in express server');
 }));
-// usernae found but incorrect password
+// username found but incorrect password
 console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
   console.log('callback handled in express server');
 }));
@@ -51,11 +49,41 @@ console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
 // if neither are used
 // insert into `users` username, password, email address, musician
 // 
-// const addUserToDB = (values, callback) => {
-//   let queryString = `SELECT username FROM users WHERE username=${values.username}`;
-//   connection.query(queryString, (err, result) => {
-//     if ()
-//   }
-// }
+
+const saveNewUser = (values, callback) => {
+  let queryString = `INSERT INTO users (username,password,email,musician)\
+   VALUES ('${values.username}', '${values.password}', \
+   '${values.email}', '${values.musician}')`;
+    console.log('queryString = ', queryString);
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log('username in use');
+      console.error(err);
+    } else {
+  }
+  });
+};
+  
+// TESTS FOR SAVENEWUSER
+
+// user is added
+console.log(saveNewUser({username: 'iamnotindatabase', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
+  console.log('callback handled in express server');
+}));
+
+// // username in use
+console.log(saveNewUser({username: 'mikey', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
+  console.log('callback handled in express server');
+}));
+
+// missing required field (like email or pw)
+console.log(saveNewUser({username: 'charlie', password: '', email: '', musician: 0}, () => {
+  console.log('callback handled in express server');
+}));
 
 
+
+module.exports = {
+  checkUserPasswordMatch: checkUserPasswordMatch,
+  saveNewUser: saveNewUser
+};
