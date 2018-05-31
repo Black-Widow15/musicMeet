@@ -1,5 +1,8 @@
 // require modules for authentication 
 // require modules for database query functions
+// require user model 
+const db = require ('../database/index.js')
+
 
 const login = (req, res, next) => {
     // functionality for authentication
