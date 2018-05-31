@@ -17,6 +17,7 @@ let userLogin = function (user, password, boolMusician) {
 }
 
 let newUserSignUp = function (newUserDataObj) {
+
 	// The user data object should include:
 	// username, password, email, and a boolean to indicate if they're a musician.
 	// Other info such as avatar will probably
@@ -34,6 +35,23 @@ let newUserSignUp = function (newUserDataObj) {
 				// Give an error message explaining what needs to be fixed.
 				// Reload the page and ask them to try registering again.
 			})
+}
+
+let fillEvents = function () {
+	// I'm assuming the query will be a simple string.
+	axios.get('/events')
+	.then( (response) => {
+		// There will be a state object for the events
+		// on the home page.  The state for events should be filled
+		// with the most recent and most popular events.
+	})
+}
+
+let postEvent = function (eventObj) {
+	axios.post('/events', eventObj) 
+		.then( (response) => {
+			// Redirect the user to the new event page.
+		})
 }
 
 

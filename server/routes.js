@@ -14,12 +14,6 @@ router.get('/events', (req, res, next) => {
     next()
 })
 
-
-router.get('/events', (req, res, next) => {
-    // respond to events get
-    res.send('<h1>Events</h1>')
-    next()
-})
 router.post('/events', (req, res, next) => {
     // respond to events post
     next()
