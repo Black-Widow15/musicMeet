@@ -1,3 +1,4 @@
+
 DROP DATABASE IF EXISTS beatsmeet;
 CREATE DATABASE beatsmeet;
 USE beatsmeet;
