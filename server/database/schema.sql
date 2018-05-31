@@ -1,87 +1,58 @@
-CREATE DATABASE bwMeetup;
+CREATE DATABASE 909;
 
--- USE chat;
--- DROP TABLE IF EXISTS 'users'
+USE 909;
 
-CREATE TABLE users (
-id INT AUTO_INCREMENT,
-name VARCHAR(200),
-password VARCHAR(200) DEFAULT NULL,
-avatar VARCHAR(200),
-email VARCHAR(200),
-bio VARCHAR(1000),
-PRIMARY KEY (id),
+DROP TABLE IF EXISTS 'users';
 
--- ADD FOREIGN KEY (userId) REFERENCES 'users' ('id');
+CREATE TABLE `users` (
+  `id`                    INT(10) NOT NULL AUTO_INCREMENT,
+  `username`              VARCHAR(100) NOT NULL,
+  `display name`          VARCHAR(100) NOT NULL,
+  `password`              VARCHAR(100) NOT NULL,
+  `imgurl`                VARCHAR(300) DEFAULT NULL,
+  `email`                 VARCHAR(300) NOT NULL,
+  `bio`                   VARCHAR(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 
-CREATE TABLE messages (
-id INT AUTO_INCREMENT,
-title VARCHAR(200),
-text VARCHAR(1000),
-userId INT,
-date DATETIME,
-eventId INT,
-FOREIGN KEY (userId) REFERENCES users(Id),
-FOREIGN KEY (eventId) REFERENCES events(Id),
-)
+DROP TABLE IF EXISTS `messages`;
 
-CREATE TABLE events (
-id INT AUTO_INCREMENT,
-title VARCHAR(200),
-date Date,
-time Time,
-locationId INT,
-FOREIGN KEY (locationId) REFERENCES locations(Id),
+CREATE TABLE `messages` (
+  `id`                    INT(10) NOT NULL AUTO_INCREMENT,
+  `text`                  VARCHAR(300) DEFAULT NULL,
+  `timestamp`             TIMESTAMP,
+  `id_user`               INT(10) NOT NULL
+  PRIMARY KEY (`id`)
+);
 
-)
+DROP TABLE IF EXISTS `users_events`;
 
-CREATE TABLE artists (
-id INT AUTO_INCREMENT,
-name VARCHAR(200),
-genre VARCHAR(200),
+CREATE TABLE `users_events` (
+  `id`                    INT(10) NOT NULL AUTO_INCREMENT,
+  `id_user`               INT(10) NOT NULL,
+  `id_event`              INT(10) NOT NULL,
+  PRIMARY KEY(`id`)
+);
 
-)
+DROP TABLE IF EXISTS `events`;
 
-CREATE TABLE locations (
-id INT AUTO_INCREMENT,
-name VARCHAR(200),
+CREATE TABLE `events` (
+  `id`                    INT(10) NOT NULL AUTO_INCREMENT,
+  `name`                  VARCHAR(100) NOT NULL,
+  `date`                  DATE DEFAULT `TBD`,
+  `time`                  TIME DEFAULT `TBD`,
+  `imgurl`                VARCHAR(300) DEFAULT NULL,
+  `id_location`           VARCHAR(300) NOT NULL,
+  PRIMARY KEY(`id`)
+);
 
-)
+DROP TABLE IF EXISTS `event comments`;
 
-CREATE TABLE joinArtistEvent (
-id INT AUTO_INCREMENT,
-eventId INT,
-artistId INT,
-FOREIGN KEY (eventId) REFERENCES events(Id),
-FOREIGN KEY (artistId) REFERENCES artists(Id),
-
-)
-
-CREATE TABLE joinUserEvent (
-id INT AUTO_INCREMENT,
-eventId INT,
-userId INT,
-FOREIGN KEY (eventId) REFERENCES events(Id),
-FOREIGN KEY (userId) REFERENCES users(Id),
-
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CREATE TABLE `events comments` (
+  `id`                    INT(10) NOT NULL AUTO_INCREMENT,
+  `message`               VARCHAR(300) DEFAULT NULL,
+  `timestamp`             TIMESTAMP,
+  `id_user`               INT(10) NOT NULL,
+  `id_event`              INT(10) NOT NULL,
+  PRIMARY KEY(`id`)
+);
