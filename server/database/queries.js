@@ -29,9 +29,21 @@ const checkUserPasswordMatch = (username, password, callback) => {
   });
 };
 
-console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
-  console.log('yo');
+// TESTS FOR CHECKUSERPASSWORDMATCH
+// username not found in database
+console.log(checkUserPasswordMatch('josephmartin', 'sickPassword', () => {
+  console.log('callback handled in express server');
 }));
+// usernae found but incorrect password
+console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
+  console.log('callback handled in express server');
+}));
+// username and password match
+console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
+  console.log('callback handled in express server');
+}));
+
+
 // (user sign up)
 // values is an object of values to input
 // query database to see if username is in users
