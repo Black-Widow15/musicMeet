@@ -7,13 +7,14 @@ DROP TABLE IF EXISTS 'users';
 CREATE TABLE `users` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `username`              VARCHAR(100) NOT NULL,
-  `display name`          VARCHAR(100) NOT NULL,
+  `display_name`          VARCHAR(100) NOT NULL,
   `password`              VARCHAR(100) NOT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
   `email`                 VARCHAR(300) NOT NULL,
   `bio`                   VARCHAR(500) DEFAULT NULL,
   `musician`              TINYINT(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  CONSTRAINT UC_User UNIQUE (id, username)
 );
 
 DROP TABLE IF EXISTS `messages`;
@@ -45,7 +46,8 @@ CREATE TABLE `events` (
   `imgurl`                VARCHAR(300) DEFAULT NULL,
   `id_location`           VARCHAR(300) NOT NULL,
   `host`                  SMALLINT(10) NOT NULL,       
-  PRIMARY KEY(`id`)
+  PRIMARY KEY(`id`),
+  CONSTRAINT UC_Events UNIQUE (id, name)
 );
 
 DROP TABLE IF EXISTS `event comments`;

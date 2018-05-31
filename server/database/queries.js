@@ -3,7 +3,22 @@ const {connection} = require('./index.js');
 // (user login)
 // query database to see if username matches password
 // returns an array
+// if username is not in database
+// error 'invalid username
+// if username is in database, but pasword is wrong
+// error 'invalid password for username'
 
+const checkUserPasswordMatch = (username, password, callback) => {
+  let queryString = `SELECT username FROM users WHERE username=${username}`;
+  connection.query(queryString, (err, result) => {
+    if (err) console.error('invalid username');
+    let queryString2 = `SELECT username FROM users WHERE username=${username} and password=${password}`;
+    connection.query(queryString2, (err, result) => {
+       if (err) console.error('invalid password, try again');
+       callback();
+    });
+  });
+};
 
 
 // (user sign up)
