@@ -13,7 +13,7 @@ CREATE TABLE `users` (
   `bio`                   VARCHAR(500) DEFAULT NULL,
   `musician`              TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
-  CONSTRAINT UC_User UNIQUE (id, username);
+  CONSTRAINT UC_User UNIQUE (id, username)
 );
 
 DROP TABLE IF EXISTS `messages`;
@@ -43,7 +43,7 @@ CREATE TABLE `events` (
   `id_location`           VARCHAR(300) NOT NULL,
   `host`                  SMALLINT(10) NOT NULL,       
   PRIMARY KEY(`id`),
-  CONSTRAINT UC_Events UNIQUE (id, name);
+  CONSTRAINT UC_Events UNIQUE (id, name)
 );
 
 DROP TABLE IF EXISTS `event_comments`;
