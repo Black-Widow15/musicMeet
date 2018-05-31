@@ -11,7 +11,7 @@ const {connection} = require('./index.js');
 const checkUserPasswordMatch = (username, password, callback) => {
   let queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    if (result.length === 0) {
+    if (err) {
       console.error('invalid username');
       callback();
     } else if (result.length === 1) {
@@ -38,6 +38,7 @@ console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
 }));
 // username and password match
 console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
+  console.log('access granted yo');
   console.log('callback handled in express server');
 }));
 
@@ -54,11 +55,9 @@ const saveNewUser = (values, callback) => {
   let queryString = `INSERT INTO users (username,password,email,musician)\
    VALUES ('${values.username}', '${values.password}', \
    '${values.email}', '${values.musician}')`;
-    console.log('queryString = ', queryString);
   connection.query(queryString, (err, result) => {
     if (err) {
       console.log('username in use');
-      console.error(err);
     } else {
   }
   });
@@ -80,7 +79,6 @@ console.log(saveNewUser({username: 'mikey', password: 'hackmebro', email: 'mchl@
 console.log(saveNewUser({username: 'charlie', password: '', email: '', musician: 0}, () => {
   console.log('callback handled in express server');
 }));
-
 
 
 module.exports = {
