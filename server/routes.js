@@ -1,16 +1,12 @@
 const express = require('express')
+const registerController = require('../server/controllers/_registerController.js')
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
     res.send('<h1>Home page</h1>')
 })
 
-
-router.get('/register', (req, res, next) => {
-    // respond to register endpoint
-    res.send('<h1>Register</h1>')
-    next()
-})
+router.get('/register', registerController.register)
 
 router.get('/events', (req, res, next) => {
     // respond to events endpoint
