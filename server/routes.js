@@ -2,6 +2,7 @@ const express = require('express')
 const registerController = require('../server/controllers/_registerController.js')
 const router = express.Router()
 
+
 router.get('/register', registerController.register)
 
 router.get('/events', (req, res, next) => {
