@@ -81,6 +81,67 @@ console.log(saveNewUser({username: 'charlie', password: '', email: '', musician:
 }));
 
 
+// Retrieve user data:
+const retrieveUser = (username) => {
+  let queryString = ``
+
+  connection.query()
+}
+
+// Edit User data:
+  // Define the query string.
+const editUser = (username, values) => {
+  // We should pull out the user data first, define an object with all the current properties.
+  // I'll use a dummy object for now.
+  let dummy = {
+    id: 1,
+    username: 'BartSimpson',
+    display_name: 'Bart Simpson',
+    password: 'fido',
+    imgUrl: NULL,
+    email: 'bart@gmail.com',
+    bio: NULL,
+    musician: 0,
+  }
+  // Values object will have those properties which can safely be changed.
+  // display_name, password, imgUrl and bio.  Maybe musician.
+
+  for (var key in values) {
+    if (values[key] !== NULL) {
+      dummy[key] = values[key];
+    }
+  }
+
+  // Set the query string based on this new object. Submit the query string.
+  let queryString = 
+      `UPDATE users
+      SET display_name = '${dummy.display_name}', password = '${dummy.password}', 
+      imgUrl = '${dummy.imgUrl}', bio = '${dummy.bio}, musician = '${dummy.musician}'
+      WHERE username = '${username}';`
+  
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log(error)
+    } else {
+      console.log(result)
+    }
+  });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {
   checkUserPasswordMatch: checkUserPasswordMatch,
   saveNewUser: saveNewUser
