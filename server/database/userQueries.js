@@ -81,12 +81,7 @@ console.log(saveNewUser({username: 'charlie', password: '', email: '', musician:
 }));
 
 
-// Retrieve user data:
-const retrieveUser = (username) => {
-  let queryString = ``
 
-  connection.query()
-}
 
 // Edit User data:
   // Define the query string.
@@ -116,7 +111,7 @@ const editUser = (username, values) => {
   let queryString = 
       `UPDATE users
       SET display_name = '${dummy.display_name}', password = '${dummy.password}', 
-      imgUrl = '${dummy.imgUrl}', bio = '${dummy.bio}, musician = '${dummy.musician}'
+      imgUrl = '${dummy.imgUrl}', bio = '${dummy.bio}', musician = '${dummy.musician}'
       WHERE username = '${username}';`
   
   connection.query(queryString, (err, result) => {
@@ -128,6 +123,17 @@ const editUser = (username, values) => {
   });
 
 }
+
+/*
+// Retrieve user data:
+const retrieveUser = (username) => {
+  let queryString = `SELECT * FROM users WHERE username = '${username}';`
+
+  connection.query()
+}
+
+
+*/
 
 
 
