@@ -1,5 +1,7 @@
 // Properties needed:
 // Data needed: name, date, time, imgUrl, location, description
+// We will have to add functionality to link to the actual event page.
+// We will probably dynamically generate the url based on the name or id.
 
 let EventSummary = (props) => (
 <div class="card">
