@@ -8,7 +8,16 @@ class Events extends React.Component {
   	super(props);
 
   	this.state = {
-  	  eventsPop: [], // Array of event objs from db.
+  	  eventsPop: [   // Array of event objs from db.
+        {
+          name: 'party!',
+          date: 'July 4',
+          time: '11pm',
+          imgUrl: '',
+          location: 'A house',
+          description: 'Come to my party!',
+        }
+      ], 
   	  eventsNew: [], // The events that are coming up next.
   	};
 
