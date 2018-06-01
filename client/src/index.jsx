@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import TextField from './components/navbar.jsx'
 import axios from 'axios'
 
 class App extends React.Component {
@@ -8,7 +9,9 @@ class App extends React.Component {
     }
     render() {
         return (
-            <div></div>
+            <div>
+                <TextField/>
+            </div>
         )
     }
 }
