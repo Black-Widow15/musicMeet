@@ -64,5 +64,6 @@ typings/
 node_modules/
 build/
 package-lock.json
+client/dist/bundle.js
 bundle.json
 .DS_Store
