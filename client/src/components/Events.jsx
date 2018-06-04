@@ -37,36 +37,24 @@ class Events extends React.Component {
     console.log(this.state);
   }
 
-  fillFeedPop () {
+  fillEventsFeed () {
   	// Grab data from the database and set the state.
     axios.get('/events') // This may be the wrong route!  It may give us single events only.
         .then( (response) => {
-          this.setState({
-            eventsPop: response.data, // place holder code, will need to test extensively
-          })
+          // this.setState({
+          //   eventsPop: response.data.hottest, // place holder code, will need to test extensively
+          //   eventsNew: response.data.latest
+          // })
         })
         .catch( (err) => {
           console.log(err);
         })
   }
 
-  fillFeedNew () {
-  	// same as above.
-    axios.get('/events') // This may be the wrong route!  It may give us single events only.
-        .then( (response) => {
-          this.setState({
-            eventsPop: response.data, // place holder code, will need to test extensively
-          })
-        })
-        .catch( (err) => {
-          console.log(err);
-        })
+  componentDidMount() {
+  	this.fillEventsFeed();
   }
 
-  // componentDidMount() {
-  // 	this.fillFeedPop();
-  // 	this.fillFeedNew();
-  // }
 // Data needed: name, date, time, imgUrl, location, description
   render () {
   	return (
