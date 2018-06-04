@@ -11,7 +11,7 @@ import EventModal from './EventModal.jsx';
 
 
 let EventSummary = (props) => (
-  <div className="card" onClick={props.launchModal(e)}>
+  <div className="card" onClick={(e) => props.launchModal(props.name)}>
     <div className="card-image">
       <figure className="image is-4by3">
         <img src={props.imgUrl} alt="Event Image" width="96" height="96" />

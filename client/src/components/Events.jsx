@@ -37,6 +37,7 @@ class Events extends React.Component {
 
     this.fillEventsFeed = this.fillEventsFeed.bind(this);
     this.launchModal = this.launchModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
 
   }
 
@@ -54,14 +55,14 @@ class Events extends React.Component {
         })
   }
 
-  launchModal (e) {
-    // This function will be passed down to the eventSummary
-    // components to function as onClick.
+  launchModal (modalId) {
+    let modal = document.getElementById(modalId);
+    modal.classList.add('is-active');
+  }
 
-    // Grab the element by ID.
-    // Change the className to modal is-active.
-    // var card = document.getElementById(name);
-    console.log('hello');
+  closeModal (modalId) {
+    let modal = document.getElementById(modalId);
+    modal.classList.remove('is-active');
   }
 
   componentDidMount() {
@@ -70,6 +71,9 @@ class Events extends React.Component {
 
   // Data needed: name, date, time, imgUrl, location, description
   render () {
+    let launchModal = this.launchModal
+    let closeModal = this.closeModal
+
   	return (
       <div className="columns">
     		<div className="column">
@@ -84,11 +88,19 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
-                launchModal={() => this.launchModal(e)}
+                launchModal={launchModal}
               /> 
            
               <EventModal
-                name={event.name}
+                id={event.name}
+                closeModal={closeModal}   
+
+                name={event.name} 
+                date={event.date} 
+                time={event.time}
+                imgUrl={event.imgUrl}
+                location={event.location}
+                description={event.description}             
               />
             </div>
             )
@@ -107,8 +119,19 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
-                launchModal={() => this.launchModal(e)}
+                launchModal={launchModal}
               /> 
+              <EventModal
+                id={event.name}
+                closeModal={closeModal}   
+
+                name={event.name} 
+                date={event.date} 
+                time={event.time}
+                imgUrl={event.imgUrl}
+                location={event.location}
+                description={event.description}             
+              />
             </div>
             )
           })

@@ -1,4 +1,6 @@
 import React from 'react';
+import EventSummary from './EventSummary.jsx';
+
 
 
 // Properties needed:
@@ -10,13 +12,25 @@ import React from 'react';
 // should change to "modal is-active"
 
 let EventModal = (props) => (
-  <div id={props.name} className="modal">
+  <div id={props.id} className="modal">
     <div className="modal-background"></div>
     <div className="modal-content">
      <div> 
-       Testing testing testing 
-       <img src="http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png" />
+      <EventSummary 
+        name={props.name} 
+        date={props.date} 
+        time={props.time}
+        imgUrl={props.imgUrl}
+        location={props.location}
+        description={props.description}
+      />
      </div>
+     <button 
+       className="modal-close is-large" 
+       aria-label="close"
+       onClick={(e) => props.closeModal(props.id)}
+
+     ></button>
     </div>
   </div>
 )
