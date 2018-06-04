@@ -39,10 +39,10 @@ CREATE TABLE `events` (
   `name`                  VARCHAR(100) NOT NULL,
   `date`                  DATE NOT NULL,
   `time`                  TIME NOT NULL,
+  `location`              VARCHAR(300) DEFAULT NULL,
   `description`           VARCHAR(500) DEFAULT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
-  `id_location`           VARCHAR(300) NOT NULL,
-  `host`                  SMALLINT(10) NOT NULL,       
+  `id_user`               SMALLINT(10) DEFAULT NULL,     
   PRIMARY KEY(`id`)
 );
 
