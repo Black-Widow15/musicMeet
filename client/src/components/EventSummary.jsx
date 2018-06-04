@@ -7,20 +7,20 @@ import React from 'react';
 // We will probably dynamically generate the url based on the name or id.
 
 let EventSummary = (props) => (
-<div class="card">
-  <div class="card-image">
-    <figure class="image is-4by3">
+<div className="card">
+  <div className="card-image">
+    <figure className="image is-4by3">
       <img src={props.imgUrl} alt="Event Image" width="96" height="96" />
     </figure>
   </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-content">
-        <p class="title is-4">{props.name}</p>
-        <p class="subtitle is-6">{props.location}</p>
+  <div className="card-content">
+    <div className="media">
+      <div className="media-content">
+        <p className="title is-4">{props.name}</p>
+        <p className="subtitle is-6">{props.location}</p>
       </div>
     </div>
-    <div class="content">
+    <div className="content">
       {props.description}
       <a href="#">#css</a> <a href="#">#responsive</a>
       <br></br>
