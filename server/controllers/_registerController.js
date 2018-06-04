@@ -1,4 +1,3 @@
-// require modules for authentication 
 // require modules for database query functions
 // require user model 
 const db = require ('../database/connection.js')

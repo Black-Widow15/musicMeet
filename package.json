@@ -32,12 +32,14 @@
     "webpack": "^4.10.2"
   },
   "dependencies": {
-    "@material-ui/core": "^1.1.0",
     "axios": "^0.18.0",
     "body-parser": "1.18.3",
+    "bulma": "^0.7.1",
+    "bulma-start": "0.0.2",
     "cors": "^2.8.4",
     "express": "4.16.3",
     "install": "^0.11.0",
+    "knex": "^0.14.6",
     "nodemon": "^1.17.5",
     "npm": "^6.1.0",
     "path": "^0.12.7",
