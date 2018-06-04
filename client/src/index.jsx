@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import TextField from './components/navbar.jsx'
 import axios from 'axios'
+import Login from './components/Login.jsx'
+import NavBar from './components/NavBar.jsx'
 
 class App extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <TextField/>
+                <Login/>
+                <NavBar/>
             </div>
         )
     }
