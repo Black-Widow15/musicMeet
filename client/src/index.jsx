@@ -14,10 +14,9 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <User/>
-                <Events />
-                <Login/>
                 <NavBar/>
+                <User/>
+                <Login/>
             </div>
         )
     }
