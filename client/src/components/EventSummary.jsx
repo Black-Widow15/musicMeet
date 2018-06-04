@@ -10,7 +10,7 @@ let EventSummary = (props) => (
 <div class="card">
   <div class="card-image">
     <figure class="image is-4by3">
-      <img src={props.imgUrl} alt="Event Image" />
+      <img src={props.imgUrl} alt="Event Image" width="96" height="96" />
     </figure>
   </div>
   <div class="card-content">

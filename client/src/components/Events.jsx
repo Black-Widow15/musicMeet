@@ -13,7 +13,7 @@ class Events extends React.Component {
           name: 'party!',
           date: 'July 4',
           time: '11pm',
-          imgUrl: '',
+          imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           location: 'A house',
           description: 'Come to my party!',
         }
