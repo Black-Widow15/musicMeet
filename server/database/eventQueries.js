@@ -24,7 +24,6 @@ const getAllEventsDB = (callback) => {
     db.connection.query(queryString, (err, result) =>{
         callback(err,result)
     })
-    console.log(db.connection.query)
 }
 
 const updateEventDB = ({id, name, date, time, description, imgurl, id_location, host}, callback) => {
