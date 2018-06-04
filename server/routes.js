@@ -12,6 +12,9 @@ router.get('/events', (req, res, next) => {
 
 router.post('/events', eventController.saveNewEvent)
 
+router.get('/event', (req, res, next) => {
+    
+})
 
 router.get('/users', (req, res, next) => {
     // respond to get users
