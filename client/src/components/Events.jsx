@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import EventSummary from './EventSummary.jsx';
+import EventModal from './EventModal.jsx';
+
 
 class Events extends React.Component {
   constructor (props) {
@@ -27,14 +29,15 @@ class Events extends React.Component {
           location: 'Madison Square Garden',
           description: 'Its a huge concert!',
         }
-
-
       ], // The events that are coming up next.
   	};
 
   	// These event objects are quick summaries.
   	// Data needed: name, date, time, imgUrl, location, description
-    console.log(this.state);
+
+    this.fillEventsFeed = this.fillEventsFeed.bind(this);
+    this.launchModal = this.launchModal.bind(this);
+
   }
 
   fillEventsFeed () {
@@ -51,11 +54,21 @@ class Events extends React.Component {
         })
   }
 
+  launchModal (e) {
+    // This function will be passed down to the eventSummary
+    // components to function as onClick.
+
+    // Grab the element by ID.
+    // Change the className to modal is-active.
+    // var card = document.getElementById(name);
+    console.log('hello');
+  }
+
   componentDidMount() {
   	this.fillEventsFeed();
   }
 
-// Data needed: name, date, time, imgUrl, location, description
+  // Data needed: name, date, time, imgUrl, location, description
   render () {
   	return (
       <div className="columns">
@@ -71,7 +84,12 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
+                launchModal={() => this.launchModal(e)}
               /> 
+           
+              <EventModal
+                name={event.name}
+              />
             </div>
             )
           })
@@ -89,6 +107,7 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
+                launchModal={() => this.launchModal(e)}
               /> 
             </div>
             )

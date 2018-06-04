@@ -15,6 +15,7 @@ class App extends React.Component {
         return (
             <div>
                 <NavBar/>
+                <Events />
                 <User/>
                 <Login/>
             </div>
