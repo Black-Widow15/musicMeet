@@ -34,5 +34,13 @@ class EventsAttending extends React.Component {
     // leads to the specific event
   }
 
+  render() {
+    return(
+    <div>i am an event list</div>
+    )
+  }
 
-}
+
+};
+
+export default EventsAttendings;

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+// import EventsAttending from './components/EventsAttending.jsx'
 
 class User extends React.Component {
   constructor(props) {
@@ -21,27 +22,26 @@ class User extends React.Component {
 
   render() {
     return(
-      <div>
-        name: {this.name}
-        <img src={this.state.image}/>
-        {this.displayName}
-        quick bio:{this.bio}
-      
-        {/* <ul>
-          photos
-          {this.photos.map(photo => {
-          <li><img class="user-photos" src="{photo}"/></li>
-          })}
-        </ul> */}
-      
-        {/* <ul>
-          events i'm going to
-          <EventsAttending events={this.state.eventsAttending}/>
-        </ul> */}
-      
-        
-      </div>
-
+    <div className="box">
+      <article className="media">
+        <div className="media-left">
+          <figure className="image is-64x64">
+          <img src={this.state.image} alt="Image"/>
+          </figure>
+        </div>
+        <div className="media-content">
+          <div className="content">
+            <p>
+              <strong>{this.state.displayName}</strong> <small>{this.state.name}</small>
+                <br/>
+                {this.state.bio}
+            </p>
+              <strong>events i'm going to</strong>
+              <br/>
+          </div>
+        </div>
+      </article>
+    </div>
     )
   }
 }
