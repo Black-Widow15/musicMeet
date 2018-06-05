@@ -25,7 +25,15 @@ class EventPage extends React.Component {
           avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
         }
       ], // Array of objects pulled from users table in db
-      info: {}, // Same data that was in the Event Summary cards.
+      info: {
+        name: 'Concert',
+        date: 'June 7',
+        time: '11pm',
+        imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+        location: 'Madison Square Garden',
+        description: 'Its a huge concert!',
+        host: 'Metallica',
+      }, // Same data that was in the Event Summary cards.
       isAttending: false, // 
   	};
 
@@ -45,21 +53,40 @@ class EventPage extends React.Component {
 
   render () {
     return (
-    // Most of the data from the card.
-    // An RSVP/Cancel button.
+      <div className="tile is-ancestor">
+        <div className="tile is-vertical">
 
-    // At the bottom-left, a list of comments.
-    <div className="columns">
-      <div className="column">
-        <Comments commentList={this.state.comments}/>
-      </div>
-      <div className="column"> 
-        <AttendeeList attendees={this.state.attendees} />
+          <div className="tile is-parent">
+            <div className="tile is-6 is-child">
+              <img src={this.state.info.imgUrl} />
+            </div>
+
+            <div className="tile is-child">
+              <strong>{this.state.info.name}</strong>
+              <br/>
+              <strong>Hosted by: {this.state.info.host}</strong>
+              <br/><br/><br/>
+
+            </div>
+
+
+          </div>
+
+          <div className="tile is-child">
+              <div className="columns">
+                <div className="column">
+                  <Comments commentList={this.state.comments}/>
+                </div>
+                <div className="column"> 
+                  <AttendeeList attendees={this.state.attendees} />
+                </div>
+              </div>
+          </div>
+
       </div>
     </div>
     )
   }
-  // At the bottom-right, a list of people attending.
 }
 
 export default EventPage;
