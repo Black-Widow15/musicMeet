@@ -1,5 +1,4 @@
 import React from 'react'
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class CreateEvent extends React.Component { 
     constructor(props) {
