@@ -43,7 +43,12 @@ class EventPage extends React.Component {
     // An RSVP/Cancel button.
 
     // At the bottom-left, a list of comments.
-    <Comments commentList={this.state.comments}/>
+    <div className="columns">
+      <div className="column">
+        <Comments commentList={this.state.comments}/>
+      </div>
+      <div className="column"> </div>
+    </div>
     // At the bottom-right, a list of people attending.
     )
   }

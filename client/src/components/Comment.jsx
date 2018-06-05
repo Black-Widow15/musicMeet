@@ -16,7 +16,7 @@ let Comment = (props) => (
     <div className="media-content">
       <div className="content">
         <p>
-          <bold> {props.username} </bold>
+          <strong> {props.username} </strong>
           {props.text}
         </p>
       </div>
