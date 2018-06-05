@@ -36,11 +36,33 @@ const updateEventDB = ({id, name, date, time, description, imgurl, id_location, 
     })
 }
 
+const getPopularEventsDB = (callback) => {
+    let queryString = `SELECT name, date, time, location, description, imgurl, host, COUNT(name) FROM Products ORDER BY COUNT(name) DESC`
+    db.connection.query(queryString, (err, result) => {
+        if(err) {
+            console.log('Error getting popular events from database')
+        }
+        callback(err, result)
+    })
+}
+
+const getRecentEventsDB = (callback) => {
+    let queryString = `SELECT name, date, time, location, description, imgurl, host ORDER BY DATE DESC`
+    db.connection.query(queryString, (err, result) => {
+        if(err) {
+            console.log('Error getting recent events from database')
+        }
+        callback(err, result)
+    })
+}
+
 module.exports = {
     saveEventDB,
     getAllEventsDB,
     deleteEventDB,
-    updateEventDB
+    updateEventDB,
+    getPopularEventsDB,
+    getRecentEventsDB
 }
 
 

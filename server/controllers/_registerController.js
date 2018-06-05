@@ -1,21 +1,25 @@
 // require modules for database query functions
 // require user model 
-const db = require ('../database/connection.js')
+const db = require('../database/userQueries.js')
 
 
-const login = (req, res, next) => {
+const login = (req, res) => {
     // functionality for authentication
     // redirect to homepage
 }
 
 
-const register = (req, res, next) => {
-    // insert request payload into database
-    // send status 201 if okay
-    // redirect to homepage or login
+const signup = (req, res) => {
+    db.saveNewUser(req.body, (err, result) => {
+        if(err){
+            console.log('Could not save a user into the database')
+        } else {
+            res.status(201).end()
+        }
+    })
 }
 
 module.exports = {
     login,
-    register
+    signup
 }

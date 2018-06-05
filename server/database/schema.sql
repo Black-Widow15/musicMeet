@@ -46,6 +46,8 @@ CREATE TABLE `events` (
   PRIMARY KEY(`id`)
 );
 
+
+
 DROP TABLE IF EXISTS `event_comments`;
 CREATE TABLE `events_comments` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
