@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class CreateEvent extends React.Component { 
     constructor(props) {
