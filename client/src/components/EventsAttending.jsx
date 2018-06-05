@@ -17,7 +17,7 @@ class EventsAttending extends React.Component {
     }
   }
 
-  eventClick {
+  eventClick() {
     // clicking on an event goes to it
     // sends axios get request to /event
     // include event id in params
@@ -26,10 +26,10 @@ class EventsAttending extends React.Component {
     // redirects user to event page
     axios.get('/event', {
       params: {
-        imgUrl: 
+        imgUrl: ''
       }
 
-    }
+    })
     // each event thumbnail is a link that, when clicked on
     // leads to the specific event
   }

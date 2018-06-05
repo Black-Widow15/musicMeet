@@ -14,29 +14,40 @@ class Login extends React.Component {
             password: ''
         }
 
-        this.handlePassword = this.handlePassword.bind(this)
-        this.handleUsername = this.handleUsername.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handlePassword = this.handlePassword.bind(this);
+        this.handleUsername = this.handleUsername.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeLoginModal = this.closeLoginModal.bind(this);
+
     }
+
     handleUsername(e){
         this.setState({
             username: e.target.value,
         })
     }
+
     handlePassword(e) {
         this.setState({
             password: e.target.value
         })
     }
+
     handleSubmit(e){
         console.log('submitted')
         e.preventDefault()
         // grab username and password from state and send to user schema        
     }
+
+    closeLoginModal () {
+      let modal = document.getElementById('login');
+      modal.classList.remove('is-active');
+    }
+
     render() {
         return (
             <form onSubmit ={this.handleSubmit}>
-            <div className="modal">
+            <div id="login" className="modal">
                 <div className="modal-background"></div>
                 <div className="modal-content" style = {background}>
                     
@@ -57,7 +68,11 @@ class Login extends React.Component {
                    
                     </div>
               
-                <button className="modal-close is-large" aria-label="close"></button>
+                <button 
+                  className="modal-close is-large" 
+                  aria-label="close"
+                  onClick={(e) => {this.closeLoginModal()}}
+                ></button>
             </div>
             </form>
         )

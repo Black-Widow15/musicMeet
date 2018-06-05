@@ -6,15 +6,11 @@ const router = express.Router()
 
 router.get('/register', registerController.register)
 
-router.get('/events', (req, res, next) => {
-    res.send('get events request')
-})
-
 router.post('/events', eventController.saveNewEvent)
+router.get('/events', eventController.getAllEvents)
+router.delete('/events', eventController.deleteEvent)
+router.put('/events', eventController.updateEvent)
 
-router.get('/event', (req, res, next) => {
-    
-})
 
 router.get('/users', (req, res, next) => {
     // respond to get users
