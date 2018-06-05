@@ -20,7 +20,7 @@ class App extends React.Component {
                 <div>
                 <NavBar/>
                 <Switch>
-                    <Route exact path = '/' component = {Events}/>
+                    <Route exact path = '/' component = {EventPage}/>
                     <Route exact path = '/create' component = {CreateEvent}/>
                     <Route exact path = '/user' component = {User}/>
                 </Switch>

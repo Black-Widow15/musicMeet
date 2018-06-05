@@ -7,8 +7,9 @@ import Comment from './Comment.jsx';
 class Comments extends React.Component {
   constructor (props) {
   	super(props);
+    console.log(props);
     // Props will include a array of comment objects.
-    // Comment object properties: id, text, timestamp, username  
+    // Comment object properties: id, text, timestamp, username, avatarUrl
 
     // Func bindings, such as:
     // this.closeModal = this.closeModal.bind(this);
@@ -19,22 +20,18 @@ class Comments extends React.Component {
   }
 
   render () {
-    <div>
-    {
-      props.comments.map( (comment) => {
-        return (
-          <Comment 
-            commentId={comment.id}
-            text={comment.text}
-            timestamp={comment.timestamp}
-            username={comment.username}
-          />
-        )
-      })
-    }
-    </div>
-
+    this.props.commentList.map( (comment) => {
+      return (
+        <Comment 
+          commentId={comment.commentId}
+          text={comment.text}
+          timestamp={comment.timestamp}
+          username={comment.username}
+          avatarUrl={comment.avatarUrl}
+        />
+      )
+    })
   }
 }
 
-export default EventPage
+export default Comments
