@@ -39,40 +39,36 @@ class Login extends React.Component {
     }
 
     closeLoginModal () {
-      let modal = document.getElementById('login');
+      let modal = document.getElementById('Login');
       modal.classList.remove('is-active');
     }
 
     render() {
         return (
             <form onSubmit ={this.handleSubmit}>
-            <div id="login" className="modal">
+                <div id="Login" className="modal">        
                 <div className="modal-background"></div>
-                <div className="modal-content" style = {background}>
-                    
-                        <div className="field">
-                            <label className="label">Name</label>
-                            <div className="control">
-                                <input className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleUsername}/>
+                <div className="modal-content">
+                    <div className="box">
+                    <div className="field">
+                                <label className="label">Name</label>
+                                <div className="control">
+                                    <input className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleUsername}/>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className="field">
-                            <label className="label">Username</label>
-                            <div className="control has-icons-left has-icons-right">
-                                <input className="input" type="text" placeholder="Text input"  onChange = {this.handlePassword}/>
-                            </div>
-                            <p className="help is-success">This username is available</p>
-                        </div>
-                   
+                            <div className="field">
+                                <label className="label">Username</label>
+                                <div className="control has-icons-left has-icons-right">
+                                    <input className="input" type="text" placeholder="Text input"  onChange = {this.handlePassword}/>
+                                </div>
+                                </div>
+                        
+                        <button className="button is-link">Submit</button>
                     </div>
-              
-                <button 
-                  className="modal-close is-large" 
-                  aria-label="close"
-                  onClick={(e) => {this.closeLoginModal()}}
-                ></button>
-            </div>
+                </div>
+                <button className="modal-close is-large" aria-label="close" onClick={(e) => {this.closeLoginModal()}}></button>
+                </div>
             </form>
         )
     }
