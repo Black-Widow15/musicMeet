@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Events from './Events.jsx'
 
 class EventsAttending extends React.Component {
   constructor(props) {
@@ -36,11 +37,11 @@ class EventsAttending extends React.Component {
 
   render() {
     return(
-    <div>i am an event list</div>
+    <Events/>
     )
   }
 
 
 };
 
-export default EventsAttendings;
+export default EventsAttending;

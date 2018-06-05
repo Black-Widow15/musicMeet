@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
-// import EventsAttending from './components/EventsAttending.jsx'
+import EventsAttending from './EventsAttending.jsx'
 
 class User extends React.Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class User extends React.Component {
 
   render() {
     return(
+    <div> 
     <div className="box">
       <article className="media">
         <div className="media-left">
@@ -41,6 +42,8 @@ class User extends React.Component {
           </div>
         </div>
       </article>
+    </div>
+    <EventsAttending/>
     </div>
     )
   }
