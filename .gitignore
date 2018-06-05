@@ -65,5 +65,5 @@ node_modules/
 build/
 package-lock.json
 client/dist/bundle.js
-bundle.json
+bundle.js
 .DS_Store

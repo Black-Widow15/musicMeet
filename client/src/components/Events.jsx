@@ -18,6 +18,7 @@ class Events extends React.Component {
           imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           location: 'A house',
           description: 'Come to my party!',
+          host: 'Van Halen',
         }
       ], 
   	  eventsNew: [
@@ -28,6 +29,7 @@ class Events extends React.Component {
           imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
           location: 'Madison Square Garden',
           description: 'Its a huge concert!',
+          host: 'Metallica',
         }
       ], // The events that are coming up next.
   	};
@@ -83,6 +85,7 @@ class Events extends React.Component {
             <div> 
               <EventSummary 
                 name={event.name} 
+                host={event.host}
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgUrl}
@@ -95,7 +98,8 @@ class Events extends React.Component {
                 id={event.name}
                 closeModal={closeModal}   
 
-                name={event.name} 
+                name={event.name}
+                host={event.host}  
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgUrl}
@@ -113,7 +117,8 @@ class Events extends React.Component {
             return (
             <div> 
               <EventSummary 
-                name={event.name} 
+                name={event.name}
+                host={event.host} 
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgUrl}
@@ -125,7 +130,8 @@ class Events extends React.Component {
                 id={event.name}
                 closeModal={closeModal}   
 
-                name={event.name} 
+                name={event.name}
+                host={event.host} 
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgUrl}

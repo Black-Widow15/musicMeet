@@ -20,6 +20,13 @@ class User extends React.Component {
     };
   }
 
+  componentDidMount() {
+    axios.get('/')
+    // get events that the user is going to
+    // set this.state.eventsAttending to it
+    // 
+  }
+
   render() {
     return(
     <div> 
@@ -37,8 +44,7 @@ class User extends React.Component {
                 <br/>
                 {this.state.bio}
             </p>
-              <strong>events i'm going to</strong>
-              <br/>
+              <EventsAttending attending={this.state.eventsAttending}/>
           </div>
         </div>
       </article>

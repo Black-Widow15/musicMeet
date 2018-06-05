@@ -8,13 +8,7 @@ class EventsAttending extends React.Component {
     super(props)
 
     this.state = {
-      name: '',
-      image: '',
-      displayName: '',
-      bio: '',
-      pinnedTrackUrl: '',
-      photos: [],
-      eventsAttending: []
+
     }
   }
 
@@ -31,8 +25,11 @@ class EventsAttending extends React.Component {
       }
 
     })
+  }
     // each event thumbnail is a link that, when clicked on
     // leads to the specific event
+  getEventInfo (){
+    // on click, event module shows (EventSummary component)
   }
 
   render() {
