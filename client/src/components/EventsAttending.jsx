@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
+import Events from './Events.jsx'
 
 class EventsAttending extends React.Component {
   constructor(props) {
@@ -11,16 +12,29 @@ class EventsAttending extends React.Component {
     }
   }
 
-  getEventInfo {
+  eventClick() {
+    // clicking on an event goes to it
+    // sends axios get request to /event
+    // include event id in params
+    // photo corresponds to a specific event
+    // express server checks db and gets info about the event
+    // redirects user to event page
+    axios.get('/event', {
+      params: {
+        imgUrl: ''
+      }
+
+    })
+  }
+    // each event thumbnail is a link that, when clicked on
+    // leads to the specific event
+  getEventInfo (){
     // on click, event module shows (EventSummary component)
   }
 
   render() {
     return(
-      // what renders is a list of thumbnails 
-      // when one event thumbnail is clicked, modal of eventsummary shows
-    <div>i am an event list</div>
-    // thumbnail of each event
+    <Events/>
     )
   }
 
