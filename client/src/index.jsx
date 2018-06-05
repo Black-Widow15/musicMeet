@@ -5,6 +5,9 @@ import axios from 'axios'
 import Events from './components/Events.jsx'
 import Login from './components/Login.jsx'
 import NavBar from './components/NavBar.jsx'
+import CreateEvent from './components/CreateEvent.jsx'
+
+
 
 
 class App extends React.Component {
@@ -18,6 +21,7 @@ class App extends React.Component {
                 <Events />
                 <User/>
                 <Login/>
+                <CreateEvent/>
             </div>
         )
     }
