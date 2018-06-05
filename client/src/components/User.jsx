@@ -15,16 +15,19 @@ class User extends React.Component {
       upcomingGigs: [],
       bio: 'sometimes they call me flapjack',
       photos: [],
-      eventsAttending: ['a', 'b', 'c'],
+      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}],
       messages: ['this is a message', 'this is also a message'],
     };
   }
 
+  postMessage(text) {
+
+  }
+
   componentDidMount() {
     axios.get('/')
-    // get events that the user is going to
-    // set this.state.eventsAttending to it
-    // 
+    // get events that user is going to
+    // get messages that have been posted on user's wall
   }
 
   render() {
@@ -61,21 +64,34 @@ class User extends React.Component {
               <div className="notification is-primary has-text-centered">
                 my messages
               </div>
-                <div class="field">
-                  <label class="label">write me a message!</label>
-                  <div class="control">
-                    <input class="input" type="text" placeholder="Start typing here"/>
+                <div className="field">
+                  <label className="label">write me a message!</label>
+                  <div className="control">
+                    <input className="input" type="text" placeholder="start typing here"/>
                   </div>
                 </div>
-                <div class="control">
-                  <button class="button is-primary">Send!</button>
+                <div className="control">
+                  <button className="button is-primary">send!</button>
                 </div>
-                {this.state.messages}
+                <ul>
+                {this.state.messages.map(message => {
+                  return (
+                  <li>{message}</li>
+                  )
+                })}
+                </ul>
             </div>
             <div className="column">
               <div className="notification is-primary has-text-centered">
-                yo.
+                events i am attending
               </div>
+                <ul>
+                  {this.state.eventsAttending.map(event => {
+                    return (
+                      <li><a href ="#">{event.name}</a></li>
+                    )
+                  })}
+                  </ul>
             </div>
           </div>
       </section>
