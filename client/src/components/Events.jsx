@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import EventSummary from './EventSummary.jsx';
+import EventModal from './EventModal.jsx';
+
 
 class Events extends React.Component {
   constructor (props) {
@@ -27,14 +29,16 @@ class Events extends React.Component {
           location: 'Madison Square Garden',
           description: 'Its a huge concert!',
         }
-
-
       ], // The events that are coming up next.
   	};
 
   	// These event objects are quick summaries.
   	// Data needed: name, date, time, imgUrl, location, description
-    console.log(this.state);
+
+    this.fillEventsFeed = this.fillEventsFeed.bind(this);
+    this.launchModal = this.launchModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+
   }
 
   fillEventsFeed () {
@@ -51,12 +55,25 @@ class Events extends React.Component {
         })
   }
 
+  launchModal (modalId) {
+    let modal = document.getElementById(modalId);
+    modal.classList.add('is-active');
+  }
+
+  closeModal (modalId) {
+    let modal = document.getElementById(modalId);
+    modal.classList.remove('is-active');
+  }
+
   componentDidMount() {
   	this.fillEventsFeed();
   }
 
-// Data needed: name, date, time, imgUrl, location, description
+  // Data needed: name, date, time, imgUrl, location, description
   render () {
+    let launchModal = this.launchModal;
+    let closeModal = this.closeModal;
+
   	return (
       <div className="columns">
     		<div className="column">
@@ -71,7 +88,20 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
+                launchModal={launchModal}
               /> 
+           
+              <EventModal
+                id={event.name}
+                closeModal={closeModal}   
+
+                name={event.name} 
+                date={event.date} 
+                time={event.time}
+                imgUrl={event.imgUrl}
+                location={event.location}
+                description={event.description}             
+              />
             </div>
             )
           })
@@ -89,7 +119,19 @@ class Events extends React.Component {
                 imgUrl={event.imgUrl}
                 location={event.location}
                 description={event.description}
+                launchModal={launchModal}
               /> 
+              <EventModal
+                id={event.name}
+                closeModal={closeModal}   
+
+                name={event.name} 
+                date={event.date} 
+                time={event.time}
+                imgUrl={event.imgUrl}
+                location={event.location}
+                description={event.description}             
+              />
             </div>
             )
           })
