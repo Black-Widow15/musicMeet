@@ -1,18 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Comments from './Comments.jsx';
+import Comment from './Comment.jsx';
 
 
-class EventPage extends React.Component {
+class Comments extends React.Component {
   constructor (props) {
   	super(props);
-
-  	this.state = {
-      comments: [], // Array of objects pulled from messages table in db
-      attendees: [], // Array of objects pulled from users table in db
-      info: {}, // Same data that was in the Event Summary cards.
-  	};
+    // Props will include a array of comment objects.
+    // Comment object properties: id, text, timestamp, username  
 
     // Func bindings, such as:
     // this.closeModal = this.closeModal.bind(this);
@@ -23,11 +19,20 @@ class EventPage extends React.Component {
   }
 
   render () {
-    // Most of the data from the card.
-    // An RSVP/Cancel button.
-
-    // At the bottom-left, a list of comments.
-    // At the bottom-right, a lits of people attending.
+    <div>
+    {
+      props.comments.map( (comment) => {
+        return (
+          <Comment 
+            commentId={comment.id}
+            text={comment.text}
+            timestamp={comment.timestamp}
+            username={comment.username}
+          />
+        )
+      })
+    }
+    </div>
 
   }
 }
