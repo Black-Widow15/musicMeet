@@ -41,8 +41,8 @@ class NavBar extends React.Component {
                     <NavLink className="navbar-link" to = '/user'>
                     Profiles
                     </NavLink>
-                    <NavLink className="navbar-link" to = '/event/1'>
-                    One Event Page
+                    <NavLink className="navbar-link" to = '/event'>
+                    Event Page
                     </NavLink>
                     <hr className="navbar-divider"/>
                     <NavLink className="navbar-link" to = '/'>

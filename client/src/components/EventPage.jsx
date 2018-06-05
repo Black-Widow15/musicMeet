@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Comments from './Comments.jsx';
+import AttendeeList from './AttendeeList.jsx';
 
 
 class EventPage extends React.Component {
@@ -18,7 +19,12 @@ class EventPage extends React.Component {
           avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
         }
       ], // Array of objects pulled from messages table in db
-      attendees: [], // Array of objects pulled from users table in db
+      attendees: [
+        {
+          username: 'howdy',
+          avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+        }
+      ], // Array of objects pulled from users table in db
       info: {}, // Same data that was in the Event Summary cards.
       isAttending: false, // 
   	};
@@ -47,11 +53,13 @@ class EventPage extends React.Component {
       <div className="column">
         <Comments commentList={this.state.comments}/>
       </div>
-      <div className="column"> </div>
+      <div className="column"> 
+        <AttendeeList attendees={this.state.attendees} />
+      </div>
     </div>
-    // At the bottom-right, a list of people attending.
     )
   }
+  // At the bottom-right, a list of people attending.
 }
 
 export default EventPage;

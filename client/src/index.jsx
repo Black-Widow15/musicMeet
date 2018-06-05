@@ -23,7 +23,7 @@ class App extends React.Component {
                     <Route exact path = '/' component = {Events}/>
                     <Route exact path = '/create' component = {CreateEvent}/>
                     <Route exact path = '/user' component = {User}/>
-                    <Route exact path = '/event/1' component = {EventPage}/>
+                    <Route exact path = '/event' component = {EventPage}/>
                 </Switch>
                 </div>
             </Router>
