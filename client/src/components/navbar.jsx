@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
+import Login from './Login.jsx';
 
 class NavBar extends React.Component {
     constructor (props) {
         super(props)
+
+        this.launchLoginModal = this.launchLoginModal.bind(this);
+        this.closeLoginModal = this.closeLoginModal.bind(this);
     }
+
+    launchLoginModal () {
+      let modal = document.getElementById('login');
+      modal.classList.add('is-active');
+    }
+
+    closeLoginModal () {
+      let modal = document.getElementById('login');
+      modal.classList.remove('is-active');
+    }
+
+
+
     render () {
         return (
         <nav className="navbar is-fixed-top">
@@ -38,7 +55,7 @@ class NavBar extends React.Component {
                 <div className="navbar-end">
                 <div className="navbar-item">
                     <div className="field is-grouped">
-                    <a className="navbar-item" href="#">
+                    <a className="navbar-item" href="#" onClick={(e) => (this.launchLoginModal())}>
                         Login
                     </a>
                     <a className="navbar-item" href="#">
@@ -48,6 +65,7 @@ class NavBar extends React.Component {
                 </div>
                 </div>
             </div>
+            <Login closeLoginModal={this.closeLoginModal} />
             </nav>
         )
     }
