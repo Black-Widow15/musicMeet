@@ -7,9 +7,6 @@ import EventModal from './EventModal.jsx';
 // We will have to add functionality to link to the actual event page.
 // We will probably dynamically generate the url based on the name or id.
 
-
-
-
 let EventSummary = (props) => (
   <div className="card" onClick={(e) => props.launchModal(props.name)}>
     <div className="card-image">

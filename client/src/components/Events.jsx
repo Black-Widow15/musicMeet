@@ -71,8 +71,8 @@ class Events extends React.Component {
 
   // Data needed: name, date, time, imgUrl, location, description
   render () {
-    let launchModal = this.launchModal
-    let closeModal = this.closeModal
+    let launchModal = this.launchModal;
+    let closeModal = this.closeModal;
 
   	return (
       <div className="columns">
