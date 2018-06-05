@@ -29,18 +29,18 @@ const checkUserPasswordMatch = (username, password, callback) => {
 
 // TESTS FOR CHECKUSERPASSWORDMATCH
 // username not found in database
-console.log(checkUserPasswordMatch('josephmartin', 'sickPassword', () => {
-  console.log('callback handled in express server');
-}));
-// username found but incorrect password
-console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
-  console.log('callback handled in express server');
-}));
-// username and password match
-console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
-  console.log('access granted yo');
-  console.log('callback handled in express server');
-}));
+// console.log(checkUserPasswordMatch('josephmartin', 'sickPassword', () => {
+//   console.log('callback handled in express server');
+// }));
+// // username found but incorrect password
+// console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
+//   console.log('callback handled in express server');
+// }));
+// // username and password match
+// console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
+//   console.log('access granted yo');
+//   console.log('callback handled in express server');
+// }));
 
 
 // (user sign up)
@@ -51,34 +51,34 @@ console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
 // insert into `users` username, password, email address, musician
 // 
 
-const saveNewUser = (values, callback) => {
-  let queryString = `INSERT INTO users (username,password,email,musician)\
-   VALUES ('${values.username}', '${values.password}', \
-   '${values.email}', '${values.musician}')`;
+const saveNewUser = ({username, display_name, password, imgurl, email, bio}, callback) => {
+  let queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${username}', '${display_name}','${password}', '${imgurl}', '${email}', '${bio}')`;
+  console.log(queryString)
   connection.query(queryString, (err, result) => {
     if (err) {
       console.log('username in use');
     } else {
-  }
-  });
-};
+      callback(err, result)
+    }
+  })
+}
   
 // TESTS FOR SAVENEWUSER
 
 // user is added
-console.log(saveNewUser({username: 'iamnotindatabase', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
-  console.log('callback handled in express server');
-}));
+// console.log(saveNewUser({username: 'iamnotindatabase', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
+//   console.log('callback handled in express server');
+// }));
 
-// // username in use
-console.log(saveNewUser({username: 'mikey', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
-  console.log('callback handled in express server');
-}));
+// // // username in use
+// console.log(saveNewUser({username: 'mikey', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
+//   console.log('callback handled in express server');
+// }));
 
-// missing required field (like email or pw)
-console.log(saveNewUser({username: 'charlie', password: '', email: '', musician: 0}, () => {
-  console.log('callback handled in express server');
-}));
+// // missing required field (like email or pw)
+// console.log(saveNewUser({username: 'charlie', password: '', email: '', musician: 0}, () => {
+//   console.log('callback handled in express server');
+// }));
 
 
 
@@ -149,6 +149,6 @@ const retrieveUser = (username) => {
 
 
 module.exports = {
-  checkUserPasswordMatch: checkUserPasswordMatch,
-  saveNewUser: saveNewUser
+  checkUserPasswordMatch,
+  saveNewUser
 };

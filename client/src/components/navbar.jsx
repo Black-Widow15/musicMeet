@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login.jsx';
+import Signup from './Signup.jsx'
 import {NavLink} from 'react-router-dom'
 
 class NavBar extends React.Component {
@@ -8,17 +9,29 @@ class NavBar extends React.Component {
 
         this.launchLoginModal = this.launchLoginModal.bind(this);
         this.closeLoginModal = this.closeLoginModal.bind(this);
+        this.launchSignupModal = this.launchSignupModal.bind(this);
+        this.closeSignupModal = this.closeSignupModal.bind(this);
     }
 
     launchLoginModal () {
-      let modal = document.getElementById('login');
+      let modal = document.getElementById('Login');
       modal.classList.add('is-active');
     }
 
     closeLoginModal () {
-      let modal = document.getElementById('login');
+      let modal = document.getElementById('Login');
       modal.classList.remove('is-active');
     }
+
+    launchSignupModal () {
+        let modal = document.getElementById('Signup');
+        modal.classList.add('is-active');
+      }
+  
+      closeSignupModal () {
+        let modal = document.getElementById('Signup');
+        modal.classList.remove('is-active');
+      }
 
 
 
@@ -58,7 +71,7 @@ class NavBar extends React.Component {
                     <a className="navbar-item" href="#" onClick={(e) => (this.launchLoginModal())}>
                         Login
                     </a>
-                    <a className="navbar-item" href="#">
+                    <a className="navbar-item" href="#" onClick = {(e) => this.launchSignupModal()}>
                         Sign up
                     </a>
                     </div>
@@ -66,6 +79,8 @@ class NavBar extends React.Component {
                 </div>
             </div>
             <Login closeLoginModal={this.closeLoginModal} />
+            <Signup closeSignupModal={this.closeSignupModal} />
+            
             </nav>
         )
     }
