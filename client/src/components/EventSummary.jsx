@@ -18,6 +18,7 @@ let EventSummary = (props) => (
       <div className="media">
         <div className="media-content">
           <p className="title is-4">{props.name}</p>
+          <p>Hosted By: {props.host}</p>
           <p className="subtitle is-6">{props.location}</p>
         </div>
       </div>
