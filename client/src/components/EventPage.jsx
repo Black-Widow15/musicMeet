@@ -34,16 +34,21 @@ class EventPage extends React.Component {
         description: 'Its a huge concert!',
         host: 'Metallica',
       }, // Same data that was in the Event Summary cards.
-      isAttending: false, // 
+      isAttending: false, 
   	};
 
     // Func bindings, such as:
-    // this.closeModal = this.closeModal.bind(this);
+    this.rsvp = this.rsvp.bind(this);
   }
 
   rsvp () {
-    // If not yet attending, change isAttending to true.
-    // If attending change to false.
+    let current = this.state.isAttending;
+    let elem = document.getElementById('rsvp');
+    console.log(elem);
+
+    this.setState({
+      isAttending: !current,
+    })
   }
 
   componentDidMount() {
@@ -66,7 +71,11 @@ class EventPage extends React.Component {
               <br/>
               <strong>Hosted by: {this.state.info.host}</strong>
               <br/><br/><br/>
-
+              {this.state.info.date}, {this.state.info.time}
+              <br/>
+              <button id="rsvp" onClick={(e) => {this.rsvp()}}>
+                {this.state.isAttending ? 'Cancel' : 'RSVP' }
+              </button>
             </div>
 
 
