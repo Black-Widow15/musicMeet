@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 
 const background = {
@@ -10,13 +11,13 @@ class Signup extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            name: '',
+            username: '',
             display_name: '',
             password: '',
             imgurl: '',
             email: '',
             bio: '',
-            musician: false
+            musician: 6
         }
 
         this.handleName = this.handleName.bind(this);
@@ -34,7 +35,7 @@ class Signup extends React.Component {
 
     handleName(e){
         this.setState({
-            name: e.target.value,
+            username: e.target.value,
         })
     }
     handlePassword(e) {
@@ -63,9 +64,9 @@ class Signup extends React.Component {
         })
     }
     handleSubmit(e){
-        console.log('submitted')
         e.preventDefault()
-        // grab username and password from state and send to user schema        
+        // grab username and password from state and send to user schema    
+        axios.post('/signup', this.state)   
     }
     closeSignupModal () {
       let modal = document.getElementById('Signup');
@@ -87,7 +88,7 @@ class Signup extends React.Component {
 
                     <label className="label">Display Name</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.display_name} onChange = {this.handlePassword}/>
+                        <input className="input" type="text" placeholder="Text input" value = {this.state.display_name} onChange = {this.handleDisplayName}/>
                     </div>
 
                     <label className="label">Password</label>
