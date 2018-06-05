@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Link, Switch, History} from 'react-route
 import User from './components/User.jsx'
 import axios from 'axios'
 import Events from './components/Events.jsx'
+import EventPage from './components/EventPage.jsx'
 import Login from './components/Login.jsx'
 import NavBar from './components/NavBar.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
