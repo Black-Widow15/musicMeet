@@ -42,7 +42,7 @@ CREATE TABLE `events` (
   `location`              VARCHAR(300) DEFAULT NULL,
   `description`           VARCHAR(500) DEFAULT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
-  `id_user`               SMALLINT(10) DEFAULT NULL,     
+  `host`                  VARCHAR(100) NOT NULL,
   PRIMARY KEY(`id`)
 );
 
