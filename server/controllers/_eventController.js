@@ -40,9 +40,30 @@ const updateEvent = (req, res) => {
     })
 }
 
+const getPopularEvents = (req, res) => {
+    event.getPopularEventsDB((err, result) => {
+        if(err) {
+            console.log(`Could not get list of popular events`)
+        } else {
+            res.send(result)
+        }
+    })
+}
+
+const getRecentEvents = (req, res) => {
+    event.getRecentEventsDB((err, result) => {
+        if(err) {
+            console.log(`Could not get list of recent events`)
+        } else {
+            res.send(result)
+        }
+    })
+}
 module.exports= {
     saveNewEvent,
     getAllEvents,
     deleteEvent,
-    updateEvent
+    updateEvent,
+    getPopularEvents,
+    getRecentEvents
 }

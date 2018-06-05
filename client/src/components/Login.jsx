@@ -18,7 +18,6 @@ class Login extends React.Component {
         this.handleUsername = this.handleUsername.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeLoginModal = this.closeLoginModal.bind(this);
-
     }
 
     handleUsername(e){

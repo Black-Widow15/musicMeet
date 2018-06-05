@@ -10,6 +10,8 @@ router.post('/events', eventController.saveNewEvent)
 router.get('/events', eventController.getAllEvents)
 router.delete('/events', eventController.deleteEvent)
 router.put('/events', eventController.updateEvent)
+router.get('/events/popular', eventController.getPopularEvents)
+router.get('/events/recent', eventController.getRecentEvents)
 
 
 router.get('/users', (req, res, next) => {
