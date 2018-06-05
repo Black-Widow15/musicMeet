@@ -9,9 +9,6 @@ import Login from './components/Login.jsx'
 import NavBar from './components/NavBar.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
 
-
-
-
 class App extends React.Component {
     constructor(props) {
         super(props)
@@ -24,6 +21,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path = '/' component = {Events}/>
                     <Route exact path = '/create' component = {CreateEvent}/>
+                    <Route exact path = '/user' component = {User}/>
                 </Switch>
                 </div>
             </Router>

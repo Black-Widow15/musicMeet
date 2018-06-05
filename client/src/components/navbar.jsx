@@ -1,5 +1,6 @@
 import React from 'react';
 import Login from './Login.jsx';
+import {NavLink} from 'react-router-dom'
 
 class NavBar extends React.Component {
     constructor (props) {
@@ -24,30 +25,26 @@ class NavBar extends React.Component {
     render () {
         return (
         <nav className="navbar is-fixed-top">
-            <div className="navbar-brand">
-                
-            </div>
-
             <div className="navbar-menu">
                 <div className="navbar-start">
-                <a className="navbar-item" href="#">
+                <NavLink className = "navbar-link" to = '/'>
                     Home
-                </a>
+                </NavLink>
                 <div className="navbar-item has-dropdown is-hoverable">
-                    <a className="navbar-link" href="#">
+                    <NavLink className="navbar-link" to = '/'>
                     Events
-                    </a>
+                    </NavLink>
                     <div className="navbar-dropdown is-boxed">
-                    <a className="navbar-item" href="#">
+                    <NavLink className="navbar-link" to = '/create'>
                     Create an Event
-                    </a>
-                    <a className="navbar-item" href="#">
+                    </NavLink>
+                    <NavLink className="navbar-link" to = '/user'>
                     Profiles
-                    </a>
+                    </NavLink>
                     <hr className="navbar-divider"/>
-                    <a className="navbar-item" href="#">
-                    Location
-                    </a>
+                    <NavLink className="navbar-link" to = '/'>
+                    Events
+                    </NavLink>
                     </div>
                 </div>
                 </div>
