@@ -1,9 +1,9 @@
-const db = require('./connection.js')
+const db = require('./connection.js');
 
 const saveEventDB = ({
-    name, date, time, description, imgurl, id_location, host}, callback) => {
-    let queryString = `INSERT INTO events (name, date, time, description, imgurl, id_location, host) 
-                       VALUES ('${name}', '${date}', '${time}' , '${description}', '${imgurl}', '${id_location}', ${host})`
+    name, date, time, description, imgurl, address, city, host }, callback) => {
+    let queryString = `INSERT INTO events (name, date, time, description, imgurl, address, city, host) 
+                       VALUES ('${name}', '${date}', '${time}' , '${description}', '${imgurl}', '${address}', '${city}', '${host}')`;
     db.connection.query(queryString, (err, result) => {
         if(err) {
             console.log('Could not create event')
@@ -26,8 +26,8 @@ const getAllEventsDB = (callback) => {
     })
 }
 
-const updateEventDB = ({id, name, date, time, description, imgurl, id_location, host}, callback) => {
-    let queryString = `UPDATE events SET name = '${name}', date = '${date}', time = '${time}', description = '${description}', imgurl = '${imgurl}', id_location = '${id_location}', host = '${host}' WHERE id = ${id}`
+const updateEventDB = ({id, name, date, time, description, imgurl, address, city, host }, callback) => {
+    let queryString = `UPDATE events SET name = '${name}', date = '${date}', time = '${time}', description = '${description}', imgurl = '${imgurl}', address = '${address}', city = '${city}', host = '${host}' WHERE id = ${id}`
     db.connection.query(queryString, (err, result) => {
         if(err){
             console.log('Error upating event in DB')
@@ -37,7 +37,7 @@ const updateEventDB = ({id, name, date, time, description, imgurl, id_location, 
 }
 
 const getPopularEventsDB = (callback) => {
-    let queryString = `SELECT name, date, time, location, description, imgurl, host, COUNT(name) FROM Products ORDER BY COUNT(name) DESC`
+    let queryString = `SELECT name, date, time, address, city, description, imgurl, host, COUNT(name) FROM events ORDER BY COUNT(name) DESC`
     db.connection.query(queryString, (err, result) => {
         if(err) {
             console.log('Error getting popular events from database')
@@ -47,7 +47,7 @@ const getPopularEventsDB = (callback) => {
 }
 
 const getRecentEventsDB = (callback) => {
-    let queryString = `SELECT name, date, time, location, description, imgurl, host ORDER BY DATE DESC`
+    let queryString = `SELECT name, date, time, address, city, description, imgurl, host FROM events ORDER BY DATE DESC`
     db.connection.query(queryString, (err, result) => {
         if(err) {
             console.log('Error getting recent events from database')
