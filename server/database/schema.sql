@@ -38,7 +38,7 @@ CREATE TABLE `events` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `name`                  VARCHAR(100) NOT NULL,
   `date`                  DATE NOT NULL,
-  `time`                  TIMESTAMP NOT NULL,
+  `time`                  TIME NOT NULL,
   `address`               VARCHAR(300) DEFAULT NULL,
   `city`                  VARCHAR(100) DEFAULT NULL,
   `description`           VARCHAR(500) DEFAULT NULL,

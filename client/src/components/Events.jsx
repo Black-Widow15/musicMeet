@@ -45,13 +45,14 @@ class Events extends React.Component {
 
   fillEventsFeed () {
   	// Grab data from the database and set the state.
-    axios.get('/events') // This may be the wrong route!  It may give us single events only.
+    axios.get('/events')
         .then( (response) => {
           // console.log('response', response.data);
           this.setState({
-            eventsPop: response.data, // place holder code, will need to test extensively
+            eventsPop: response.data,
             eventsNew: response.data,
           })
+          console.log(this.state);
         })
         .catch( (err) => {
           console.log(err);
@@ -82,6 +83,7 @@ class Events extends React.Component {
     		<div className="column">
         {
           this.state.eventsPop.map(function (event){
+            event.date = event.date.slice(0, 10);
             return (
             <div> 
               <EventSummary 
