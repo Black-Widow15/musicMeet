@@ -15,7 +15,7 @@ class Events extends React.Component {
           name: 'party!',
           date: 'July 4',
           time: '11pm',
-          imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
+          imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           location: 'A house',
           description: 'Come to my party!',
           host: 'Van Halen',
@@ -47,10 +47,11 @@ class Events extends React.Component {
   	// Grab data from the database and set the state.
     axios.get('/events') // This may be the wrong route!  It may give us single events only.
         .then( (response) => {
-          // this.setState({
-          //   eventsPop: response.data.hottest, // place holder code, will need to test extensively
-          //   eventsNew: response.data.latest
-          // })
+          // console.log('response', response.data);
+          this.setState({
+            eventsPop: response.data, // place holder code, will need to test extensively
+            eventsNew: response.data,
+          })
         })
         .catch( (err) => {
           console.log(err);
@@ -88,7 +89,7 @@ class Events extends React.Component {
                 host={event.host}
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}
                 launchModal={launchModal}
@@ -102,7 +103,7 @@ class Events extends React.Component {
                 host={event.host}  
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}             
               />
@@ -121,7 +122,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}
                 launchModal={launchModal}
@@ -134,7 +135,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}             
               />
