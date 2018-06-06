@@ -119,6 +119,21 @@ const retrieveUserInfo = (username, callback) => {
   });
 };
 
+const addMessage = ({ text, timestamp, username }, callback) => {
+  let queryString = `INSERT INTO messages(text, timestamp, username) VALUES('${text}', '${timestamp}', '${username}'`;
+
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.error(err);
+      callback(err);
+    } else {
+      console.log(result);
+      callback(null, result);
+    }
+  });
+};
+
+
 const getMessages = (username, callback) => {
   let querySting = `SELECT messages FROM messages WHERE username = '${username}`;
 
