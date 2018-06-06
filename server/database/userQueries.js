@@ -8,7 +8,7 @@ const { connection } = require('./connection.js');
 // if username is in database, but pasword is wrong
 // error 'invalid password for username'
 
-const checkUserPasswordMatch = (username, password, callback) => {
+const checkUserPasswordMatchDB = (username, password, callback) => {
   const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
     if (err) {
@@ -51,9 +51,9 @@ const checkUserPasswordMatch = (username, password, callback) => {
 // insert into `users` username, password, email address, musician
 //
 
-const saveNewUser = ({
- username, display_name, password, imgurl, email, bio
- }, callback) => {
+const saveNewUserDB = ({
+  username, display_name, password, imgurl, email, bio
+}, callback) => {
   const queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${username}', '${display_name}','${password}', '${imgurl}', '${email}', '${bio}')`;
   console.log(queryString);
   connection.query(queryString, (err, result) => {
@@ -68,7 +68,7 @@ const saveNewUser = ({
 
 // Edit User data:
   // Define the query string.
-const editUser = (username, values) => {
+const editUserDB = (username, values) => {
   // We should pull out the user data first, define an object with all the current properties.
   // I'll use a dummy object for now.
   const dummy = {
@@ -101,13 +101,13 @@ const editUser = (username, values) => {
     if (err) {
       console.log(error);
     } else {
-      console.log(result);
+      console.log('user edited!: ', result);
     }
   });
 };
 
 // Retrieve user data:
-const retrieveUserInfo = (username, callback) => {
+const retrieveUserInfoDB = (username, callback) => {
   const queryString = `SELECT * FROM users WHERE username = '${username}'`;
 
   connection.query(queryString, (err, result) => {
@@ -120,7 +120,7 @@ const retrieveUserInfo = (username, callback) => {
   });
 };
 
-const addMessage = ({ text, timestamp, username }, callback) => {
+const addMessageDB = ({ text, timestamp, username }, callback) => {
   const queryString = `INSERT INTO messages(text, timestamp, username) VALUES('${text}', '${timestamp}', '${username}'`;
 
   connection.query(queryString, (err, result) => {
@@ -128,28 +128,28 @@ const addMessage = ({ text, timestamp, username }, callback) => {
       console.error(err);
       callback(err);
     } else {
-      console.log(result);
+      console.log('message added:', result);
       callback(null, result);
     }
   });
 };
 
 
-const getMessages = (username, callback) => {
-  const querySting = `SELECT messages FROM messages WHERE username = '${username}`;
+const getMessagesDB = (username, callback) => {
+  const queryString = `SELECT *  FROM messages WHERE username = '${username}'`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
       console.error(err);
       callback(err);
     } else {
-      console.log(result);
+      console.log('messages: ', result);
       callback(null, result);
     }
   });
 };
 
-const getEventsAttending = (username, callback) => {
+const getEventsAttendingDB = (username, callback) => {
   // let queryString = `SELECT events.* FROM events JOIN `;
 
   // a= select id from user_events join users where username=username
@@ -161,7 +161,7 @@ const getEventsAttending = (username, callback) => {
 };
 
 
-const getEventsHosting = (username, callback) => {
+const getEventsHostingDB = (username, callback) => {
   const queryString = `SELECT * FROM events WHERE host = ${username}`;
 
   connection.query(queryString, (err, result) => {
@@ -169,19 +169,19 @@ const getEventsHosting = (username, callback) => {
       console.error(err);
       callback(error);
     } else {
-      console.log(result);
+      console.log('events hosting: ', result);
       callback(err, result);
     }
   });
 };
 
 module.exports = {
-  checkUserPasswordMatch,
-  saveNewUser,
-  editUser,
-  retrieveUserInfo,
-  addMessage,
-  getMessages,
-  getEventsAttending,
-  getEventsHosting,
+  checkUserPasswordMatchDB,
+  saveNewUserDB,
+  editUserDB,
+  retrieveUserInfoDB,
+  addMessageDB,
+  getMessagesDB,
+  getEventsAttendingDB,
+  getEventsHostingDB,
 };

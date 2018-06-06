@@ -1,33 +1,39 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
-import EventsAttending from './EventsAttending.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Messages from './Messages.jsx'
 
 class User extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: 'pancake',
-      image: 'https://i.pinimg.com/564x/ce/eb/92/ceeb92ff02869506c45878d00f8f651a.jpg',
-      displayName: 'Pancake Jr.',
-      musician: true,
+      name: '',
+      image: 'fake image url',
+      displayName: '',
+      musician: null,
       upcomingGigs: [],
-      bio: 'sometimes they call me flapjack',
+      bio: '',
       photos: [],
-      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}],
-      messages: ['this is a message', 'this is also a message'],
+      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}]
     };
   }
 
-  postMessage(text) {
-
-  }
-
   componentDidMount() {
-    axios.get('/')
-    // get events that user is going to
-    // get messages that have been posted on user's wall
+    axios.get('/users', {
+      params: { 
+        username: 'makm'
+      }
+    })
+    .then(({data}) => {
+      this.setState({
+        name: data[0].username,
+        image: data[0].imageUrl,
+        displayName: data[0].display_name,
+        musician: data[0].musician,
+        bio: data[0].bio
+      })
+    })
   }
 
   render() {
@@ -60,37 +66,14 @@ class User extends React.Component {
           <h2><strong>About me</strong></h2>
           <p>{this.state.bio}</p>
           <div className="columns">
-            <div className="column">
-              <div className="notification is-primary has-text-centered">
-                my messages
-              </div>
-                <div className="field">
-                  <label className="label">write me a message!</label>
-                  <div className="control">
-                    <input className="input" type="text" placeholder="start typing here"/>
-                  </div>
-                </div>
-                <div className="control">
-                  <button className="button is-primary">send!</button>
-                </div>
-                <ul>
-                {this.state.messages.map(message => {
-                  return (
-                  <li>{message}</li>
-                  )
-                })}
-                </ul>
-            </div>
+            <Messages/>
             <div className="column">
               <div className="notification is-primary has-text-centered">
                 events i am attending
               </div>
                 <ul>
-                  {this.state.eventsAttending.map(event => {
-                    return (
-                      <li><a href ="#">{event.name}</a></li>
-                    )
-                  })}
+                  <li><a href="#">fake event 1</a></li>
+                  <li><a href="#">fake event 2</a></li>
                   </ul>
             </div>
           </div>

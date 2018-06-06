@@ -9,6 +9,7 @@ import EventPage from './components/EventPage.jsx'
 import Login from './components/Login.jsx'
 import NavBar from './components/NavBar.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
+import Messages from './components/Messages.jsx'
 
 class App extends React.Component {
     constructor(props) {
