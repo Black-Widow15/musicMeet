@@ -1,4 +1,4 @@
-const {connection} = require('./index.js');
+const {connection} = require('./connection.js');
 
 // (user login)
 // query database to see if username matches password
@@ -62,25 +62,6 @@ const saveNewUser = ({username, display_name, password, imgurl, email, bio}, cal
     }
   })
 }
-  
-// TESTS FOR SAVENEWUSER
-
-// user is added
-// console.log(saveNewUser({username: 'iamnotindatabase', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
-//   console.log('callback handled in express server');
-// }));
-
-// // // username in use
-// console.log(saveNewUser({username: 'mikey', password: 'hackmebro', email: 'mchl@example.com', musician: 0}, () => {
-//   console.log('callback handled in express server');
-// }));
-
-// // missing required field (like email or pw)
-// console.log(saveNewUser({username: 'charlie', password: '', email: '', musician: 0}, () => {
-//   console.log('callback handled in express server');
-// }));
-
-
 
 
 // Edit User data:
@@ -108,7 +89,7 @@ const editUser = (username, values) => {
   }
 
   // Set the query string based on this new object. Submit the query string.
-  let queryString = 
+  let queryString =
       `UPDATE users
       SET display_name = '${dummy.display_name}', password = '${dummy.password}', 
       imgUrl = '${dummy.imgUrl}', bio = '${dummy.bio}', musician = '${dummy.musician}'
@@ -122,33 +103,68 @@ const editUser = (username, values) => {
     }
   });
 
-}
+};
 
-/*
 // Retrieve user data:
-const retrieveUser = (username) => {
+const retrieveUserInfo = (username, callback) => {
   let queryString = `SELECT * FROM users WHERE username = '${username}';`
 
-  connection.query()
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(result);
+      callback(null, result);
+    }
+  });
+};
+
+const getMessages = (username, callback) => {
+  let querySting = `SELECT messages FROM messages WHERE username = '${username}`;
+
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.error(err);
+      callback(err);
+    } else {
+      console.log(result);
+      callback(null, result);
+    }
+  });
+};
+
+const getEventsAttending = (username, callback) => {
+  // let queryString = `SELECT events.* FROM events JOIN `;
+
+  // a= select id from user_events join users where username=username
+  // b = select id_event from users_events where id_user = a
+  // // select IDs of events from users_events table where user is attending
+  // select * from events where id = b
+  // // get all info about events provided their IDs  where these users are attending
+
+};
+
+
+const getEventsHosting = (username, callback) => {
+  let queryString = `SELECT * FROM events WHERE host=${username}`;
+
+  connection.query(queryString, (err, result) => {
+    if (err) {
+      console.error(err);
+      callback(error);
+    } else {
+      console.log(result);
+      callback(err, result);
+    }
+  });
 }
-
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = {
   checkUserPasswordMatch,
-  saveNewUser
+  saveNewUser,
+  editUser,
+  retrieveUserInfo,
+  getMessages,
+  getEventsAttending,
+  getEventsHosting,
 };
