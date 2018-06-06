@@ -16,6 +16,7 @@ const getAllEvents = (req, res) => {
         if(err) {
             console.log('Could not get events')
         } else {
+            console.log('got events', result);
             res.status(200).send(result)
         }
     })

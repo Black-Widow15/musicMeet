@@ -15,7 +15,7 @@ class Events extends React.Component {
           name: 'party!',
           date: 'July 4',
           time: '11pm',
-          imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
+          imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           location: 'A house',
           description: 'Come to my party!',
           host: 'Van Halen',
@@ -40,17 +40,25 @@ class Events extends React.Component {
     this.fillEventsFeed = this.fillEventsFeed.bind(this);
     this.launchModal = this.launchModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-
   }
 
   fillEventsFeed () {
   	// Grab data from the database and set the state.
-    axios.get('/events') // This may be the wrong route!  It may give us single events only.
+    axios.get('/events')
         .then( (response) => {
-          // this.setState({
-          //   eventsPop: response.data.hottest, // place holder code, will need to test extensively
-          //   eventsNew: response.data.latest
-          // })
+          this.setState({
+            eventsNew: response.data,
+          })
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
+
+    axios.get('/events/popular')
+        .then( (response) => {
+          this.setState({
+            eventsPop: response.data,
+          })
         })
         .catch( (err) => {
           console.log(err);
@@ -78,9 +86,10 @@ class Events extends React.Component {
 
   	return (
       <div className="columns">
-    		<div className="column">
+    		<div className="column">POPULAR
         {
           this.state.eventsPop.map(function (event){
+            event.date = event.date.slice(0, 10);
             return (
             <div> 
               <EventSummary 
@@ -88,7 +97,7 @@ class Events extends React.Component {
                 host={event.host}
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}
                 launchModal={launchModal}
@@ -102,7 +111,7 @@ class Events extends React.Component {
                 host={event.host}  
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}             
               />
@@ -111,9 +120,10 @@ class Events extends React.Component {
           })
         }
         </div>
-        <div className="column">
+        <div className="column">UPCOMING
         {
           this.state.eventsNew.map(function (event){
+          event.date = event.date.slice(0, 10);
             return (
             <div> 
               <EventSummary 
@@ -121,7 +131,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}
                 launchModal={launchModal}
@@ -134,7 +144,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 location={event.location}
                 description={event.description}             
               />
