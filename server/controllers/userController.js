@@ -8,7 +8,7 @@ const editUser = (req, res) => {
 };
 
 const retrieveUserInfo = (req, res) => {
-  user.retrieveUserInfoDB(req.body.username, (err, result) => {
+  user.retrieveUserInfoDB(req.params.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -30,7 +30,7 @@ const addMessage = (req, res) => {
 };
 
 const getMessages = (req, res) => {
-  user.getMessagesDB(req.body.username, (err, result) => {
+  user.getMessagesDB(req.params.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -41,7 +41,7 @@ const getMessages = (req, res) => {
 };
 
 const getEventsAttending = (req, res) => {
-  user.getEventsAttendingDB(req.query.username, (err, result) => {
+  user.getEventsAttendingDB(req.params.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -52,7 +52,7 @@ const getEventsAttending = (req, res) => {
 };
 
 const getEventsHosting = (req, res) => {
-  user.getEventsHostingDB(req.query.username, (err, result) => {
+  user.getEventsHostingDB(req.params.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {

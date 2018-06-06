@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import axios from 'axios'
-import EventsAttending from './EventsAttending.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+import Messages from './Messages.jsx'
 
 class User extends React.Component {
   constructor(props) {
@@ -15,13 +15,8 @@ class User extends React.Component {
       upcomingGigs: [],
       bio: 'sometimes they call me flapjack',
       photos: [],
-      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}],
-      messages: ['this is a message', 'this is also a message'],
+      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}]
     };
-  }
-
-  postMessage(text) {
-
   }
 
   componentDidMount() {
@@ -60,27 +55,7 @@ class User extends React.Component {
           <h2><strong>About me</strong></h2>
           <p>{this.state.bio}</p>
           <div className="columns">
-            <div className="column">
-              <div className="notification is-primary has-text-centered">
-                my messages
-              </div>
-                <div className="field">
-                  <label className="label">write me a message!</label>
-                  <div className="control">
-                    <input className="input" type="text" placeholder="start typing here"/>
-                  </div>
-                </div>
-                <div className="control">
-                  <button className="button is-primary">send!</button>
-                </div>
-                <ul>
-                {this.state.messages.map(message => {
-                  return (
-                  <li>{message}</li>
-                  )
-                })}
-                </ul>
-            </div>
+            <Messages/>
             <div className="column">
               <div className="notification is-primary has-text-centered">
                 events i am attending
