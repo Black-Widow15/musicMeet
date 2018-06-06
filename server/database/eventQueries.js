@@ -20,7 +20,7 @@ const deleteEventDB = (eventId, callback) => {
 }
 
 const getAllEventsDB = (callback) => {
-    let queryString = `SELECT * FROM events ORDER BY date DESC, time DESC`
+    let queryString = `SELECT * FROM events ORDER BY date ASC, time ASC`
     db.connection.query(queryString, (err, result) =>{
         callback(err,result)
     })
@@ -37,7 +37,8 @@ const updateEventDB = ({id, name, date, time, description, imgurl, address, city
 }
 
 const getPopularEventsDB = (callback) => {
-    let queryString = `SELECT name, date, time, address, city, description, imgurl, host, COUNT(name) FROM events ORDER BY COUNT(name) DESC`
+    let queryString = `SELECT * FROM events ORDER BY 
+                        (SELECT COUNT(id_event) FROM users_events WHERE id_event=events.id) DESC;`
     db.connection.query(queryString, (err, result) => {
         if(err) {
             console.log('Error getting popular events from database')

@@ -40,19 +40,25 @@ class Events extends React.Component {
     this.fillEventsFeed = this.fillEventsFeed.bind(this);
     this.launchModal = this.launchModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
-
   }
 
   fillEventsFeed () {
   	// Grab data from the database and set the state.
     axios.get('/events')
         .then( (response) => {
-          // console.log('response', response.data);
           this.setState({
-            eventsPop: response.data,
             eventsNew: response.data,
           })
-          console.log(this.state);
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
+
+    axios.get('/events/popular')
+        .then( (response) => {
+          this.setState({
+            eventsPop: response.data,
+          })
         })
         .catch( (err) => {
           console.log(err);
@@ -80,7 +86,7 @@ class Events extends React.Component {
 
   	return (
       <div className="columns">
-    		<div className="column">
+    		<div className="column">POPULAR
         {
           this.state.eventsPop.map(function (event){
             event.date = event.date.slice(0, 10);
@@ -114,9 +120,10 @@ class Events extends React.Component {
           })
         }
         </div>
-        <div className="column">
+        <div className="column">UPCOMING
         {
           this.state.eventsNew.map(function (event){
+          event.date = event.date.slice(0, 10);
             return (
             <div> 
               <EventSummary 
