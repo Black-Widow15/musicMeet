@@ -120,8 +120,8 @@ const retrieveUserInfoDB = (username, callback) => {
   });
 };
 
-const addMessageDB = ({ text, timestamp, username }, callback) => {
-  const queryString = `INSERT INTO messages(text, timestamp, username) VALUES('${text}', '${timestamp}', '${username}'`;
+const addMessageDB = (text, username, callback) => {
+  const queryString = `INSERT INTO messages(text, timestamp, username) VALUES('${text}', now(), '${username}')`;
 
   connection.query(queryString, (err, result) => {
     if (err) {

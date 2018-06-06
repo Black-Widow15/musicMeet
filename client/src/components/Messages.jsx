@@ -8,7 +8,39 @@ class Messages extends React.Component {
 
     this.state = {
       messages: [],
+      input: '',
     }
+
+    this.addMessage = this.addMessage.bind(this);
+    this.changeText = this.changeText.bind(this);
+  }
+
+  changeText(e) {
+    console.log(e.target.value);
+    e.preventDefault();
+    this.setState({
+      input: e.target.value
+    })
+  }
+
+  addMessage(text) {
+    console.log('trying to add a message now');
+    axios.post('/users/messages', {
+        username: 'makm',
+        text: this.state.input
+      })
+    .then(() => {
+      axios.get('/users/messages', {
+        params: {
+          username: 'makm'
+        }
+      })
+    })
+    .then(({data}) => {
+      this.setState({
+        messages: data
+      })
+    })
   }
 
   componentDidMount() {
@@ -37,16 +69,16 @@ class Messages extends React.Component {
       <div className="field">
         <label className="label">write me a message!</label>
           <div className="control">
-            <input className="input" type="text" placeholder="start typing here"/>
+            <input className="input" type="text" placeholder="start typing here" onChange={(e) => this.changeText(e)}/>
           </div>
       </div>
       <div className="control">
-        <button className="button is-primary">send!</button>
+        <button className="button is-primary" onClick={this.addMessage}>send!</button><br/>
       </div>
       <ul>
         {this.state.messages.map(message => {
           return (
-            <li>{message.username}: {message.text}</li>
+            <li><strong>{message.username}</strong>: {message.text}</li>
           )
         })}
       </ul>
