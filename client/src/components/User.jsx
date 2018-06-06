@@ -8,21 +8,32 @@ class User extends React.Component {
     super(props);
 
     this.state = {
-      name: 'pancake',
-      image: 'https://i.pinimg.com/564x/ce/eb/92/ceeb92ff02869506c45878d00f8f651a.jpg',
-      displayName: 'Pancake Jr.',
-      musician: true,
+      name: '',
+      image: 'fake image url',
+      displayName: '',
+      musician: null,
       upcomingGigs: [],
-      bio: 'sometimes they call me flapjack',
+      bio: '',
       photos: [],
       eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}]
     };
   }
 
   componentDidMount() {
-    axios.get('/')
-    // get events that user is going to
-    // get messages that have been posted on user's wall
+    axios.get('/users', {
+      params: { 
+        username: 'makm'
+      }
+    })
+    .then(({data}) => {
+      this.setState({
+        name: data[0].username,
+        image: data[0].imageUrl,
+        displayName: data[0].display_name,
+        musician: data[0].musician,
+        bio: data[0].bio
+      })
+    })
   }
 
   render() {
@@ -61,11 +72,8 @@ class User extends React.Component {
                 events i am attending
               </div>
                 <ul>
-                  {this.state.eventsAttending.map(event => {
-                    return (
-                      <li><a href ="#">{event.name}</a></li>
-                    )
-                  })}
+                  <li><a href="#">fake event 1</a></li>
+                  <li><a href="#">fake event 2</a></li>
                   </ul>
             </div>
           </div>

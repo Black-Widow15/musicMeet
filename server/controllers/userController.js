@@ -8,18 +8,18 @@ const editUser = (req, res) => {
 };
 
 const retrieveUserInfo = (req, res) => {
-  user.retrieveUserInfoDB(req.params.username, (err, result) => {
+  user.retrieveUserInfoDB(req.query.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
-      console.log(result);
+      console.log('user info: ', result);
       res.send(result);
     }
   });
 };
 
 const addMessage = (req, res) => {
-  user.addMessageDB(/*text, username*/, (err, result) => {
+  user.addMessageDB(req.body, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -30,11 +30,11 @@ const addMessage = (req, res) => {
 };
 
 const getMessages = (req, res) => {
-  user.getMessagesDB(req.params.username, (err, result) => {
+  user.getMessagesDB(req.query.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
-      console.log(result);
+      console.log('messages: ', result);
       res.send(result);
     }
   });

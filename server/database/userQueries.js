@@ -52,8 +52,8 @@ const checkUserPasswordMatchDB = (username, password, callback) => {
 //
 
 const saveNewUserDB = ({
- username, display_name, password, imgurl, email, bio
- }, callback) => {
+  username, display_name, password, imgurl, email, bio
+}, callback) => {
   const queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${username}', '${display_name}','${password}', '${imgurl}', '${email}', '${bio}')`;
   console.log(queryString);
   connection.query(queryString, (err, result) => {
@@ -101,7 +101,7 @@ const editUserDB = (username, values) => {
     if (err) {
       console.log(error);
     } else {
-      console.log(result);
+      console.log('user edited!: ', result);
     }
   });
 };
@@ -128,7 +128,7 @@ const addMessageDB = ({ text, timestamp, username }, callback) => {
       console.error(err);
       callback(err);
     } else {
-      console.log(result);
+      console.log('message added:', result);
       callback(null, result);
     }
   });
@@ -136,14 +136,14 @@ const addMessageDB = ({ text, timestamp, username }, callback) => {
 
 
 const getMessagesDB = (username, callback) => {
-  const querySting = `SELECT messages FROM messages WHERE username = '${username}`;
+  const queryString = `SELECT *  FROM messages WHERE username = '${username}'`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
       console.error(err);
       callback(err);
     } else {
-      console.log(result);
+      console.log('messages: ', result);
       callback(null, result);
     }
   });
@@ -169,7 +169,7 @@ const getEventsHostingDB = (username, callback) => {
       console.error(err);
       callback(error);
     } else {
-      console.log(result);
+      console.log('events hosting: ', result);
       callback(err, result);
     }
   });
