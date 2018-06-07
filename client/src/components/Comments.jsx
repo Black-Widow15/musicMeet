@@ -23,14 +23,15 @@ class Comments extends React.Component {
     return (<div>
     {
       this.props.commentList.map( (comment) => {
+        console.log(comment);
         return (
           <div>
           <Comment 
-            commentId={comment.commentId}
-            text={comment.text}
+            commentId={comment.id}
+            text={comment.message}
             timestamp={comment.timestamp}
-            username={comment.username}
-            avatarUrl={comment.avatarUrl}
+            username={comment.display_name}
+            avatarUrl={comment.imgurl}
           />
           </div>
         )

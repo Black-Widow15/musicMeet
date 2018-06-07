@@ -20,11 +20,12 @@ class AttendeeList extends React.Component {
     return (<div>
     {
       this.props.attendees.map( (attendee) => {
+        console.log(attendee);
         return (
           <div>
           <Attendee 
             username={attendee.username}
-            avatarUrl={attendee.avatarUrl}
+            avatarUrl={attendee.imgurl}
           />
           </div>
         )
