@@ -7,8 +7,8 @@ class Messages extends React.Component {
     super(props)
 
     this.state = {
-      messages: [],
       input: '',
+      messages: [],
     }
 
     this.addMessage = this.addMessage.bind(this);
@@ -23,18 +23,12 @@ class Messages extends React.Component {
     })
   }
 
-  addMessage(text) {
-    console.log('trying to add a message now');
-    axios.post('/users/messages', {
-        username: 'makm',
-        text: this.state.input
-      })
-    .then(() => {
-      axios.get('/users/messages', {
-        params: {
-          username: 'makm'
-        }
-      })
+  componentDidMount() {
+    axios.get('/users/messages', {
+      params: {
+        // username: this.props.username // i'm not sure why it's not able to get the username from User component
+        username: 'makm' // MICHAEL: please change this when you do routing
+      }
     })
     .then(({data}) => {
       this.setState({
@@ -43,20 +37,24 @@ class Messages extends React.Component {
     })
   }
 
-  componentDidMount() {
-    axios.get('/users/messages', {
-      params: {
-        username: 'makm'
-      }
+  addMessage(text) {
+    console.log('trying to add a message now');
+    axios.post('/users/messages', {
+        username: this.props.username,
+        text: this.state.input
+      })
+    .then(() => {
+      axios.get('/users/messages', {
+        params: {
+          username: this.props.username
+        }
+      })
     })
     .then(({data}) => {
-      console.log('data from getting messages: ', data)
+      console.log('data from adding message and then getting messages: ', data);
       this.setState({
         messages: data
       })
-    })
-    .then(() => {
-      console.log('this.state.messages looks like :', this.state.messages);
     })
   }
 

@@ -42,7 +42,7 @@ const getMessages = (req, res) => {
 };
 
 const getEventsAttending = (req, res) => {
-  user.getEventsAttendingDB(req.params.username, (err, result) => {
+  user.getEventsAttendingDB(req.query.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
@@ -51,9 +51,9 @@ const getEventsAttending = (req, res) => {
     }
   });
 };
-
+// getEventsHosting below has not been tested except in Postman (it works)
 const getEventsHosting = (req, res) => {
-  user.getEventsHostingDB(req.params.username, (err, result) => {
+  user.getEventsHostingDB(req.query.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {

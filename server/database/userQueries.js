@@ -16,30 +16,6 @@ const checkUserPasswordMatchDB = (username, password, callback) => {
   });
 };
 
-// TESTS FOR CHECKUSERPASSWORDMATCH
-// username not found in database
-// console.log(checkUserPasswordMatch('josephmartin', 'sickPassword', () => {
-//   console.log('callback handled in express server');
-// }));
-// // username found but incorrect password
-// console.log(checkUserPasswordMatch('makmandy', 'badpassword', () => {
-//   console.log('callback handled in express server');
-// }));
-// // username and password match
-// console.log(checkUserPasswordMatch('makmandy', 'sickPassword', () => {
-//   console.log('access granted yo');
-//   console.log('callback handled in express server');
-// }));
-
-
-// (user sign up)
-// values is an object of values to input
-// query database to see if username is in users
-// query database to see if email address is in users
-// if neither are used
-// insert into `users` username, password, email address, musician
-//
-
 const saveNewUserDB = ({
   username, display_name, password, imgurl, email, bio
 }, callback) => {
@@ -139,24 +115,37 @@ const getMessagesDB = (username, callback) => {
 };
 
 const getEventsAttendingDB = (username, callback) => {
-  // let queryString = `SELECT events.* FROM events JOIN `;
-
-  // a= select id from user_events join users where username=username
-  // b = select id_event from users_events where id_user = a
-  // // select IDs of events from users_events table where user is attending
-  // select * from events where id = b
-  // // get all info about events provided their IDs  where these users are attending
-
+  let queryString1 = `SELECT id FROM users where username = '${username}'`;
+  connection.query(queryString1, (err, result) => {
+    if (err) {
+      console.error('This user does not exist', err);
+      callback(err);
+    }else {
+      console.log('user of id is: ', result);
+      let userID = result[0].id;
+      console.log(userID);
+      let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
+      connection.query(queryString2, (error, results) => {
+        if (err) {
+          console.error(`Error finding events that ${userID} is attending`, error);
+          callback(err);
+        }else {
+          console.log(`${userID} is attending these events: `, results);
+          callback(null, results);
+        }
+      });
+    }
+  });
 };
 
 
 const getEventsHostingDB = (username, callback) => {
-  const queryString = `SELECT * FROM events WHERE host = ${username}`;
+  const queryString = `SELECT * FROM events WHERE host = '${username}'`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
       console.error(err);
-      callback(error);
+      callback(err);
     } else {
       console.log('events hosting: ', result);
       callback(err, result);

@@ -8,36 +8,44 @@ class EventsAttending extends React.Component {
     super(props)
 
     this.state = {
+      eventsAttending: []
 
     }
   }
-
-  eventClick() {
-    // clicking on an event goes to it
-    // sends axios get request to /event
-    // include event id in params
-    // photo corresponds to a specific event
-    // express server checks db and gets info about the event
-    // redirects user to event page
-    axios.get('/event', {
+  componentDidMount() {
+    axios.get('/users/attending', {
       params: {
-        imgUrl: ''
+        username: 'makm' // MICHAEL: please change this when you do routing
       }
-
     })
-  }
-    // each event thumbnail is a link that, when clicked on
-    // leads to the specific event
-  getEventInfo (){
-    // on click, event module shows (EventSummary component)
+    .then(({data}) => {
+      console.log('events attending front: ', data);
+      this.setState({
+        eventsAttending: data
+      })
+    })
+    .then(() => {
+      console.log(this.state.eventsAttending);
+    })
   }
 
   render() {
+    //below, the link is a placeholder but would like for the user to be brought to the corresponding EventPage
     return(
-    <Events/>
+      <div className="column">
+        <div className="notification is-primary has-text-centered">
+          events i am attending
+        </div>
+        <ul>
+          {this.state.eventsAttending.map(event => {
+            return (
+            <a  href="#"><li>{event.name}</li></a>
+            )
+          })}
+        </ul>
+      </div>
     )
   }
-
 
 };
 
