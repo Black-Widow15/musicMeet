@@ -24,7 +24,7 @@ let EventSummary = (props) => (
       </div>
       <div className="content">
         {props.description}
-        <a href="#">#css</a> <a href="#">#responsive</a>
+
         <br></br>
         <date>{props.date} </date>
         <time >{props.time}</time>

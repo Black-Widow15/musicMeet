@@ -10,6 +10,7 @@ class EventPage extends React.Component {
   	super(props);
 
   	this.state = {
+      // id is the identifier for all events upon componentDidMount
       id: 1,
       comments: [
         {
