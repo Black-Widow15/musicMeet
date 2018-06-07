@@ -2,19 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Messages from './Messages.jsx'
+import EventsAttending from './EventsAttending.jsx'
 
 class User extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      name: '',
+      username: '',
       image: 'fake image url',
       displayName: '',
       musician: null,
       upcomingGigs: [],
       bio: '',
       photos: [],
+      messages: [],
       eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}]
     };
   }
@@ -22,7 +24,7 @@ class User extends React.Component {
   componentDidMount() {
     axios.get('/users', {
       params: { 
-        username: 'makm'
+        username: 'makm' // MICHAEL: please change this when you do routing
       }
     })
     .then(({data}) => {
@@ -66,16 +68,8 @@ class User extends React.Component {
           <h2><strong>About me</strong></h2>
           <p>{this.state.bio}</p>
           <div className="columns">
-            <Messages/>
-            <div className="column">
-              <div className="notification is-primary has-text-centered">
-                events i am attending
-              </div>
-                <ul>
-                  <li><a href="#">fake event 1</a></li>
-                  <li><a href="#">fake event 2</a></li>
-                  </ul>
-            </div>
+            <Messages username={this.state.username}/>
+            <EventsAttending username={this.state.username}/>
           </div>
       </section>
     </div>
@@ -85,4 +79,3 @@ class User extends React.Component {
 
 
 export default User;
-// each event that the user is going to will be card
