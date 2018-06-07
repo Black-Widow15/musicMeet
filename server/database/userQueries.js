@@ -150,14 +150,25 @@ const getMessagesDB = (username, callback) => {
 };
 
 const getEventsAttendingDB = (username, callback) => {
-  // let queryString = `SELECT events.* FROM events JOIN `;
-
-  // a= select id from user_events join users where username=username
-  // b = select id_event from users_events where id_user = a
-  // // select IDs of events from users_events table where user is attending
-  // select * from events where id = b
-  // // get all info about events provided their IDs  where these users are attending
-
+  let queryString1 = `SELECT id FROM users where username = '${username}'`;
+  connection.query(queryString1, (err, result) => {
+    if (err) {
+      console.error('This user does not exist', err);
+      callback(err);
+    }else {
+      let userID = result;
+      let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
+      connection.query(queryString2, (error, results) => {
+        if (err) {
+          console.error(`Error finding events that ${userID} is attending`, error);
+          callback(err);
+        }else {
+          console.log(`${userID} is attending these events: `, results);
+          callback(results);
+        }
+      });
+    }
+  });
 };
 
 
