@@ -51,14 +51,23 @@ const getRecentEventsDB = (callback) => {
     let queryString = `SELECT name, date, time, address, city, description, imgurl, host FROM events ORDER BY DATE DESC`
     db.connection.query(queryString, (err, result) => {
         if(err) {
-            console.log('Error getting recent events from database')
+            console.log('Error getting recent events from database');
         }
         callback(err, result)
     })
 }
 
-const getEventAttendeesDB = (callback) => {
-    // Query String should 
+const getEventAttendeesDB = (eventId, callback) => {
+    let queryString = `SELECT username, imgurl FROM users INNER JOIN users_events 
+                        WHERE id_event=${eventId} AND users.id=id_user;`
+
+    db.connection.query(queryString, (err, result) => {
+        if(err) {
+            console.log('Error getting attendees');
+        }
+        callback(err, result);
+    })
+
 }
 
 const getEventCommentsDB = (callback) => {
@@ -71,7 +80,9 @@ module.exports = {
     deleteEventDB,
     updateEventDB,
     getPopularEventsDB,
-    getRecentEventsDB
+    getRecentEventsDB,
+    getEventAttendeesDB,
+    getEventCommentsDB,
 }
 
 

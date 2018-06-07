@@ -16,7 +16,7 @@ const getAllEvents = (req, res) => {
         if(err) {
             console.log('Could not get events')
         } else {
-            console.log('got events', result);
+            // console.log('got events', result);
             res.status(200).send(result)
         }
     })
@@ -62,14 +62,17 @@ const getRecentEvents = (req, res) => {
 }
 
 const getAttendeeList = (req, res) => {
-    event.getEventAttendeesDB( (err, result) => {
+    // eventId is sent as a param on req.
+    // console.log('attendee req', req.query.id);
+
+    event.getEventAttendeesDB(req.query.id, (err, result) => {
         if (err) {
             console.log('Could not get attendee list');
         } else {
+            console.log(result);
             res.send(result);
         }
     })
-
 }
 
 const getEventComments = (req, res) => {
@@ -94,5 +97,7 @@ module.exports= {
     deleteEvent,
     updateEvent,
     getPopularEvents,
-    getRecentEvents
+    getRecentEvents,
+    getAttendeeList,
+    getEventComments,
 }

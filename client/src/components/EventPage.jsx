@@ -10,7 +10,7 @@ class EventPage extends React.Component {
   	super(props);
 
   	this.state = {
-      id: 1,
+      id: 2,
       comments: [
         {
           commentId: 1,
@@ -60,8 +60,14 @@ class EventPage extends React.Component {
         id: this.state.id,
       }
     })
-        .then()
-        .catch()
+        .then( (response) => {
+          this.setState({
+            comments: response.data,
+          })
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
   }
 
   fillAttendeeFeed () {
@@ -70,12 +76,19 @@ class EventPage extends React.Component {
         id: this.state.id,
       }
     })
-        .then()
-        .catch()
+        .then( (response) => {
+          this.setState({
+            attendees: response.data,
+          })
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
   }
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
+    this.fillAttendeeFeed();
 
   }
 
