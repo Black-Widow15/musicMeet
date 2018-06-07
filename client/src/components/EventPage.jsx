@@ -10,6 +10,7 @@ class EventPage extends React.Component {
   	super(props);
 
   	this.state = {
+      id: 1,
       comments: [
         {
           commentId: 1,
@@ -51,7 +52,15 @@ class EventPage extends React.Component {
     })
   }
 
-  componentDidMount() {
+  fillCommentsFeed () {
+
+  }
+
+  fillAttendeeFeed () {
+    
+  }
+
+  componentDidMount () {
     // function to fill the comments, the attendee list, other info
 
   }

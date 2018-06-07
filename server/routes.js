@@ -11,6 +11,8 @@ router.delete('/events', eventController.deleteEvent);
 router.put('/events', eventController.updateEvent);
 router.get('/events/popular', eventController.getPopularEvents);
 router.get('/events/recent', eventController.getRecentEvents);
+router.get('/events/attendees', eventController.getAttendeeList);
+router.get('/events/comments', eventController.getEventComments);
 
 router.post('/signup', registerController.signup);
 

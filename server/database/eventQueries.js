@@ -57,6 +57,14 @@ const getRecentEventsDB = (callback) => {
     })
 }
 
+const getEventAttendeesDB = (callback) => {
+    // Query String should 
+}
+
+const getEventCommentsDB = (callback) => {
+    
+}
+
 module.exports = {
     saveEventDB,
     getAllEventsDB,

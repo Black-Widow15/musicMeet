@@ -48,7 +48,7 @@ CREATE TABLE `events` (
 );
 
 DROP TABLE IF EXISTS `event_comments`;
-CREATE TABLE `events_comments` (
+CREATE TABLE `event_comments` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `message`               VARCHAR(300) DEFAULT NULL,
   `timestamp`             TIMESTAMP,
