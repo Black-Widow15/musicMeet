@@ -4,8 +4,14 @@ const db = require('../database/userQueries.js')
 
 
 const login = (req, res) => {
-    // functionality for authentication
-    // redirect to homepage
+
+    db.checkUserPasswordMatch(req.body.username, req.body.password, (err, result) => {
+        if (err) {
+            console.log('Error checking username and password in database')
+        } else {
+            res.send(result)
+        }
+    })
 }
 
 

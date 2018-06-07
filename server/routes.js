@@ -13,7 +13,7 @@ router.get('/events/recent', eventController.getRecentEvents)
 
 
 router.post('/signup', registerController.signup)
-
+router.post('/login', registerController.login)
 module.exports = {
     router
 }

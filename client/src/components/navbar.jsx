@@ -6,11 +6,16 @@ import {NavLink} from 'react-router-dom'
 class NavBar extends React.Component {
     constructor (props) {
         super(props)
+        this.state = {
+            loggedin: false,
+            username: ''
+        }
 
         this.launchLoginModal = this.launchLoginModal.bind(this);
         this.closeLoginModal = this.closeLoginModal.bind(this);
         this.launchSignupModal = this.launchSignupModal.bind(this);
         this.closeSignupModal = this.closeSignupModal.bind(this);
+        this.handleLoggedin = this.handleLoggedin.bind(this)
     }
 
     launchLoginModal () {
@@ -28,10 +33,18 @@ class NavBar extends React.Component {
         modal.classList.add('is-active');
       }
   
-      closeSignupModal () {
-        let modal = document.getElementById('Signup');
-        modal.classList.remove('is-active');
-      }
+    closeSignupModal () {
+    let modal = document.getElementById('Signup');
+    modal.classList.remove('is-active');
+    }
+
+    handleLoggedin (e) {
+        this.setState({
+            loggedin: !this.state.loggedin,
+            username: e.username
+        })
+  
+    }
 
 
 
@@ -64,19 +77,24 @@ class NavBar extends React.Component {
 
                 <div className="navbar-end">
                 <div className="navbar-item">
-                    <div className="field is-grouped">
+                    {this.state.loggedin ? 
+                    (<div className = "navbar-item">{this.state.username}</div>)
+                    :
+                    (<div className="field is-grouped">
                     <a className="navbar-item" href="#" onClick={(e) => (this.launchLoginModal())}>
                         Login
                     </a>
                     <a className="navbar-item" href="#" onClick = {(e) => this.launchSignupModal()}>
                         Sign up
                     </a>
-                    </div>
+                    </div>)   
+                    }
                 </div>
                 </div>
             </div>
-            <Login closeLoginModal={this.closeLoginModal} />
-            <Signup closeSignupModal={this.closeSignupModal} />
+            
+            <Login handleLoggedin = {this.handleLoggedin} closeLoginModal={this.closeLoginModal} />
+            <Signup handleLoggedin = {this.handleLoggedin}  closeSignupModal={this.closeSignupModal} />
             
             </nav>
         )

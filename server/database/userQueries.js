@@ -9,21 +9,10 @@ const {connection} = require('./index.js');
 // error 'invalid password for username'
 
 const checkUserPasswordMatch = (username, password, callback) => {
-  let queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
+  let queryString = `SELECT username FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    if (err) {
-      console.error('invalid username');
-      callback();
-    } else if (result.length === 1) {
-        console.log(result);
-          if (password === result[0].password) {
-            console.log('access granted!');
-            callback();
-          } else {
-            console.error('invalid password. try again');
-            callback();
-          }
-        }
+    console.log(result,username)
+     callback(err, result)
   });
 };
 

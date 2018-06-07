@@ -10,49 +10,29 @@ class CreateEvent extends React.Component {
             time: '12:00',
             description: '',
             imgurl: '',
-            id_location: '',
-            
+            id_location: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleName = this.handleName.bind(this)
-        this.handleDate  = this.handleDate.bind(this)
-        this.handleTime = this.handleTime.bind(this)
-        this.handleLocation = this.handleLocation.bind(this)
-        this.handleDescription = this.handleDescription.bind(this)
-        this.handleUrl = this.handleUrl.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
+
     handleSubmit(e){
         e.preventDefault()
         axios.post('/events', this.state)
-    }
-    handleName (e) {
-        this.setState({
-            name: e.target.value
+        .then(() => {
+            this.setState({
+                name: '',
+                date: '',
+                time: '12:00',
+                description: '',
+                imgurl: '',
+                id_location: ''
+            })
         })
     }
-    handleDate (e) {
+    handleChange(e){
         this.setState({
-            date: e.target.value
-        })
-    }
-    handleTime (e) {
-        this.setState({
-            time: e.target.value
-        })
-    }
-    handleLocation (e) {
-        this.setState({
-            id_location: e.target.value
-        })
-    }
-    handleDescription(e) {
-        this.setState({
-            description: e.target.value
-        })
-    }
-    handleUrl(e){
-        this.setState({
-            imgurl: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -65,7 +45,7 @@ class CreateEvent extends React.Component {
                 </div>
                 <div className="field-body">
                     <div className="field">
-                        <input value = {this.state.name} onChange = {this.handleName} className="input" type="text" placeholder="Name"/>
+                        <input name = 'name' value = {this.state.name} onChange = {this.handleChange} className="input" type="text" placeholder="Name"/>
                     </div>
                 
                 </div>
@@ -79,7 +59,7 @@ class CreateEvent extends React.Component {
                     <div className="field-body">
                         <div className="field is-expanded">
                             <div className="field has-addons">
-                                <input value = {this.state.date} onChange = {this.handleDate}className="input" type="text" placeholder="YYYY-MM-DD"/>
+                                <input name = 'date' value = {this.state.date} onChange = {this.handleChange}className="input" type="text" placeholder="YYYY-MM-DD"/>
                             </div>
                         </div>
                     </div>
@@ -93,7 +73,7 @@ class CreateEvent extends React.Component {
                     <div className="field is-narrow">
                     <div className="control">
                         <div className="select is-fullwidth">
-                        <select value = {this.state.time} onChange ={this.handleTime}>
+                        <select name = 'time' value = {this.state.time} onChange ={this.handleChange}>
                             <option value = "12:00">12:00:00 AM</option>
                             <option value = "1:00">1:00:00 AM</option>
                             <option value = "2:00">2:00:00 AM</option>
@@ -132,7 +112,7 @@ class CreateEvent extends React.Component {
                 <div className="field-body">
                     <div className="field">
                     <div className="control">
-                        <textarea className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.description} onChange = {this.handleDescription}></textarea>
+                        <textarea  name = 'description' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.description} onChange = {this.handleChange}></textarea>
                     </div>
                     </div>
                 </div>
@@ -145,7 +125,7 @@ class CreateEvent extends React.Component {
                 <div className="field-body">
                     <div className="field">
                     <div className="control">
-                        <textarea className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.imgurl} onChange = {this.handleUrl}></textarea>
+                        <textarea name = 'imgurl' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
                     </div>
                     </div>
                 </div>
@@ -158,10 +138,10 @@ class CreateEvent extends React.Component {
                 <div className="field-body">
                     <div className="field">
                     <div className="control">
-                        <input className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleLocation}/>
+                        <input name = 'id_location' className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleChange}/>
                     </div>
-                    <div class="control">
-                        <button class="button is-link">Submit</button>
+                    <div className="control">
+                        <button className="button is-link">Submit</button>
                     </div>
                     </div>
                 </div>
