@@ -21,7 +21,7 @@ CREATE TABLE `messages` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `text`                  VARCHAR(300) DEFAULT NULL,
   `timestamp`             TIMESTAMP,
-  `id_user`               INT(10) NOT NULL,
+  `username`              VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -39,17 +39,16 @@ CREATE TABLE `events` (
   `name`                  VARCHAR(100) NOT NULL,
   `date`                  DATE NOT NULL,
   `time`                  TIME NOT NULL,
-  `location`              VARCHAR(300) DEFAULT NULL,
+  `address`               VARCHAR(300) DEFAULT NULL,
+  `city`                  VARCHAR(100) DEFAULT NULL,
   `description`           VARCHAR(500) DEFAULT NULL,
   `imgurl`                VARCHAR(300) DEFAULT NULL,
   `host`                  VARCHAR(100) NOT NULL,
   PRIMARY KEY(`id`)
 );
 
-
-
 DROP TABLE IF EXISTS `event_comments`;
-CREATE TABLE `events_comments` (
+CREATE TABLE `event_comments` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `message`               VARCHAR(300) DEFAULT NULL,
   `timestamp`             TIMESTAMP,

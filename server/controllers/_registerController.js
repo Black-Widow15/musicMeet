@@ -5,7 +5,7 @@ const db = require('../database/userQueries.js')
 
 const login = (req, res) => {
 
-    db.checkUserPasswordMatch(req.body.username, req.body.password, (err, result) => {
+    db.checkUserPasswordMatchDB(req.body.username, req.body.password, (err, result) => {
         if (err) {
             console.log('Error checking username and password in database')
         } else {

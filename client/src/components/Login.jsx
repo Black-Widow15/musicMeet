@@ -31,6 +31,7 @@ class Login extends React.Component {
         })
         .then(resp => {
             // do something with boolean
+            console.log(resp.data[0])
             if(!!resp.data[0] && !!resp.data[0].username) {
                 this.props.handleLoggedin(this.state)
                 this.setState({

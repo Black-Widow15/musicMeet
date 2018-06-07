@@ -16,6 +16,7 @@ const getAllEvents = (req, res) => {
         if(err) {
             console.log('Could not get events')
         } else {
+            // console.log('got events', result);
             res.status(200).send(result)
         }
     })
@@ -59,11 +60,50 @@ const getRecentEvents = (req, res) => {
         }
     })
 }
+
+const getAttendeeList = (req, res) => {
+    event.getEventAttendeesDB(req.query.id, (err, result) => {
+        if (err) {
+            console.log('Could not get attendee list');
+        } else {
+            res.send(result);
+        }
+    })
+}
+
+const getEventComments = (req, res) => {
+    event.getEventCommentsDB(req.query.id, (err, result) => {
+        if (err) {
+            console.log('Could not get event comments');
+        } else {
+            res.send(result)
+        }
+    })
+}
+
+const getSpecificEvent = (req, res) => {
+    // console.log('specific event req', req.params);
+    event.getSpecificEventDB(req.params.number, (err, result) => {
+        if (err) {
+            console.log('Could not deliver event data');
+        } else {
+            res.send(result);
+        }
+    })
+}
+
+
+
+
+
 module.exports= {
     saveNewEvent,
     getAllEvents,
     deleteEvent,
     updateEvent,
     getPopularEvents,
-    getRecentEvents
+    getRecentEvents,
+    getAttendeeList,
+    getEventComments,
+    getSpecificEvent,
 }
