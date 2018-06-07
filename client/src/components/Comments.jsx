@@ -7,7 +7,6 @@ import Comment from './Comment.jsx';
 class Comments extends React.Component {
   constructor (props) {
   	super(props);
-    console.log(props);
     // Props will include a array of comment objects.
     // Comment object properties: id, text, timestamp, username, avatarUrl
 
@@ -23,7 +22,6 @@ class Comments extends React.Component {
     return (<div>
     {
       this.props.commentList.map( (comment) => {
-        console.log(comment);
         return (
           <div>
           <Comment 

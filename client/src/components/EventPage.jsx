@@ -57,8 +57,16 @@ class EventPage extends React.Component {
 
   fillEventData () {
     axios.get(`/event/${this.state.id}`)
-        .then()
-        .catch()
+        .then( (response) => {
+          // console.log('Event data', response.data)
+          this.setState({
+            info: response.data[0],
+          })
+          console.log('event info', this.state.info)
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
   }
 
   fillCommentsFeed () {
@@ -101,13 +109,14 @@ class EventPage extends React.Component {
   }
 
   render () {
+    let date = this.state.info.date.slice(0,10);
     return (
       <div className="tile is-ancestor">
         <div className="tile is-vertical">
 
           <div className="tile is-parent">
             <div className="tile is-6 is-child">
-              <img src={this.state.info.imgUrl} />
+              <img src={this.state.info.imgurl} />
             </div>
 
             <div className="tile is-child">
@@ -115,7 +124,7 @@ class EventPage extends React.Component {
               <br/>
               <strong>Hosted by: {this.state.info.host}</strong>
               <br/><br/><br/>
-              {this.state.info.date}, {this.state.info.time}
+              {date}, {this.state.info.time}
               <br/>
               <button id="rsvp" onClick={(e) => {this.rsvp()}}>
                 {this.state.isAttending ? 'Cancel' : 'RSVP' }

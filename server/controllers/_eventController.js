@@ -82,14 +82,14 @@ const getEventComments = (req, res) => {
 }
 
 const getSpecificEvent = (req, res) => {
-    console.log('specific event req', req.params);
-    // event.getSpecificEventDB( (err, result) => {
-    //     if (err) {
-    //         console.log('Could not deliver event data');
-    //     } else {
-    //         res.send(result);
-    //     }
-    // })
+    // console.log('specific event req', req.params);
+    event.getSpecificEventDB(req.params.number, (err, result) => {
+        if (err) {
+            console.log('Could not deliver event data');
+        } else {
+            res.send(result);
+        }
+    })
 }
 
 

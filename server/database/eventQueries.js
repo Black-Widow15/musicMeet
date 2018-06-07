@@ -80,7 +80,17 @@ const getEventCommentsDB = (eventId, callback) => {
         }
         callback(err, result);
     })
-    
+}
+
+const getSpecificEventDB = (eventId, callback) => {
+    let queryString = `SELECT * FROM events WHERE id=${eventId};`
+
+    db.connection.query(queryString, (err, result) => {
+        if (err) {
+            console.log('Error getting event data');
+        }
+        callback(err, result);
+    })
 }
 
 module.exports = {
@@ -92,6 +102,7 @@ module.exports = {
     getRecentEventsDB,
     getEventAttendeesDB,
     getEventCommentsDB,
+    getSpecificEventDB,
 }
 
 
