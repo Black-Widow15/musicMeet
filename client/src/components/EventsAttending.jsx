@@ -30,6 +30,7 @@ class EventsAttending extends React.Component {
   }
 
   render() {
+    //below, the link is a placeholder but would like for the user to be brought to the corresponding EventPage
     return(
       <div className="column">
         <div className="notification is-primary has-text-centered">
