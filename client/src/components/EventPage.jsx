@@ -10,6 +10,7 @@ class EventPage extends React.Component {
   	super(props);
 
   	this.state = {
+      id: 1,
       comments: [
         {
           commentId: 1,
@@ -39,6 +40,9 @@ class EventPage extends React.Component {
 
     // Func bindings, such as:
     this.rsvp = this.rsvp.bind(this);
+    this.fillEventData = this.fillEventData.bind(this);    
+    this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
+    this.fillAttendeeFeed = this.fillAttendeeFeed.bind(this);
   }
 
   rsvp () {
@@ -51,19 +55,68 @@ class EventPage extends React.Component {
     })
   }
 
-  componentDidMount() {
-    // function to fill the comments, the attendee list, other info
+  fillEventData () {
+    axios.get(`/event/${this.state.id}`)
+        .then( (response) => {
+          // console.log('Event data', response.data)
+          this.setState({
+            info: response.data[0],
+          })
+          console.log('event info', this.state.info)
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
+  }
 
+  fillCommentsFeed () {
+    axios.get('/events/comments', {
+      params: {
+        id: this.state.id,
+      }
+    })
+        .then( (response) => {
+          this.setState({
+            comments: response.data,
+          })
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
+  }
+
+  fillAttendeeFeed () {
+    axios.get('/events/attendees', {
+      params: {
+        id: this.state.id,
+      }
+    })
+        .then( (response) => {
+          this.setState({
+            attendees: response.data,
+          })
+        })
+        .catch( (err) => {
+          console.log(err);
+        })
+  }
+
+  componentDidMount () {
+    // function to fill the comments, the attendee list, other info
+    this.fillEventData();
+    this.fillAttendeeFeed();
+    this.fillCommentsFeed();
   }
 
   render () {
+    let date = this.state.info.date.slice(0,10);
     return (
       <div className="tile is-ancestor">
         <div className="tile is-vertical">
 
           <div className="tile is-parent">
             <div className="tile is-6 is-child">
-              <img src={this.state.info.imgUrl} />
+              <img src={this.state.info.imgurl} />
             </div>
 
             <div className="tile is-child">
@@ -71,7 +124,7 @@ class EventPage extends React.Component {
               <br/>
               <strong>Hosted by: {this.state.info.host}</strong>
               <br/><br/><br/>
-              {this.state.info.date}, {this.state.info.time}
+              {date}, {this.state.info.time}
               <br/>
               <button id="rsvp" onClick={(e) => {this.rsvp()}}>
                 {this.state.isAttending ? 'Cancel' : 'RSVP' }

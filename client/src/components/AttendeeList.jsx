@@ -24,7 +24,7 @@ class AttendeeList extends React.Component {
           <div>
           <Attendee 
             username={attendee.username}
-            avatarUrl={attendee.avatarUrl}
+            avatarUrl={attendee.imgurl}
           />
           </div>
         )
