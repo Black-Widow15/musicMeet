@@ -62,24 +62,19 @@ const getRecentEvents = (req, res) => {
 }
 
 const getAttendeeList = (req, res) => {
-    // eventId is sent as a param on req.
-    // console.log('attendee req', req.query.id);
-
     event.getEventAttendeesDB(req.query.id, (err, result) => {
         if (err) {
             console.log('Could not get attendee list');
         } else {
-            console.log(result);
             res.send(result);
         }
     })
 }
 
 const getEventComments = (req, res) => {
-    event.getEventCommentsDB( (err, result) => {
+    event.getEventCommentsDB(req.query.id, (err, result) => {
         if (err) {
             console.log('Could not get event comments');
-
         } else {
             res.send(result)
         }

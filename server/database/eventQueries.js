@@ -70,7 +70,16 @@ const getEventAttendeesDB = (eventId, callback) => {
 
 }
 
-const getEventCommentsDB = (callback) => {
+const getEventCommentsDB = (eventId, callback) => {
+    let queryString = `SELECT event_comments.id, message, timestamp, display_name, imgurl  
+                        FROM event_comments INNER JOIN users
+                        WHERE id_event=${eventId} AND id_user=users.id;`
+    db.connection.query(queryString, (err, result) => {
+        if(err) {
+            console.log('Error getting comments');
+        }
+        callback(err, result);
+    })
     
 }
 
