@@ -60,6 +60,34 @@ const getRecentEvents = (req, res) => {
         }
     })
 }
+
+const getAttendeeList = (req, res) => {
+    event.getEventAttendeesDB( (err, result) => {
+        if (err) {
+            console.log('Could not get attendee list');
+        } else {
+            res.send(result);
+        }
+    })
+
+}
+
+const getEventComments = (req, res) => {
+    event.getEventCommentsDB( (err, result) => {
+        if (err) {
+            console.log('Could not get event comments');
+
+        } else {
+            res.send(result)
+        }
+    })
+
+}
+
+
+
+
+
 module.exports= {
     saveNewEvent,
     getAllEvents,
