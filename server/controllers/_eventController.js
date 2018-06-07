@@ -79,7 +79,17 @@ const getEventComments = (req, res) => {
             res.send(result)
         }
     })
+}
 
+const getSpecificEvent = (req, res) => {
+    console.log('specific event req', req.params);
+    // event.getSpecificEventDB( (err, result) => {
+    //     if (err) {
+    //         console.log('Could not deliver event data');
+    //     } else {
+    //         res.send(result);
+    //     }
+    // })
 }
 
 
@@ -95,4 +105,5 @@ module.exports= {
     getRecentEvents,
     getAttendeeList,
     getEventComments,
+    getSpecificEvent,
 }

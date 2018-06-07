@@ -14,6 +14,8 @@ router.get('/events/recent', eventController.getRecentEvents);
 router.get('/events/attendees', eventController.getAttendeeList);
 router.get('/events/comments', eventController.getEventComments);
 
+router.get('/event/:number', eventController.getSpecificEvent);
+
 router.post('/signup', registerController.signup);
 
 router.get('/users', userController.retrieveUserInfo);

@@ -40,6 +40,7 @@ class EventPage extends React.Component {
 
     // Func bindings, such as:
     this.rsvp = this.rsvp.bind(this);
+    this.fillEventData = this.fillEventData.bind(this);    
     this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
     this.fillAttendeeFeed = this.fillAttendeeFeed.bind(this);
   }
@@ -52,6 +53,12 @@ class EventPage extends React.Component {
     this.setState({
       isAttending: !current,
     })
+  }
+
+  fillEventData () {
+    axios.get(`/event/${this.state.id}`)
+        .then()
+        .catch()
   }
 
   fillCommentsFeed () {
@@ -88,6 +95,7 @@ class EventPage extends React.Component {
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
+    this.fillEventData();
     this.fillAttendeeFeed();
     this.fillCommentsFeed();
   }
