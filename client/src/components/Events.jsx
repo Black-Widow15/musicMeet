@@ -49,7 +49,6 @@ class Events extends React.Component {
         console.log(err);
       })
 
-
     axios.get('/events/popular')
       .then( (response) => {
         this.setState({
