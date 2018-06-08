@@ -1,11 +1,10 @@
 import React from 'react';
 
-
 // Data needed: commentId, text, timestamp, username, avatar URL
 // We will have to add functionality to link to the actual event page.
 // We will probably dynamically generate the url based on the name or id.
 
-let Attendee = (props) => (
+const Attendee = (props) => (
   <article className="media">
     <figure className="media-left">
       <p className="image is-64x64">

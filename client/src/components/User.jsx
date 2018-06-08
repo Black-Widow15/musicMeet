@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Messages from './Messages.jsx'
 import EventsAttending from './EventsAttending.jsx'

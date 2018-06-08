@@ -1,7 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
-import Events from './Events.jsx'
 
 class EventsAttending extends React.Component {
   constructor(props) {
@@ -9,7 +7,6 @@ class EventsAttending extends React.Component {
 
     this.state = {
       eventsAttending: []
-
     }
   }
   componentDidMount() {
@@ -18,14 +15,11 @@ class EventsAttending extends React.Component {
         username: 'makm' // MICHAEL: please change this when you do routing
       }
     })
-    .then(({data}) => {
+    .then(({data = null}) => {
       console.log('events attending front: ', data);
       this.setState({
         eventsAttending: data
-      })
-    })
-    .then(() => {
-      console.log(this.state.eventsAttending);
+      }, () => console.log(this.state.eventsAttending))
     })
   }
 
@@ -34,7 +28,7 @@ class EventsAttending extends React.Component {
     return(
       <div className="column">
         <div className="notification is-primary has-text-centered">
-          events i am attending
+          Events I am attending
         </div>
         <ul>
           {this.state.eventsAttending.map(event => {

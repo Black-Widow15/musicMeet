@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import EventSummary from './EventSummary.jsx';
 import EventModal from './EventModal.jsx';
@@ -8,7 +7,6 @@ import EventModal from './EventModal.jsx';
 class Events extends React.Component {
   constructor (props) {
   	super(props);
-
   	this.state = {
   	  eventsPop: [   // Array of event objs from db.
         {
@@ -33,52 +31,45 @@ class Events extends React.Component {
         }
       ], // The events that are coming up next.
   	};
-
   	// These event objects are quick summaries.
   	// Data needed: name, date, time, imgUrl, location, description
-
     this.fillEventsFeed = this.fillEventsFeed.bind(this);
     this.launchModal = this.launchModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
-
   fillEventsFeed () {
   	// Grab data from the database and set the state.
     axios.get('/events')
-        .then( (response) => {
-          this.setState({
-            eventsNew: response.data,
-          })
+      .then( (response) => {
+        this.setState({
+          eventsNew: response.data,
         })
-        .catch( (err) => {
-          console.log(err);
-        })
+      })
+      .catch( (err) => {
+        console.log(err);
+      })
 
     axios.get('/events/popular')
-        .then( (response) => {
-          this.setState({
-            eventsPop: response.data,
-          })
+      .then( (response) => {
+        this.setState({
+          eventsPop: response.data,
         })
-        .catch( (err) => {
-          console.log(err);
-        })
+      })
+      .catch( (err) => {
+        console.log(err);
+      })
   }
-
   launchModal (modalId) {
     let modal = document.getElementById(modalId);
     modal.classList.add('is-active');
   }
-
   closeModal (modalId) {
     let modal = document.getElementById(modalId);
     modal.classList.remove('is-active');
   }
-
   componentDidMount() {
   	this.fillEventsFeed();
   }
-
   // Data needed: name, date, time, imgUrl, location, description
   render () {
     let launchModal = this.launchModal;

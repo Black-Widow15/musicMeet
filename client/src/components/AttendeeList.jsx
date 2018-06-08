@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
 import Attendee from './Comment.jsx';
-
 
 class AttendeeList extends React.Component {
   constructor (props) {
@@ -11,11 +8,6 @@ class AttendeeList extends React.Component {
     // attendee object properties: username, avatarUrl
 
   }
-
-  componentDidMount() {
-
-  }
-
   render () {
     return (<div>
     {

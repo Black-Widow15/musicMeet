@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Comments from './Comments.jsx';
 import AttendeeList from './AttendeeList.jsx';
@@ -10,6 +9,7 @@ class EventPage extends React.Component {
   	super(props);
 
   	this.state = {
+      // id is the identifier for all events upon componentDidMount
       id: 1,
       comments: [
         {
@@ -37,14 +37,11 @@ class EventPage extends React.Component {
       }, // Same data that was in the Event Summary cards.
       isAttending: false, 
   	};
-
-    // Func bindings, such as:
     this.rsvp = this.rsvp.bind(this);
     this.fillEventData = this.fillEventData.bind(this);    
     this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
     this.fillAttendeeFeed = this.fillAttendeeFeed.bind(this);
   }
-
   rsvp () {
     let current = this.state.isAttending;
     let elem = document.getElementById('rsvp');
@@ -54,18 +51,16 @@ class EventPage extends React.Component {
       isAttending: !current,
     })
   }
-
   fillEventData () {
     axios.get(`/event/${this.state.id}`)
-        .then( (response) => {
+        .then((response) => {
           // console.log('Event data', response.data)
           this.setState({
             info: response.data[0],
-          })
-          console.log('event info', this.state.info)
+          }, () => console.log('event info', this.state.info))
         })
-        .catch( (err) => {
-          console.log(err);
+        .catch((err) => {
+          console.error(err);
         })
   }
 
@@ -75,30 +70,29 @@ class EventPage extends React.Component {
         id: this.state.id,
       }
     })
-        .then( (response) => {
-          this.setState({
-            comments: response.data,
-          })
+      .then( (response) => {
+        this.setState({
+          comments: response.data,
         })
-        .catch( (err) => {
-          console.log(err);
-        })
+      })
+      .catch( (err) => {
+        console.log(err);
+      })
   }
-
   fillAttendeeFeed () {
     axios.get('/events/attendees', {
       params: {
         id: this.state.id,
       }
     })
-        .then( (response) => {
-          this.setState({
-            attendees: response.data,
-          })
+      .then( (response) => {
+        this.setState({
+          attendees: response.data,
         })
-        .catch( (err) => {
-          console.log(err);
-        })
+      })
+      .catch( (err) => {
+        console.log(err);
+      })
   }
 
   componentDidMount () {
@@ -130,8 +124,6 @@ class EventPage extends React.Component {
                 {this.state.isAttending ? 'Cancel' : 'RSVP' }
               </button>
             </div>
-
-
           </div>
 
           <div className="tile is-child">

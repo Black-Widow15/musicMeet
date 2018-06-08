@@ -1,11 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
-
-
-const background = {
-    'backgroundColor': 'white'
-}
 
 class Signup extends React.Component {
     constructor(props){
@@ -19,54 +13,22 @@ class Signup extends React.Component {
             bio: '',
             musician: 6
         }
-
-        this.handleName = this.handleName.bind(this);
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleDisplayName = this.handleDisplayName.bind(this)
-        this.handleProfilePicture = this.handleProfilePicture.bind(this)
-        this.handleEmail = this.handleEmail.bind(this);
-        this.handleBio = this.handleBio.bind(this);
         
-
+        this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeSignupModal = this.closeSignupModal.bind(this);
-        
     }
 
-    handleName(e){
+    handleChange(e){
         this.setState({
-            username: e.target.value,
-        })
-    }
-    handlePassword(e) {
-        this.setState({
-            password: e.target.value
-        })
-    }
-    handleDisplayName(e){
-        this.setState({
-            display_name: e.target.value
-        })
-    }
-    handleProfilePicture(e){
-        this.setState({
-            imgurl: e.target.value
-        })
-    }
-    handleEmail(e){
-        this.setState({
-            email: e.target.value
-        })
-    }
-    handleBio(e){
-        this.setState({
-            bio: e.target.value
+            [e.target.name]: e.target.value,
         })
     }
     handleSubmit(e){
         e.preventDefault()
         // grab username and password from state and send to user schema    
-        axios.post('/signup', this.state)   
+        axios.post('/signup', this.state)
+        .then( () => this.closeSignupModal())
     }
     closeSignupModal () {
       let modal = document.getElementById('Signup');
@@ -83,32 +45,32 @@ class Signup extends React.Component {
                 
                     <label className="label">Name</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.name} onChange = {this.handleName}/>
+                        <input name = 'name' className="input" type="text" placeholder="Text input" value = {this.state.name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Display Name</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.display_name} onChange = {this.handleDisplayName}/>
+                        <input name = 'display_name' className="input" type="text" placeholder="Text input" value = {this.state.display_name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Password</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.password} onChange = {this.handlePassword}/>
+                        <input name = 'password'className="input" type="password" placeholder="Text input" value = {this.state.password} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Profile Picture</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.imgurl} onChange = {this.handleProfilePicture}/>
+                        <input name = 'imgurl' className="input" type="text" placeholder="Text input" value = {this.state.imgurl} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">E-mail</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.email} onChange = {this.handleEmail}/>
+                        <input name = 'email' className="input" type="text" placeholder="Text input" value = {this.state.email} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Bio</label>
                     <div className="control">
-                        <input className="input" type="text" placeholder="Text input" value = {this.state.bio} onChange = {this.handleBio}/>
+                        <input name = 'bio' className="input" type="text" placeholder="Text input" value = {this.state.bio} onChange = {this.handleChange}/>
                     </div>
                 
                     </div>

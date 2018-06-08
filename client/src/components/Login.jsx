@@ -1,41 +1,45 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
-
-
-const background = {
-    'backgroundColor': 'white'
-}
+import axios from 'axios'
 
 class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            valid: false
         }
-
-        this.handlePassword = this.handlePassword.bind(this);
-        this.handleUsername = this.handleUsername.bind(this);
+        this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
         this.closeLoginModal = this.closeLoginModal.bind(this);
     }
-
-    handleUsername(e){
+    handleChange(e){
         this.setState({
-            username: e.target.value,
+            [e.target.name]:e.target.value
         })
     }
-
-    handlePassword(e) {
-        this.setState({
-            password: e.target.value
-        })
-    }
-
     handleSubmit(e){
-        console.log('submitted')
         e.preventDefault()
-        // grab username and password from state and send to user schema        
+        axios.post('/login', {
+            username: this.state.username,
+            password: this.state.password
+        })
+        .then(resp => {
+            // do something with boolean
+            console.log(resp.data[0])
+            if(!!resp.data[0] && !!resp.data[0].username) {
+                this.props.handleLoggedin(this.state)
+                this.setState({
+                    username: '',
+                    password: '',
+                    valid: !this.state.valid
+                },() => {
+                    this.closeLoginModal()
+                })
+                
+               
+            }
+        })  
     }
 
     closeLoginModal () {
@@ -50,24 +54,25 @@ class Login extends React.Component {
                 <div className="modal-background"></div>
                 <div className="modal-content">
                     <div className="box">
-                    <div className="field">
-                                <label className="label">Name</label>
-                                <div className="control">
-                                    <input className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleUsername}/>
-                                </div>
+                        <div className="field">
+                            <label className="label">Name</label>
+                            <div className="control">
+                                <input name = 'username' className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleChange}/>
                             </div>
+                        </div>
 
-                            <div className="field">
-                                <label className="label">Username</label>
-                                <div className="control has-icons-left has-icons-right">
-                                    <input className="input" type="text" placeholder="Text input"  onChange = {this.handlePassword}/>
-                                </div>
-                                </div>
+                        <div className="field">
+                            <label className="label">Username</label>
+                            <div className="control has-icons-left has-icons-right">
+                                <input name = 'password' className="input" type="text" placeholder="Text input"  onChange = {this.handleChange}/>
+                            </div>
+                        </div>
                         
-                        <button className="button is-link">Submit</button>
+                        <button type = "submit" className="button is-link">Submit</button>
                     </div>
                 </div>
-                <button className="modal-close is-large" aria-label="close" onClick={(e) => {this.closeLoginModal()}}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={() => { this.closeLoginModal(); }}></button>
+        
                 </div>
             </form>
         )
