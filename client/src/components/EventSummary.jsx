@@ -1,13 +1,11 @@
-import React from 'react';
-import EventModal from './EventModal.jsx';
-
+import React from 'react'
 
 // Properties needed:
 // Data needed: name, date, time, imgUrl, location, description
 // We will have to add functionality to link to the actual event page.
 // We will probably dynamically generate the url based on the name or id.
 
-let EventSummary = (props) => (
+const EventSummary = (props) => (
   <div className="card" onClick={(e) => props.launchModal(props.name)}>
     <div className="card-image">
       <figure className="image is-4by3">

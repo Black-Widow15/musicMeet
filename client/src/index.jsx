@@ -3,23 +3,30 @@ import ReactDOM from 'react-dom'
 
 import {BrowserRouter as Router, Route, Link, Switch, History} from 'react-router-dom'
 import User from './components/User.jsx'
-import axios from 'axios'
+
 import Events from './components/Events.jsx'
 import EventPage from './components/EventPage.jsx'
-import Login from './components/Login.jsx'
+
 import NavBar from './components/NavBar.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
-import Messages from './components/Messages.jsx'
+
 
 class App extends React.Component {
     constructor(props) {
         super(props)
+        this.state = {
+            username: ''
+        }
+        this.handleLogin = this.handleLogin.bind(this)
+    }
+    handleLogin(username) {
+        this.setState({username})
     }
     render() {
         return (
             <Router>
                 <div>
-                <NavBar/>
+                <NavBar handleLogin = {this.handleLogin}/>
 
                 <Switch>
                     <Route exact path = '/' component = {Events}/>

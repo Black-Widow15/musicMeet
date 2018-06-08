@@ -1,10 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
-
-const background = {
-    'backgroundColor': 'white'
-}
 
 class Login extends React.Component {
     constructor(props){
@@ -76,7 +71,7 @@ class Login extends React.Component {
                         <button type = "submit" className="button is-link">Submit</button>
                     </div>
                 </div>
-                <button className="modal-close is-large" aria-label="close" onClick={(e) => {this.closeLoginModal()}}></button>
+                <button className="modal-close is-large" aria-label="close" onClick={() => { this.closeLoginModal(); }}></button>
         
                 </div>
             </form>

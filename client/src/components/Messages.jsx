@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 class Messages extends React.Component {
@@ -16,7 +15,6 @@ class Messages extends React.Component {
   }
 
   changeText(e) {
-    console.log(e.target.value);
     e.preventDefault();
     this.setState({
       input: e.target.value
@@ -38,7 +36,6 @@ class Messages extends React.Component {
   }
 
   addMessage(text) {
-    console.log('trying to add a message now');
     axios.post('/users/messages', {
         username: this.props.username,
         text: this.state.input
@@ -62,16 +59,16 @@ class Messages extends React.Component {
     return (
     <div className="column">
       <div className="notification is-primary has-text-centered">
-        wall of love
+        Wall of Love
       </div>
       <div className="field">
-        <label className="label">write me a message!</label>
+        <label className="label">Write me a message!</label>
           <div className="control">
             <input className="input" type="text" placeholder="start typing here" onChange={(e) => this.changeText(e)}/>
           </div>
       </div>
       <div className="control">
-        <button className="button is-primary" onClick={this.addMessage}>send!</button><br/>
+        <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
       </div>
       <ul>
         {this.state.messages.map(message => {

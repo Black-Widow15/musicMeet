@@ -15,7 +15,6 @@ class CreateEvent extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
-
     handleSubmit(e){
         e.preventDefault()
         axios.post('/events', this.state)
@@ -35,21 +34,18 @@ class CreateEvent extends React.Component {
             [e.target.name]: e.target.value
         })
     }
-
     render () {
         return (
             <form onSubmit = {this.handleSubmit} className = "field">
                 <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                    <label className="label">Name</label>
-                </div>
-                <div className="field-body">
-                    <div className="field">
-                        <input name = 'name' value = {this.state.name} onChange = {this.handleChange} className="input" type="text" placeholder="Name"/>
+                    <div className="field-label is-normal">
+                        <label className="label">Name</label>
                     </div>
-                
-                </div>
-                
+                    <div className="field-body">
+                        <div className="field">
+                            <input name = 'name' value = {this.state.name} onChange = {this.handleChange} className="input" type="text" placeholder="Name"/>
+                        </div>
+                    </div>
                 </div>
 
                 <div className="field is-horizontal">
@@ -71,80 +67,80 @@ class CreateEvent extends React.Component {
                 </div>
                 <div className="field-body">
                     <div className="field is-narrow">
-                    <div className="control">
-                        <div className="select is-fullwidth">
-                        <select name = 'time' value = {this.state.time} onChange ={this.handleChange}>
-                            <option value = "12:00">12:00:00 AM</option>
-                            <option value = "1:00">1:00:00 AM</option>
-                            <option value = "2:00">2:00:00 AM</option>
-                            <option value = "3:00">3:00:00 AM</option>
-                            <option value = "4:00">4:00:00 AM</option>
-                            <option value = "5:00">5:00:00 AM</option>
-                            <option value = "6:00">6:00:00 AM</option>
-                            <option value = "7:00">7:00:00 AM</option>
-                            <option value = "8:00">8:00:00 AM</option>
-                            <option value = "9:00">9:00:00 AM</option>
-                            <option value = "10:00">10:00:00 AM</option>
-                            <option value = "11:00">11:00:00 AM</option>
-                            <option value = "12:00">12:00:00 PM</option>
-                            <option value = "1:00">1:00:00 PM</option>
-                            <option value = "2:00">2:00:00 PM</option>
-                            <option value = "3:00">3:00:00 PM</option>
-                            <option value = "4:00">4:00:00 PM</option>
-                            <option value = "5:00">5:00:00 PM</option>
-                            <option value = "6:00">6:00:00 PM</option>
-                            <option value = "7:00">7:00:00 PM</option>
-                            <option value = "8:00">8:00:00 PM</option>
-                            <option value = "9:00">9:00:00 PM</option>
-                            <option value = "10:00">10:00:00 PM</option>
-                            <option value = "11:00">11:00:00 PM</option>
-                        </select>
+                        <div className="control">
+                            <div className="select is-fullwidth">
+                            <select name = 'time' value = {this.state.time} onChange ={this.handleChange}>
+                                <option value = "12:00">12:00:00 AM</option>
+                                <option value = "1:00">1:00:00 AM</option>
+                                <option value = "2:00">2:00:00 AM</option>
+                                <option value = "3:00">3:00:00 AM</option>
+                                <option value = "4:00">4:00:00 AM</option>
+                                <option value = "5:00">5:00:00 AM</option>
+                                <option value = "6:00">6:00:00 AM</option>
+                                <option value = "7:00">7:00:00 AM</option>
+                                <option value = "8:00">8:00:00 AM</option>
+                                <option value = "9:00">9:00:00 AM</option>
+                                <option value = "10:00">10:00:00 AM</option>
+                                <option value = "11:00">11:00:00 AM</option>
+                                <option value = "12:00">12:00:00 PM</option>
+                                <option value = "1:00">1:00:00 PM</option>
+                                <option value = "2:00">2:00:00 PM</option>
+                                <option value = "3:00">3:00:00 PM</option>
+                                <option value = "4:00">4:00:00 PM</option>
+                                <option value = "5:00">5:00:00 PM</option>
+                                <option value = "6:00">6:00:00 PM</option>
+                                <option value = "7:00">7:00:00 PM</option>
+                                <option value = "8:00">8:00:00 PM</option>
+                                <option value = "9:00">9:00:00 PM</option>
+                                <option value = "10:00">10:00:00 PM</option>
+                                <option value = "11:00">11:00:00 PM</option>
+                            </select>
+                            </div>
                         </div>
                     </div>
-                    </div>
                 </div>
                 </div>
 
                 <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                    <label className="label">Description</label>
-                </div>
-                <div className="field-body">
-                    <div className="field">
-                    <div className="control">
-                        <textarea  name = 'description' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.description} onChange = {this.handleChange}></textarea>
+                    <div className="field-label is-normal">
+                        <label className="label">Description</label>
                     </div>
+                    <div className="field-body">
+                        <div className="field">
+                        <div className="control">
+                            <textarea  name = 'description' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.description} onChange = {this.handleChange}></textarea>
+                        </div>
+                        </div>
                     </div>
-                </div>
                 </div>
 
                 <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                    <label className="label">IMG URL</label>
-                </div>
-                <div className="field-body">
-                    <div className="field">
-                    <div className="control">
-                        <textarea name = 'imgurl' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
+                    <div className="field-label is-normal">
+                        <label className="label">IMG URL</label>
                     </div>
+                    <div className="field-body">
+                        <div className="field">
+                        <div className="control">
+                            <textarea name = 'imgurl' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
+                        </div>
+                        </div>
                     </div>
-                </div>
                 </div>
 
                 <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                    <label className="label">Location</label>
-                </div>
-                <div className="field-body">
-                    <div className="field">
-                    <div className="control">
-                        <input name = 'id_location' className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleChange}/>
+                    <div className="field-label is-normal">
+                        <label className="label">Location</label>
                     </div>
-                    <div className="control">
-                        <button className="button is-link">Submit</button>
+                    <div className="field-body">
+                        <div className="field">
+                        <div className="control">
+                            <input name = 'id_location' className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleChange}/>
+                        </div>
+                        <div className="control">
+                            <button className="button is-link">Submit</button>
+                        </div>
+                        </div>
                     </div>
-                    </div>
-                </div>
                 </div>
             </form>
         )

@@ -16,7 +16,7 @@ const login = (req, res) => {
 
 
 const signup = (req, res) => {
-    db.saveNewUser(req.body, (err, result) => {
+    db.saveNewUserDB(req.body, (err, result) => {
         if(err){
             console.log('Could not save a user into the database')
         } else {

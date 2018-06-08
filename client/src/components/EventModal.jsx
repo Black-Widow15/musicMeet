@@ -1,8 +1,6 @@
 import React from 'react';
 import EventSummary from './EventSummary.jsx';
 
-
-
 // Properties needed:
 // Data needed: name, date, time, imgUrl, location, description
 // We will have to add functionality to link to the actual event page.
@@ -11,7 +9,7 @@ import EventSummary from './EventSummary.jsx';
 // When we click on the event to launch the modal, the className
 // should change to "modal is-active"
 
-let EventModal = (props) => (
+const EventModal = (props) => (
   <div id={props.id} className="modal">
     <div className="modal-background"></div>
     <div className="modal-content">
