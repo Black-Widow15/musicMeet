@@ -10,6 +10,7 @@ class AttendeeList extends React.Component {
   }
   render () {
     return (<div>
+      Attending
     {
       this.props.attendees.map( (attendee) => {
         return (

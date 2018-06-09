@@ -12,6 +12,7 @@ class Comments extends React.Component {
   }
   render () {
     return (<div>
+      Comments
     {
       this.props.commentList.map( (comment) => {
         return (
