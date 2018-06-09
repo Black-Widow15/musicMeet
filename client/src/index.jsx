@@ -19,9 +19,13 @@ class App extends React.Component {
         }
         this.handleLogin = this.handleLogin.bind(this)
     }
+
     handleLogin(username) {
-        this.setState({username})
+        // console.log('passed in username', username)
+        this.setState({username: username})
+        // console.log('app state', this.state);
     }
+
     render() {
         return (
             <Router>
@@ -32,7 +36,9 @@ class App extends React.Component {
                     <Route exact path = '/' component = {Events}/>
                     <Route exact path = '/create' component = {CreateEvent}/>
                     <Route exact path = '/users' component = {User}/>
-                    <Route exact path = '/event/:number' component = {EventPage}/>
+                    <Route exact path = '/event/:number' 
+                       render = {(props) => <EventPage username={this.state.username} {...props} />} />
+
                 </Switch>
                 
                 </div>
@@ -40,5 +46,7 @@ class App extends React.Component {
         )
     }
 }
+
+//                     <Route exact path = '/event/:number' component = {EventPage}/>
 
 ReactDOM.render(<App/>, document.getElementById('app'))

@@ -11,7 +11,12 @@ class EventPage extends React.Component {
 
   	this.state = {
       // id is the identifier for all events upon componentDidMount
-      id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      // id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      loggedInUser: {
+        id: 2,
+        username: 'joe',
+      },
+      isAttending: false, 
       comments: [
         {
           commentId: 1,
@@ -31,13 +36,13 @@ class EventPage extends React.Component {
         name: 'Concert',
         date: 'June 7',
         time: '11pm',
-        imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+        imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
         location: 'Madison Square Garden',
         description: 'Its a huge concert!',
         host: 'Metallica',
       }, // Same data that was in the Event Summary cards.
-      isAttending: false, 
   	};
+
     this.rsvp = this.rsvp.bind(this);
     this.fillEventData = this.fillEventData.bind(this);    
     this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
@@ -45,13 +50,24 @@ class EventPage extends React.Component {
   }
   rsvp () {
     let current = this.state.isAttending;
-    let elem = document.getElementById('rsvp');
-    console.log(elem);
-
     this.setState({
       isAttending: !current,
     })
+
+    axios.post('/events/attendees', {
+      eventId: this.state.id, 
+      userId: this.state.loggedInUser.id,
+      isAttending: this.state.isAttending,
+    })
+      .then( (response) => {
+        console.log('changed rsvp');
+        this.fillAttendeeFeed();
+      })
+      .catch( (err) => {
+        console.error(err);
+      })
   }
+
   fillEventData () {
     axios.get(`/event/${this.state.id}`)
         .then((response) => {
@@ -80,6 +96,7 @@ class EventPage extends React.Component {
         console.log(err);
       })
   }
+
   fillAttendeeFeed () {
     axios.get('/events/attendees', {
       params: {
@@ -89,6 +106,14 @@ class EventPage extends React.Component {
     .then((response) => {
       this.setState({
         attendees: response.data
+      })
+
+      this.state.attendees.forEach( (attendee) => {
+        if (this.state.loggedInUser.username === attendee.username) {
+          this.setState({
+            isAttending: true,
+          })
+        } 
       })
     })
     .catch( (err) => {
@@ -114,7 +139,7 @@ class EventPage extends React.Component {
               <div className="level-left">
                 <div className="level-item">
                   <figure className="image is-128x128 is-square">
-                    <img src={this.state.info.imgUrl}/>
+                    <img src={this.state.info.imgurl}/>
                   </figure>
                 </div>
                 <div className="level-item">

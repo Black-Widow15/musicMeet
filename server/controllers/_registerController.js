@@ -2,11 +2,12 @@ const user = require('../database/userQueries.js');
 
 
 const login = (req, res) => {
-  user.checkUserPasswordMatchDB(req.body.username, req.body.password, (err) => {
+  user.checkUserPasswordMatchDB(req.body.username, req.body.password, (err, result) => {
     if (err) {
       console.error('Invalid username and/or password');
+      res.send('ERROR');
     } else {
-      res.sendStatus(200);
+      res.send('OK');
     }
   });
 };
