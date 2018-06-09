@@ -5,12 +5,13 @@ class CreateEvent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            name: '',
+            username: '',
             date: '',
             time: '12:00',
             description: '',
             imgurl: '',
-            id_location: ''
+            address: '',
+            city: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -20,12 +21,13 @@ class CreateEvent extends React.Component {
         axios.post('/events', this.state)
         .then(() => {
             this.setState({
-                name: '',
+                username: '',
                 date: '',
                 time: '12:00',
                 description: '',
                 imgurl: '',
-                id_location: ''
+                address: '',
+                city: '',
             })
         })
     }
@@ -116,12 +118,12 @@ class CreateEvent extends React.Component {
 
                 <div className="field is-horizontal">
                     <div className="field-label is-normal">
-                        <label className="label">IMG URL</label>
+                        <label className="label">Image URL</label>
                     </div>
                     <div className="field-body">
                         <div className="field">
                         <div className="control">
-                            <textarea name = 'imgurl' className="textarea" placeholder="What do you want people to know about your event?" value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
+                            <textarea name = 'imgurl' className="textarea" placeholder="Enter an image URL for your event!" value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
                         </div>
                         </div>
                     </div>
@@ -129,19 +131,32 @@ class CreateEvent extends React.Component {
 
                 <div className="field is-horizontal">
                     <div className="field-label is-normal">
-                        <label className="label">Location</label>
+                        <label className="label">Address</label>
                     </div>
                     <div className="field-body">
                         <div className="field">
                         <div className="control">
-                            <input name = 'id_location' className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleChange}/>
-                        </div>
-                        <div className="control">
-                            <button className="button is-link">Submit</button>
+                            <input name = 'address' className="input" type="text" placeholder="How can people find you?" value = {this.state.address} onChange = {this.handleChange}/>
                         </div>
                         </div>
                     </div>
                 </div>
+
+                <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                        <label className="label">City</label>
+                    </div>
+                    <div className="field-body">
+                        <div className="field">
+                        <div className="control">
+                            <textarea name = 'city' className="textarea" placeholder="In what city will your event take place?" value = {this.state.city} onChange = {this.handleChange}></textarea>
+                        </div>
+                        </div>
+                        <div className="control">
+                            <button className="button is-link">Submit</button>
+                        </div>
+                    </div>
+                 </div>
             </form>
         )
     }
