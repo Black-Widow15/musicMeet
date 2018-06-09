@@ -74,8 +74,7 @@ const editUserDB = (username, values) => {
 
 // Retrieve user data:
 const retrieveUserInfoDB = (username, callback) => {
-  const username1 = username.split('\'').join('') || '';
-  const queryString = `SELECT * FROM users WHERE username = '${username1}'`;
+  const queryString = `SELECT * FROM users WHERE username = '${username}'`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
