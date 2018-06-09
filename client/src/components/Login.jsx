@@ -26,8 +26,8 @@ class Login extends React.Component {
         })
         .then(response => {
             console.log(response);
-            if(response.data === 'OK') {
-                this.props.handleLoggedin(this.state)
+            if(response.data) {
+                this.props.handleLoggedin(response.data)
                 this.setState({
                     valid: !this.state.valid
                 },() => {

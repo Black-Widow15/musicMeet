@@ -7,7 +7,8 @@ const login = (req, res) => {
       console.error('Invalid username and/or password');
       res.send('ERROR');
     } else {
-      res.send('OK');
+      console.log(result);
+      res.send(result);
     }
   });
 };
