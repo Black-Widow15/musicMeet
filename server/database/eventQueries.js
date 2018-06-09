@@ -95,8 +95,8 @@ const getSpecificEventDB = (eventId, callback) => {
   });
 };
 
-const addAttendeeDB = () => {
-  const queryString = ``
+const addAttendeeDB = (eventId, userId, callback) => {
+  const queryString = `INSERT INTO users_events (id_user, id_event) VALUES (${userId}, ${eventId});`
 
   db.connection.query(queryString, (err, result) => {
     if (err) {
@@ -106,12 +106,12 @@ const addAttendeeDB = () => {
   });
 }
 
-const removeAttendeeDB = () => {
-  const queryString = ``
+const removeAttendeeDB = (eventId, userId, callback) => {
+  const queryString = `DELETE FROM users_events WHERE id_user=${userId} AND id_event=${eventId};`
 
   db.connection.query(queryString, (err, result) => {
     if (err) {
-      console.log('Error remoiving attendee');
+      console.log('Error removing attendee');
     }
     callback(err, result);
   });

@@ -95,13 +95,35 @@ const getSpecificEvent = (req, res) => {
 const addRemoveAttendee = (req, res) => {
     console.log('adding/removing attendee', req.body);
     if (req.body.isAttending) {
-        event.removeAttendeeDB()
+        event.removeAttendeeDB(req.body.eventId, req.body.userId, (err, result) => {
+            if (err) {
+                console.log('Could not remove attendee');
+            } else {
+                res.send('Attendee removed')
+            }
+        })
     } else {
-        event.addAttendeeDB()
+        event.addAttendeeDB(req.body.eventId, req.body.userId, (err, result) => {
+            if (err) {
+                console.log('Could not add attendee');
+            } else {
+                res.send('Attendee added');
+            }
+        })
     }
     // event.addAttendeeDB(req.body);
 
 }
+
+/*
+  event.saveEventDB(req.body, (err, result) => {
+        if(err){
+            console.log('Event not saved into the database')
+        } else {
+            res.send('success')
+        }
+    })
+*/
 
 
 
