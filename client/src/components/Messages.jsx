@@ -24,8 +24,7 @@ class Messages extends React.Component {
   componentDidMount() {
     axios.get('/users/messages', {
       params: {
-        // username: this.props.username // i'm not sure why it's not able to get the username from User component
-        username: 'makm' // MICHAEL: please change this when you do routing
+        username: this.props.username
       }
     })
     .then(({data}) => {
