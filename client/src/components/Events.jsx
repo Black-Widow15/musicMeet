@@ -13,7 +13,7 @@ class Events extends React.Component {
           name: 'party!',
           date: 'July 4',
           time: '11pm',
-          imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
+          imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           address: '123 some street',
           city: 'Chicago, IL',
           description: 'Come to my party!',
@@ -26,7 +26,7 @@ class Events extends React.Component {
           name: 'Concert',
           date: 'June 7',
           time: '11pm',
-          imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+          imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
           address: 'Madison Square Garden',
           city: 'New York, NY',
           description: 'Its a huge concert!',
@@ -82,7 +82,7 @@ class Events extends React.Component {
                 host={event.host}
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgurl}
+                imgurl={event.imgurl}
                 address={event.address}
                 city={event.city}
                 description={event.description}
@@ -104,7 +104,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgurl}
+                imgurl={event.imgurl}
                 address={event.address}
                 city={event.city}
                 description={event.description}

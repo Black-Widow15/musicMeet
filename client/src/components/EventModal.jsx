@@ -18,7 +18,7 @@ const EventModal = (props) => (
         name={props.name} 
         date={props.date} 
         time={props.time}
-        imgUrl={props.imgUrl}
+        imgurl={props.imgurl}
         location={props.location}
         description={props.description}
       />

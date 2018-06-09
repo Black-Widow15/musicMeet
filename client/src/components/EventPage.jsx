@@ -36,7 +36,7 @@ class EventPage extends React.Component {
         name: 'Concert',
         date: 'June 7',
         time: '11pm',
-        imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+        imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
         location: 'Madison Square Garden',
         description: 'Its a huge concert!',
         host: 'Metallica',
@@ -130,13 +130,8 @@ class EventPage extends React.Component {
               <div className="level-left">
                 <div className="level-item">
                   <figure className="image is-128x128 is-square">
-                    <img src={this.state.info.imgUrl}/>
+                    <img src={this.state.info.imgurl}/>
                   </figure>
-<<<<<<<
->>>>>>> dev
-=======
-
->>>>>>>
                 </div>
                 <div className="level-item">
                   <div>

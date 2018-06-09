@@ -24,21 +24,27 @@ class Login extends React.Component {
             username: this.state.username,
             password: this.state.password
         })
-        .then(resp => {
-            // do something with boolean
-            console.log(resp.data[0])
-            if(!!resp.data[0] && !!resp.data[0].username) {
+        .then(response => {
+            console.log(response);
+            if(response.data === 'OK') {
                 this.props.handleLoggedin(this.state)
                 this.setState({
-                    username: '',
-                    password: '',
                     valid: !this.state.valid
                 },() => {
                     this.closeLoginModal()
                 })
-                
-               
+            } else {
+                this.setState({
+                    username: '',
+                    password: ''
+                })
             }
+        })
+        .catch(()=> {
+            this.setState({
+                username:'',
+                password: ''
+            })
         })  
     }
 
@@ -64,7 +70,7 @@ class Login extends React.Component {
                         <div className="field">
                             <label className="label">Password</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input name = 'password' className="input" type="password" placeholder="password"  onChange = {this.handleChange}/>
+                                <input name = 'password' className="input" type="password" placeholder="password" onChange = {this.handleChange}/>
                             </div>
                         </div>
                         

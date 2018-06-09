@@ -3,12 +3,12 @@ const db = require('./connection.js');
 const saveEventDB = ({
   name, date, time, description, imgurl, address, city, host
 }, callback) => {
-  const name1 = name.split('\'').join('');
-  const description1 = description.split('\'').join('');
-  const imgurl1 = imgurl.split('\'').join('');
-  const address1 = address.split('\'').join('');
-  const city1 = city.split('\'').join('');
-  const host1 = host.split('\'').join('');
+  const name1 = name.split('\'').join('') || '';
+  const description1 = description.split('\'').join('') || '';
+  const imgurl1 = imgurl.split('\'').join('') || '';
+  const address1 = address.split('\'').join('') || '';
+  const city1 = city.split('\'').join('') || '';
+  const host1 = (host === undefined) ? 'unknown' : host.split('\'').join('');
 
   const queryString = `INSERT INTO events (name, date, time, description, imgurl, address, city, host) 
                        VALUES ('${name1}', '${date}', '${time}' , '${description1}', '${imgurl1}', '${address1}', '${city1}', '${host1}')`;
@@ -37,12 +37,11 @@ const getAllEventsDB = (callback) => {
 const updateEventDB = ({
     id, name, date, time, description, imgurl, address, city, host 
 }, callback) => {
-  const name1 = name.split('\'').join('');
-  const description1 = description.split('\'').join('');
-  const imgurl1 = imgurl.split('\'').join('');
-  const address1 = address.split('\'').join('');
-  const city1 = city.split('\'').join('');
-  const host1 = host.split('\'').join('');
+  const name1 = name.split('\'').join('') || '';
+  const description1 = description.split('\'').join('') || '';
+  const address1 = address.split('\'').join('') || '';
+  const city1 = city.split('\'').join('') || '';
+  const host1 = host.split('\'').join('') || '';
   const queryString = `UPDATE events SET name = '${name1}', date = '${date}', time = '${time}', description = '${description1}', imgurl = '${imgurl1}', address = '${address1}', city = '${city1}', host = '${host1}' WHERE id = ${id}`;
   db.connection.query(queryString, (err, result) => {
     if (err) {
@@ -98,8 +97,8 @@ const getEventCommentsDB = (eventId, callback) => {
 };
 
 const postEventCommentDB = ({ eventId, message, sender }, callback) => {
-  const message1 = message.split('\'').join('');
-  const sender1 = sender.split('\'').join('');
+  const message1 = message.split('\'').join('') || '';
+  const sender1 = sender.split('\'').join('') || '';
   const queryString = `INSERT INTO event_comments(id_event, message, timestamp, sender) VALUES('${eventId}', '${message1}', now(), '${sender1}')`;
 
   db.connection.query(queryString, (err) => {
@@ -122,28 +121,6 @@ const getSpecificEventDB = (eventId, callback) => {
   });
 };
 
-const addAttendeeDB = () => {
-  const queryString = ``
-
-  db.connection.query(queryString, (err, result) => {
-    if (err) {
-      console.log('Error adding attendee');
-    }
-    callback(err, result);
-  });
-}
-
-const removeAttendeeDB = () => {
-  const queryString = ``
-
-  db.connection.query(queryString, (err, result) => {
-    if (err) {
-      console.log('Error remoiving attendee');
-    }
-    callback(err, result);
-  });
-}
-
 module.exports = {
   saveEventDB,
   getAllEventsDB,
@@ -155,7 +132,5 @@ module.exports = {
   getEventCommentsDB,
   postEventCommentDB,
   getSpecificEventDB,
-  addAttendeeDB,
-  removeAttendeeDB,
 };
 

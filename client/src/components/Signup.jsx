@@ -8,7 +8,7 @@ class Signup extends React.Component {
             username: '',
             display_name: '',
             password: '',
-            imgUrl: '',
+            imgurl: '',
             email: '',
             bio: '',
             musician: 6
@@ -60,7 +60,7 @@ class Signup extends React.Component {
 
                     <label className="label">Profile Picture</label>
                     <div className="control">
-                        <input name = 'imgUrl' className="input" type="text" placeholder="Paste image URL here" value = {this.state.imgUrl} onChange = {this.handleChange}/>
+                        <input name = 'imgurl' className="input" type="text" placeholder="Paste image URL here" value = {this.state.imgurl} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">E-mail</label>

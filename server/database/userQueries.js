@@ -9,23 +9,37 @@ const { connection } = require('./connection.js');
 // error 'invalid password for username'
 
 const checkUserPasswordMatchDB = (username, password, callback) => {
-  const username1 = username.split('\'').join('');
+  const username1 = username.split('\'').join('') || '';
   const queryString = `SELECT username, password FROM users WHERE username = '${username1}'`;
   connection.query(queryString, (err, result) => {
-    console.log(result, username);
-    callback(err, result);
+    if (err) {
+      callback(err);
+    } else {
+      if (result.length === 0) {
+        throw Error;
+        callback();
+      } else if (result.length === 1) {
+        if (password === result[0].password) {
+          console.log('Username and password match');
+          callback();
+        } else if (password !== result[0].password) {
+          console.error('Invalid password. Try again');
+          throw Error;
+          callback();
+        }
+      }
+    }
   });
 };
 
 const saveNewUserDB = ({
   name, display_name, password, imgurl, email, bio,
 }, callback) => {
-  const name1 = name.split('\'').join('');
-  const display_name1 = display_name.split('\'').join('');
-  const password1 = password.split('\'').join('');
-  const imgurl1 = imgurl.split('\'').join('');
-  const email1 = email.split('\'').join('');
-  const bio1 = bio.split('\'').join('');
+  const name1 = name.split('\'').join('') || '';
+  const password1 = password.split('\'').join('') || '';
+  const imgurl1 = imgurl.split('\'').join('') || '';
+  const email1 = email.split('\'').join('') || '';
+  const bio1 = bio.split('\'').join('') || '';
   const queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${name1}', '${display_name1}','${password1}', '${imgurl1}', '${email1}', '${bio1}')`;
   console.log(queryString);
   connection.query(queryString, (err, result) => {
@@ -59,7 +73,7 @@ const editUserDB = (username, values) => {
 
 // Retrieve user data:
 const retrieveUserInfoDB = (username, callback) => {
-  const username1 = username.split('\'').join('');
+  const username1 = username.split('\'').join('') || '';
   const queryString = `SELECT * FROM users WHERE username = '${username1}'`;
 
   connection.query(queryString, (err, result) => {
@@ -74,9 +88,9 @@ const retrieveUserInfoDB = (username, callback) => {
 
 // Post a message on a user's page
 const addMessageDB = (text, username, sender, callback) => {
-  const text1 = text.split('\'').join('');
-  const username1 = username.split('\'').join('');
-  const sender1 = sender.split('\'').join('');
+  const text1 = text.split('\'').join('') || '';
+  const username1 = username.split('\'').join('') || '';
+  const sender1 = sender.split('\'').join('') || '';
   const queryString = `INSERT INTO messages(text, timestamp, username, sender) VALUES('${text1}', now(), '${username1}', '${sender1}')`;
 
   connection.query(queryString, (err, result) => {
