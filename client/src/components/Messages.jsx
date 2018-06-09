@@ -94,7 +94,7 @@ class Messages extends React.Component {
         {this.state.messages.map(message => {
           return (
             
-            <li>{message.sender} [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>
+            <li><strong>{message.sender}</strong> [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>
           )
         })}
       </ul>

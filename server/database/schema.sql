@@ -9,9 +9,9 @@ CREATE TABLE `users` (
   `username`              VARCHAR(100) NOT NULL UNIQUE,
   `display_name`          VARCHAR(100) DEFAULT NULL,
   `password`              VARCHAR(100) NOT NULL,
-  `imgurl`                VARCHAR(300) DEFAULT NULL,
+  `imgurl`                VARCHAR(500) DEFAULT NULL,
   `email`                 VARCHAR(300) NOT NULL,
-  `bio`                   VARCHAR(500) DEFAULT NULL,
+  `bio`                   VARCHAR(300) DEFAULT NULL,
   `musician`              TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 );

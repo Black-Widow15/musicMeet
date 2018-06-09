@@ -113,7 +113,9 @@ const getEventsAttendingDB = (username, callback) => {
     if (err) {
       console.error('This user does not exist', err);
       callback(err);
-    } else {
+    } else if (result.length === 0) {
+      console.log(`${username} is not attending any upcoming events`);
+    } else if (result.length > 0) {
       const userID = result[0].id;
       console.log(userID);
       const queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;

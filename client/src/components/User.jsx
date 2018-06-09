@@ -28,14 +28,16 @@ class User extends React.Component {
       }
     })
     .then(({data}) => {
-      this.setState({
-        id: data[0].id,
-        username: data[0].username,
-        imgUrl: data[0].imgurl,
-        displayName: data[0].display_name,
-        musician: data[0].musician,
-        bio: data[0].bio
-      })
+      if (data.length > 0) {
+        this.setState({
+          id: data[0].id,
+          username: data[0].username,
+          imgUrl: data[0].imgurl,
+          displayName: data[0].display_name,
+          musician: data[0].musician,
+          bio: data[0].bio
+        })
+      }
     })
   }
 
