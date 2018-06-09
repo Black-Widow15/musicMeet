@@ -123,6 +123,7 @@ class EventPage extends React.Component {
   render () {
     let date = this.state.info.date.slice(0,10);
     return (
+<<<<<<< HEAD
       <div className="tile is-ancestor">
         <div className="tile is-vertical">
 
@@ -148,15 +149,44 @@ class EventPage extends React.Component {
               <div className="columns">
                 <div className="column">
                   <Comments commentList={this.state.comments}/>
+=======
+      <div>
+        <section className="hero is-warning is-bold">
+          <div className="hero-body">
+            <div className="container">
+              <div className="level-left">
+                <div className="level-item">
+                  <figure className="image is-128x128 is-square">
+                    <img src={this.state.info.imgUrl}/>
+                  </figure>
+>>>>>>> dev
                 </div>
-                <div className="column"> 
-                  <AttendeeList attendees={this.state.attendees} />
+                <div className="level-item">
+                  <div>
+                    <h1 className="title">
+                      {this.state.info.name}
+                    </h1><p></p>
+                    <h2 className="subtitle">
+                    <strong>Hosted by: {this.state.info.host}</strong>
+                    <p>{date}, {this.state.info.time}</p>
+                    <button id="rsvp" className="button is-link" onClick={(e) => {this.rsvp()}}>
+                    {this.state.isAttending ? 'Cancel' : 'RSVP' }
+                    </button>
+                    </h2>
+                  </div>
                 </div>
               </div>
+            </div>
           </div>
-
+        </section>
+        <section>
+          <br/>
+          <div className="columns">
+            <Comments commentList={this.state.comments}/>
+            <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
+          </div>
+        </section>
       </div>
-    </div>
     )
   }
 }
