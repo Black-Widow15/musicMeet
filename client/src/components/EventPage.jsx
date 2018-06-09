@@ -139,7 +139,7 @@ class EventPage extends React.Component {
           <br/>
           <div className="columns">
             <Comments commentList={this.state.comments}/>
-            <AttendeeList attendees={this.state.attendees} />
+            <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
           </div>
         </section>
       </div>

@@ -14,20 +14,35 @@ class Comments extends React.Component {
 
     this.changeText = this.changeText.bind(this);
     this.setSender = this.setSender.bind(this);
+    this.postComment = this.postComment.bind(this);
   }
 
   changeText(e) {
     e.preventDefault;
     this.setState({
       text: e.target.value
-    }, () => console.log(e.target.value));
+    })
   }
 
   setSender(e) {
     e.preventDefault;
     this.setState({
       sender: e.target.value
-    }, () => console.log(e.target.value));
+    })
+  }
+
+  postComment() {
+    axios.post('/event/comments', {
+      message: this.state.text,
+      sender: this.state.sender,
+    })
+    .then(()=> {
+      return axios.get('/events/comments', {
+        params: {
+          id: this.props.id
+        }
+      })
+    })
   }
 
   render () {
@@ -49,12 +64,12 @@ class Comments extends React.Component {
             </div>
         </div>
         <div className="control">
-          <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
+          <button className="button is-primary" onClick={this.postComment}>Send</button><br/>
         </div>
         <ul>
         {this.props.commentList.map((comment) => {
           return (
-            <li><strong>{comment.username}</strong> [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: {comment.text}</li>
+            <li><strong>{comment.sender}</strong> [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: {comment.message}</li>
           )
         })}
         </ul>
