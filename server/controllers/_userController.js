@@ -13,7 +13,7 @@ const retrieveUserInfo = (req, res) => {
   console.log('params:', req.params);
   user.retrieveUserInfoDB(req.query.username, (err, result) => {
     if (err) {
-      console.error('error getting user info', err);
+      console.error('Error getting user info', err);
     } else {
       res.send(result);
     }
@@ -23,7 +23,7 @@ const retrieveUserInfo = (req, res) => {
 const addMessage = (req, res) => {
   user.addMessageDB(req.body.text, req.body.username, req.body.sender, (err, result) => {
     if (err) {
-      console.error(err);
+      console.error('Unable to add message', err);
     } else {
       res.sendStatus(201);
     }
@@ -35,7 +35,7 @@ const getMessages = (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      console.log('got messages!');
+      console.log('Got messages!');
       res.send(result);
     }
   });

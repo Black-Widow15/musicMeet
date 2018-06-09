@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import EventSummary from './EventSummary.jsx';
-import EventModal from './EventModal.jsx';
 
 
 class Events extends React.Component {
