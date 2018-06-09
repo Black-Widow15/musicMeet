@@ -10,7 +10,8 @@ class CreateEvent extends React.Component {
             time: '12:00',
             description: '',
             imgurl: '',
-            id_location: ''
+            address: '',
+            city: '',
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -25,7 +26,8 @@ class CreateEvent extends React.Component {
                 time: '12:00',
                 description: '',
                 imgurl: '',
-                id_location: ''
+                address: '',
+                city: '',
             })
         })
     }
@@ -43,7 +45,14 @@ class CreateEvent extends React.Component {
                     </div>
                     <div className="field-body">
                         <div className="field">
-                            <input name = 'name' value = {this.state.name} onChange = {this.handleChange} className="input" type="text" placeholder="Name"/>
+                            <input 
+                              name = 'name' 
+                              value = {this.state.name} 
+                              onChange = {this.handleChange} 
+                              className="input" 
+                              type="text" 
+                              placeholder="Name"
+                            />
                         </div>
                     </div>
                 </div>
@@ -55,7 +64,14 @@ class CreateEvent extends React.Component {
                     <div className="field-body">
                         <div className="field is-expanded">
                             <div className="field has-addons">
-                                <input name = 'date' value = {this.state.date} onChange = {this.handleChange}className="input" type="text" placeholder="YYYY-MM-DD"/>
+                                <input 
+                                  name = 'date' 
+                                  value = {this.state.date} 
+                                  onChange = {this.handleChange} 
+                                  className="input" 
+                                  type="text" 
+                                  placeholder="YYYY-MM-DD"
+                                />
                             </div>
                         </div>
                     </div>
@@ -133,9 +149,27 @@ class CreateEvent extends React.Component {
                     </div>
                     <div className="field-body">
                         <div className="field">
-                        <div className="control">
-                            <input name = 'id_location' className="input" type="text" placeholder="How can people find you?" value = {this.state.id_location} onChange = {this.handleChange}/>
-                        </div>
+                            <div className="control">
+                                <input 
+                                  name = 'address' 
+                                  className="input" 
+                                  type="text" 
+                                  placeholder="Enter a street address" 
+                                  value = {this.state.address} 
+                                  onChange = {this.handleChange}
+                                />
+                            </div>
+                            <div className="control">
+                                <input 
+                                  name = 'city' 
+                                  className="input" 
+                                  type="text" 
+                                  placeholder="Enter a city" 
+                                  value = {this.state.city} 
+                                  onChange = {this.handleChange}
+                                />
+                            </div>
+
                         <div className="control">
                             <button className="button is-link">Submit</button>
                         </div>
