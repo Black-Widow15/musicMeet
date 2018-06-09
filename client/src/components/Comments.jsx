@@ -1,5 +1,4 @@
-import React from 'react'
-import Comment from './Comment.jsx'
+import React from 'react';
 
 class Comments extends React.Component {
   constructor (props) {
