@@ -111,6 +111,11 @@ const addRemoveAttendee = (req, res) => {
     }
     // event.addAttendeeDB(req.body);
 
+<<<<<<<
+
+=======
+}
+>>>>>>>
 module.exports = {
   saveNewEvent,
   getAllEvents,
@@ -124,4 +129,4 @@ module.exports = {
   getSpecificEvent,
 };
 
-    addRemoveAttendee,
+    addAttendee,
