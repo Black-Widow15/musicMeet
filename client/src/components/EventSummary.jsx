@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 // Properties needed:
 // Data needed: name, date, time, imgUrl, location, description
@@ -6,7 +7,7 @@ import React from 'react'
 // We will probably dynamically generate the url based on the name or id.
 
 const EventSummary = (props) => (
-  <div className="card" onClick={(e) => props.launchModal(props.name)}>
+  <div className="card">
     <div className="card-image">
       <figure className="image is-4by3">
         <img src={props.imgUrl} alt="Event Image" width="96" height="96" />
@@ -15,9 +16,13 @@ const EventSummary = (props) => (
     <div className="card-content">
       <div className="media">
         <div className="media-content">
-          <p className="title is-4">{props.name}</p>
+
+          <NavLink to = {`/event/${props.eventId}`}>
+            <p className="title is-4"> <a> {props.name} </a> </p>
+          </NavLink>
+
           <p>Hosted By: {props.host}</p>
-          <p className="subtitle is-6">{props.location}</p>
+          <p className="subtitle is-6">{props.address}, {props.city}</p>
         </div>
       </div>
       <div className="content">
