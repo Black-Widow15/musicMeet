@@ -12,6 +12,11 @@ class EventPage extends React.Component {
   	this.state = {
       // id is the identifier for all events upon componentDidMount
       id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      loggedInUser: {
+        id: 1,
+        username: 'joe',
+      },
+      isAttending: false, 
       comments: [
         {
           commentId: 1,
@@ -36,7 +41,6 @@ class EventPage extends React.Component {
         description: 'Its a huge concert!',
         host: 'Metallica',
       }, // Same data that was in the Event Summary cards.
-      isAttending: false, 
   	};
 
     this.rsvp = this.rsvp.bind(this);
@@ -46,13 +50,21 @@ class EventPage extends React.Component {
   }
   rsvp () {
     let current = this.state.isAttending;
-    // let elem = document.getElementById('rsvp');
-    // console.log(elem);
-    console.log('event page props', this.props);
-
     this.setState({
       isAttending: !current,
     })
+
+    axios.post('/events/attendees', {
+      eventId: this.state.id, 
+      userId: this.state.loggedInUser.id,
+      isAttending: this.state.isAttending,
+    })
+      .then( (response) => {
+
+      })
+      .catch( (err) => {
+        console.error(err);
+      })
   }
 
   fillEventData () {

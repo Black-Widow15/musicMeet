@@ -21,9 +21,9 @@ class App extends React.Component {
     }
 
     handleLogin(username) {
-        console.log('passed in username', username)
+        // console.log('passed in username', username)
         this.setState({username: username})
-        console.log('app state', this.state);
+        // console.log('app state', this.state);
     }
 
     render() {
@@ -37,10 +37,6 @@ class App extends React.Component {
                     <Route exact path = '/create' component = {CreateEvent}/>
                     <Route exact path = '/users' component = {User}/>
                     <Route exact path = '/event/:number' component = {EventPage}/>
-                    <Route 
-                      exact path="/event/:number" 
-                      render={() => ( <EventPage loggedInUser={this.state.username}/> )} 
-                    />
                 </Switch>
                 
                 </div>
