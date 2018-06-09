@@ -6,6 +6,7 @@ class Messages extends React.Component {
     super(props)
 
     this.state = {
+      username: this.props.username,
       input: '',
       messages: [],
     }
@@ -36,19 +37,24 @@ class Messages extends React.Component {
 
   addMessage(text) {
     axios.post('/users/messages', {
-        username: this.props.username,
+        username: this.state.username,
         text: this.state.input
       })
-    .then(axios.get('/users/messages', {
+    .then(() => {
+      return axios.get('/users/messages', {
         params: {
-          username: this.props.username
+          username: this.state.username
         }
-      }))
+      })
+    })
     .then(({data}) => {
       console.log('data from adding message and then getting messages: ', data);
       this.setState({
         messages: data
-      })
+      }, () => console.log(this.state.messages))
+    })
+    .catch(err => {
+      console.error('could not post message!');
     })
   }
 
@@ -65,7 +71,7 @@ class Messages extends React.Component {
           </div>
       </div>
       <div className="control">
-        <button className="button is-primary" onClick={() => this.addMessage}>Send</button><br/>
+        <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
       </div>
       <ul>
         {this.state.messages.map(message => {

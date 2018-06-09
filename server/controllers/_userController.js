@@ -10,24 +10,24 @@ const editUser = (req, res) => {
 const retrieveUserInfo = (req, res) => {
   console.log('body:', req.body);
   console.log('query:', req.query);
-  console.log('params:',req.params);
+  console.log('params:', req.params);
   user.retrieveUserInfoDB(req.query.username, (err, result) => {
     if (err) {
-      console.error(err);
+      console.error('error getting user info', err);
     } else {
-      console.log('user info: ', result);
       res.send(result);
     }
   });
 };
 
 const addMessage = (req, res) => {
-  console.log('req.body', req.body);
+  console.log('adding message body:', req.body);
+  console.log('adding msg query:', req.query);
+  console.log('adding message params:', req.params);
   user.addMessageDB(req.body.text, req.body.username, (err, result) => {
     if (err) {
       console.error(err);
     } else {
-      console.log(result);
       res.sendStatus(201);
     }
   });
