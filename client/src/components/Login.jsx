@@ -57,14 +57,14 @@ class Login extends React.Component {
                         <div className="field">
                             <label className="label">Username</label>
                             <div className="control">
-                                <input name = 'username' className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleChange}/>
+                                <input name = 'username' className="input" type="text" placeholder="username" value = {this.state.username} onChange = {this.handleChange}/>
                             </div>
                         </div>
 
                         <div className="field">
                             <label className="label">Password</label>
                             <div className="control has-icons-left has-icons-right">
-                                <input name = 'password' className="input" type="text" placeholder="Text input"  onChange = {this.handleChange}/>
+                                <input name = 'password' className="input" type="password" placeholder="password"  onChange = {this.handleChange}/>
                             </div>
                         </div>
                         

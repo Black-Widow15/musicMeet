@@ -30,7 +30,7 @@ class EventsAttending extends React.Component {
         <div className="notification is-primary has-text-centered">
           Events I am attending
         </div>
-        {this.state.eventsAttending.length === 0 ? <p>{this.props.username} is not attending any upcoming events.</p> :
+        {this.state.eventsAttending.length === 0 ? <p><strong>{this.props.username}</strong> is not attending any upcoming events.</p> :
         <ul>
           {this.state.eventsAttending.map(event => {
             return (
