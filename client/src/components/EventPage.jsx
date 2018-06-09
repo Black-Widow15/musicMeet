@@ -8,9 +8,10 @@ class EventPage extends React.Component {
   constructor (props) {
   	super(props);
 
+
   	this.state = {
       // id is the identifier for all events upon componentDidMount
-      id: 1,
+      id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
       comments: [
         {
           commentId: 1,
@@ -100,6 +101,7 @@ class EventPage extends React.Component {
     this.fillEventData();
     this.fillAttendeeFeed();
     this.fillCommentsFeed();
+    console.log('props', this.props);
   }
 
   render () {
