@@ -10,22 +10,26 @@ class Events extends React.Component {
   	this.state = {
   	  eventsPop: [   // Array of event objs from db.
         {
+          id: 1,
           name: 'party!',
           date: 'July 4',
           time: '11pm',
           imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
-          location: 'A house',
+          address: '123 some street',
+          city: 'Chicago, IL',
           description: 'Come to my party!',
           host: 'Van Halen',
         }
       ], 
   	  eventsNew: [
         {
+          id: 2,
           name: 'Concert',
           date: 'June 7',
           time: '11pm',
           imgUrl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
-          location: 'Madison Square Garden',
+          address: 'Madison Square Garden',
+          city: 'New York, NY',
           description: 'Its a huge concert!',
           host: 'Metallica',
         }
@@ -74,14 +78,15 @@ class Events extends React.Component {
             return (
             <div> 
               <EventSummary 
+                eventId={event.id}
                 name={event.name} 
                 host={event.host}
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgurl}
-                location={event.location}
+                address={event.address}
+                city={event.city}
                 description={event.description}
-                launchModal={launchModal}
               />
             </div>
             )
@@ -95,14 +100,15 @@ class Events extends React.Component {
             return (
             <div> 
               <EventSummary 
+                eventId={event.id}
                 name={event.name}
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
                 imgUrl={event.imgurl}
-                location={event.location}
+                address={event.address}
+                city={event.city}
                 description={event.description}
-                launchModal={launchModal}
               /> 
             </div>
             )
