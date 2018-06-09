@@ -14,7 +14,9 @@ const Attendee = (props) => (
     <div className="media-content">
       <div className="content">
         <p>
-          <strong> {props.username} </strong>
+        <NavLink to = {`/user/${props.username}`}>
+          <strong><a>{props.username}</a></strong>
+        </NavLink>
         </p>
       </div>
     </div>

@@ -15,19 +15,20 @@ router.get('/events/recent', eventController.getRecentEvents);
 
 // Event page
 router.get('/event/:number', eventController.getSpecificEvent);
-router.get('/events/attendees', eventController.getAttendeeList);
-router.get('/events/comments', eventController.getEventComments);
+router.get('/events/:number/attendees', eventController.getAttendeeList);
+router.get('/events/:number/comments', eventController.getEventComments);
 
+// Landing page
 router.post('/login', registerController.login)
 router.post('/signup', registerController.signup);
 
-
-router.get('/users', userController.retrieveUserInfo);
-router.put('/users/edit', userController.editUser);
-router.post('/users/messages', userController.addMessage);
-router.get('/users/messages', userController.getMessages);
-router.get('/users/attending', userController.getEventsAttending);
-router.get('/users/hosting', userController.getEventsHosting);
+// User page
+router.get('/users/:username', userController.retrieveUserInfo);
+router.put('/users/:username/edit', userController.editUser);
+router.post('/users/:username/messages', userController.addMessage);
+router.get('/users/:username/messages', userController.getMessages);
+router.get('/users/:username/attending', userController.getEventsAttending);
+router.get('/users/:username/hosting', userController.getEventsHosting);
 
 module.exports = {
   router,

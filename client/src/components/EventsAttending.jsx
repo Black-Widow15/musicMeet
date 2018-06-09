@@ -33,7 +33,9 @@ class EventsAttending extends React.Component {
         <ul>
           {this.state.eventsAttending.map(event => {
             return (
-            <a  href="#"><li>{event.name}</li></a>
+              <NavLink to = {`/event/${event.id}`}>
+                <li><a>{event.name}</a></li>
+              </NavLink>
             )
           })}
         </ul>
