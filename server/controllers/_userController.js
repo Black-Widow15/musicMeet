@@ -21,7 +21,7 @@ const retrieveUserInfo = (req, res) => {
 };
 
 const addMessage = (req, res) => {
-  user.addMessageDB(req.body.text, req.body.username, (err, result) => {
+  user.addMessageDB(req.body.text, req.body.username, req.body.sender, (err, result) => {
     if (err) {
       console.error(err);
     } else {

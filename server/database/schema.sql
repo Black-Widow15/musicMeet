@@ -22,6 +22,7 @@ CREATE TABLE `messages` (
   `text`                  VARCHAR(300) DEFAULT NULL,
   `timestamp`             TIMESTAMP,
   `username`              VARCHAR(100) NOT NULL,
+  `sender`                VARCHAR(100) DEFAULT 'anonymous',
   PRIMARY KEY (`id`)
 );
 
