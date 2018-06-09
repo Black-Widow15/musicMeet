@@ -1,3 +1,7 @@
+// This feature is to be cut.
+
+/*
+
 import React from 'react';
 import EventSummary from './EventSummary.jsx';
 
@@ -34,3 +38,5 @@ const EventModal = (props) => (
 )
 
 export default EventModal;
+
+*/

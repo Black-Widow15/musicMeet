@@ -21,7 +21,7 @@ const Comment = (props) => (
       </div>
     </div>
     <div className="media-right">
-      {props.timestamp}
+      {props.date}, {props.time}
     </div>
   </article>
 )

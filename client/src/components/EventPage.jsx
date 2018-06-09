@@ -101,7 +101,6 @@ class EventPage extends React.Component {
     this.fillEventData();
     this.fillAttendeeFeed();
     this.fillCommentsFeed();
-    console.log('props', this.props);
   }
 
   render () {
@@ -131,9 +130,11 @@ class EventPage extends React.Component {
           <div className="tile is-child">
               <div className="columns">
                 <div className="column">
+                  <strong>Comments</strong>
                   <Comments commentList={this.state.comments}/>
                 </div>
                 <div className="column"> 
+                  <strong>Attendees</strong>
                   <AttendeeList attendees={this.state.attendees} />
                 </div>
               </div>

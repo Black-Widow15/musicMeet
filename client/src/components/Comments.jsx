@@ -14,12 +14,17 @@ class Comments extends React.Component {
     return (<div>
     {
       this.props.commentList.map( (comment) => {
+        let timestamp = comment.timestamp.slice(0, 16);
+        let date = comment.timestamp.slice(0, 10);
+        let time = comment.timestamp.slice(11, 16);
         return (
           <div>
           <Comment 
             commentId={comment.id}
             text={comment.message}
-            timestamp={comment.timestamp}
+            date={date}
+            time={time}
+            timestamp={timestamp}
             username={comment.display_name}
             avatarUrl={comment.imgurl}
           />
