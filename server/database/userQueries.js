@@ -36,6 +36,7 @@ const saveNewUserDB = ({
   name, display_name, password, imgurl, email, bio,
 }, callback) => {
   const name1 = name.split('\'').join('') || '';
+  const display_name1= display_name.split('\'').join('') || '';
   const password1 = password.split('\'').join('') || '';
   const imgurl1 = imgurl.split('\'').join('') || '';
   const email1 = email.split('\'').join('') || '';

@@ -116,8 +116,10 @@ const getSpecificEventDB = (eventId, callback) => {
   db.connection.query(queryString, (err, result) => {
     if (err) {
       console.log('Error getting event data');
+    } else {
+      callback(err, result);
     }
-  }
+  });
 };
 
 const addAttendeeDB = (eventId, userId, callback) => {
@@ -129,7 +131,7 @@ const addAttendeeDB = (eventId, userId, callback) => {
     }
     callback(err, result);
   });
-}
+};
 
 const removeAttendeeDB = (eventId, userId, callback) => {
   const queryString = `DELETE FROM users_events WHERE id_user=${userId} AND id_event=${eventId};`
