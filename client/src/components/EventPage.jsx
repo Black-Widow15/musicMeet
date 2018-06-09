@@ -11,7 +11,7 @@ class EventPage extends React.Component {
 
   	this.state = {
       // id is the identifier for all events upon componentDidMount
-      id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      // id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
       loggedInUser: {
         id: 2,
         username: 'joe',
