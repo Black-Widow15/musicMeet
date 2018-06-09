@@ -86,14 +86,14 @@ class EventPage extends React.Component {
         id: this.state.id,
       }
     })
-      .then( (response) => {
-        this.setState({
-          attendees: response.data,
-        })
+    .then((response) => {
+      this.setState({
+        attendees: response.data
       })
-      .catch( (err) => {
-        console.log(err);
-      })
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
   }
 
   componentDidMount () {
@@ -112,7 +112,7 @@ class EventPage extends React.Component {
 
           <div className="tile is-parent">
             <div className="tile is-6 is-child">
-              <img src={this.state.info.imgurl} />
+              <img src={this.state.info.imgUrl} />
             </div>
 
             <div className="tile is-child">

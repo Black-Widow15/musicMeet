@@ -1,31 +1,27 @@
-// require modules for database query functions
-// require user model 
-const db = require('../database/userQueries.js')
+const user = require('../database/userQueries.js');
 
 
 const login = (req, res) => {
-
-    db.checkUserPasswordMatchDB(req.body.username, req.body.password, (err, result) => {
-        if (err) {
-            console.log('Error checking username and password in database')
-        } else {
-            res.send(result)
-        }
-    })
-}
-
+  user.checkUserPasswordMatchDB(req.body.username, req.body.password, (err) => {
+    if (err) {
+      console.error('Invalid username and/or password');
+    } else {
+      res.sendStatus(200);
+    }
+  });
+};
 
 const signup = (req, res) => {
-    db.saveNewUserDB(req.body, (err, result) => {
-        if(err){
-            console.log('Could not save a user into the database')
-        } else {
-            res.status(201).end()
-        }
-    })
-}
+  user.saveNewUserDB(req.body, (err) => {
+    if (err) {
+      console.error('User could not be saved into the database');
+    } else {
+      res.sendStatus(201);
+    }
+  });
+};
 
 module.exports = {
-    login,
-    signup
-}
+  login,
+  signup,
+};

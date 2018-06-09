@@ -8,7 +8,7 @@ class Signup extends React.Component {
             username: '',
             display_name: '',
             password: '',
-            imgurl: '',
+            imgUrl: '',
             email: '',
             bio: '',
             musician: 6
@@ -43,34 +43,34 @@ class Signup extends React.Component {
                 <div className="box">
                 <div className="field">
                 
-                    <label className="label">Name</label>
+                    <label className="label">Username</label>
                     <div className="control">
-                        <input name = 'name' className="input" type="text" placeholder="Text input" value = {this.state.name} onChange = {this.handleChange}/>
+                        <input name = 'name' className="input" type="text" placeholder="Username" value = {this.state.name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Display Name</label>
                     <div className="control">
-                        <input name = 'display_name' className="input" type="text" placeholder="Text input" value = {this.state.display_name} onChange = {this.handleChange}/>
+                        <input name = 'display_name' className="input" type="text" placeholder="Display name" value = {this.state.display_name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Password</label>
                     <div className="control">
-                        <input name = 'password'className="input" type="password" placeholder="Text input" value = {this.state.password} onChange = {this.handleChange}/>
+                        <input name = 'password'className="input" type="password" placeholder="Password" value = {this.state.password} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Profile Picture</label>
                     <div className="control">
-                        <input name = 'imgurl' className="input" type="text" placeholder="Text input" value = {this.state.imgurl} onChange = {this.handleChange}/>
+                        <input name = 'imgUrl' className="input" type="text" placeholder="Paste image URL here" value = {this.state.imgUrl} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">E-mail</label>
                     <div className="control">
-                        <input name = 'email' className="input" type="text" placeholder="Text input" value = {this.state.email} onChange = {this.handleChange}/>
+                        <input name = 'email' className="input" type="text" placeholder="E-mail address" value = {this.state.email} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Bio</label>
                     <div className="control">
-                        <input name = 'bio' className="input" type="text" placeholder="Text input" value = {this.state.bio} onChange = {this.handleChange}/>
+                        <input name = 'bio' className="input" type="text" placeholder="Quick bio" value = {this.state.bio} onChange = {this.handleChange}/>
                     </div>
                 
                     </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 // Data needed: commentId, text, timestamp, username, avatar URL
 // We will have to add functionality to link to the actual event page.

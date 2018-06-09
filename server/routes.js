@@ -18,10 +18,11 @@ router.get('/event/:number', eventController.getSpecificEvent);
 router.get('/events/attendees', eventController.getAttendeeList);
 router.get('/events/comments', eventController.getEventComments);
 
+// Landing page
 router.post('/login', registerController.login)
 router.post('/signup', registerController.signup);
 
-
+// User page
 router.get('/users', userController.retrieveUserInfo);
 router.put('/users/edit', userController.editUser);
 router.post('/users/messages', userController.addMessage);

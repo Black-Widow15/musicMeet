@@ -8,32 +8,36 @@ class User extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
-      image: 'fake image url',
+      id: '',
+      username: 'makm',
+      imgUrl: 'fake image url',
       displayName: '',
       musician: null,
       upcomingGigs: [],
       bio: '',
       photos: [],
       messages: [],
-      eventsAttending: [{name: 'a'}, {name: 'b'}, {name: 'c'}]
+      eventsAttending: [],
     };
   }
 
   componentDidMount() {
     axios.get('/users', {
-      params: { 
-        username: 'makm' // MICHAEL: please change this when you do routing
+      params: {
+        username: this.state.username
       }
     })
     .then(({data}) => {
-      this.setState({
-        name: data[0].username,
-        image: data[0].imageUrl,
-        displayName: data[0].display_name,
-        musician: data[0].musician,
-        bio: data[0].bio
-      })
+      if (data.length > 0) {
+        this.setState({
+          id: data[0].id,
+          username: data[0].username,
+          imgUrl: data[0].imgurl,
+          displayName: data[0].display_name,
+          musician: data[0].musician,
+          bio: data[0].bio
+        })
+      }
     })
   }
 
@@ -46,7 +50,7 @@ class User extends React.Component {
           <div className="level-left">
             <div className="level-item">
               <figure className="image is-128x128 is-square">
-                <img src={this.state.image}/>
+                <img src={this.state.imgUrl}/>
               </figure>
             </div>
             <div className="level-item">
@@ -55,7 +59,7 @@ class User extends React.Component {
                   {this.state.displayName}
                 </h1><p></p>
                 <h2 className="subtitle">
-                  @{this.state.name}
+                  @{this.state.username}
                 </h2>
               </div>
             </div>

@@ -6,12 +6,15 @@ class Messages extends React.Component {
     super(props)
 
     this.state = {
+      username: this.props.username,
       input: '',
       messages: [],
+      sender: '',
     }
 
     this.addMessage = this.addMessage.bind(this);
     this.changeText = this.changeText.bind(this);
+    this.setSender = this.setSender.bind(this);
   }
 
   changeText(e) {
@@ -20,12 +23,19 @@ class Messages extends React.Component {
       input: e.target.value
     })
   }
+  
+  setSender(e) {
+    e.preventDefault;
+    this.setState({
+      sender: e.target.value
+    })
+  }
+
 
   componentDidMount() {
     axios.get('/users/messages', {
       params: {
-        // username: this.props.username // i'm not sure why it's not able to get the username from User component
-        username: 'makm' // MICHAEL: please change this when you do routing
+        username: this.props.username
       }
     })
     .then(({data}) => {
@@ -37,13 +47,14 @@ class Messages extends React.Component {
 
   addMessage(text) {
     axios.post('/users/messages', {
-        username: this.props.username,
-        text: this.state.input
+        username: this.state.username,
+        text: this.state.input,
+        sender: this.state.sender
       })
     .then(() => {
-      axios.get('/users/messages', {
+      return axios.get('/users/messages', {
         params: {
-          username: this.props.username
+          username: this.state.username
         }
       })
     })
@@ -51,7 +62,10 @@ class Messages extends React.Component {
       console.log('data from adding message and then getting messages: ', data);
       this.setState({
         messages: data
-      })
+      }, () => console.log('got messages!'))
+    })
+    .catch(err => {
+      console.error('could not post message!');
     })
   }
 
@@ -64,7 +78,13 @@ class Messages extends React.Component {
       <div className="field">
         <label className="label">Write me a message!</label>
           <div className="control">
-            <input className="input" type="text" placeholder="start typing here" onChange={(e) => this.changeText(e)}/>
+            <input className="input" type="text" placeholder="start typing here!" onChange={(e) => this.changeText(e)}/>
+          </div>
+      </div>
+      <div className="field">
+        <label className="label">Sent by...</label>
+          <div className="control">
+            <input className="input" type="text" placeholder="let me know who you are!" onChange={(e) => this.setSender(e)}/>
           </div>
       </div>
       <div className="control">
@@ -73,7 +93,8 @@ class Messages extends React.Component {
       <ul>
         {this.state.messages.map(message => {
           return (
-            <li><strong>{message.username}</strong>: {message.text}</li>
+            
+            <li><strong>{message.sender}</strong> [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>
           )
         })}
       </ul>

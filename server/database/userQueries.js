@@ -9,15 +9,29 @@ const { connection } = require('./connection.js');
 // error 'invalid password for username'
 
 const checkUserPasswordMatchDB = (username, password, callback) => {
-  let queryString = `SELECT username FROM users WHERE username = '${username}'`;
+  const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    console.log(result,username)
-     callback(err, result)
+    if (err) {
+      callback(err);
+    } else {
+      if (result.length === 0) {
+        console.log('Invalid username');
+        callback(result);
+      } else if (result.length === 1) {
+        if (password === result[0].password) {
+          console.log('Username and password match');
+          callback();
+        } else if (password !== result[0].password) {
+          console.error('Invalid password. Try again');
+          callback();
+        }
+      }
+    }
   });
 };
 
 const saveNewUserDB = ({
-  name, display_name, password, imgurl, email, bio
+  name, display_name, password, imgurl, email, bio,
 }, callback) => {
   const queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${name}', '${display_name}','${password}', '${imgurl}', '${email}', '${bio}')`;
   console.log(queryString);
@@ -34,7 +48,6 @@ const saveNewUserDB = ({
 // Edit User data:
   // Define the query string.
 const editUserDB = (username, values) => {
-  
   // Set the query string based on this new object. Submit the query string.
   const queryString =
       `UPDATE users
@@ -65,8 +78,8 @@ const retrieveUserInfoDB = (username, callback) => {
   });
 };
 
-const addMessageDB = (text, username, callback) => {
-  const queryString = `INSERT INTO messages(text, timestamp, username) VALUES('${text}', now(), '${username}')`;
+const addMessageDB = (text, username, sender, callback) => {
+  const queryString = `INSERT INTO messages(text, timestamp, username, sender) VALUES('${text}', now(), '${username}', '${sender}')`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
@@ -88,34 +101,35 @@ const getMessagesDB = (username, callback) => {
       console.error(err);
       callback(err);
     } else {
-      console.log('messages: ', result);
+      console.log('got messages!');
       callback(null, result);
     }
   });
 };
 
 const getEventsAttendingDB = (username, callback) => {
-  // let queryString1 = `SELECT id FROM users where username = '${username}'`;
-  // connection.query(queryString1, (err, result) => {
-  //   if (err) {
-  //     console.error('This user does not exist', err);
-  //     callback(err);
-  //   }else {
-  //     console.log('user of id is: ', result);
-  //     let userID = result[0].id;
-  //     console.log(userID);
-  //     let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
-  //     connection.query(queryString2, (error, results) => {
-  //       if (err) {
-  //         console.error(`Error finding events that ${userID} is attending`, error);
-  //         callback(err);
-  //       }else {
-  //         console.log(`${userID} is attending these events: `, results);
-  //         callback(null, results);
-  //       }
-  //     });
-  //   }
-  // });
+  const queryString1 = `SELECT id FROM users where username = '${username}'`;
+  connection.query(queryString1, (err, result) => {
+    if (err) {
+      console.error('This user does not exist', err);
+      callback(err);
+    } else if (result.length === 0) {
+      console.log(`${username} is not attending any upcoming events`);
+    } else if (result.length > 0) {
+      const userID = result[0].id;
+      console.log(userID);
+      const queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
+      connection.query(queryString2, (error, results) => {
+        if (err) {
+          console.error(`Error finding events that ${userID} is attending`, error);
+          callback(err);
+        } else {
+          console.log(`${userID} is attending these events: `, results);
+          callback(null, results);
+        }
+      });
+    }
+  });
 };
 
 
