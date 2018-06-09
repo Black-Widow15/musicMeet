@@ -15,15 +15,18 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: ''
+            user: null,
         }
         this.handleLogin = this.handleLogin.bind(this)
     }
 
-    handleLogin(username) {
-        // console.log('passed in username', username)
-        this.setState({username: username})
-        // console.log('app state', this.state);
+    handleLogin(user) {
+        console.log('passed in user', user)
+        this.setState({
+            user: user,
+        }, () => {
+            console.log('app state', this.state);
+        });
     }
 
     render() {
