@@ -14,7 +14,7 @@ class Events extends React.Component {
           name: 'party!',
           date: 'July 4',
           time: '11pm',
-          imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
+          imgUrl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
           address: '123 some street',
           city: 'Chicago, IL',
           description: 'Come to my party!',
@@ -83,7 +83,7 @@ class Events extends React.Component {
                 host={event.host}
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgurl}
+                imgUrl={event.imgUrl}
                 address={event.address}
                 city={event.city}
                 description={event.description}
@@ -105,7 +105,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgurl}
+                imgUrl={event.imgUrl}
                 address={event.address}
                 city={event.city}
                 description={event.description}

@@ -112,7 +112,7 @@ class EventPage extends React.Component {
 
           <div className="tile is-parent">
             <div className="tile is-6 is-child">
-              <img src={this.state.info.imgurl} />
+              <img src={this.state.info.imgUrl} />
             </div>
 
             <div className="tile is-child">

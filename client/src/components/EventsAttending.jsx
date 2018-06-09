@@ -12,7 +12,7 @@ class EventsAttending extends React.Component {
   componentDidMount() {
     axios.get('/users/attending', {
       params: {
-        username: 'makm' // MICHAEL: please change this when you do routing
+        username: this.props.username
       }
     })
     .then(({data = null}) => {
