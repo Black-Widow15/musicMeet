@@ -28,7 +28,6 @@ class User extends React.Component {
       }
     })
     .then(({data}) => {
-      console.log('data', data);
       this.setState({
         id: data[0].id,
         username: data[0].username,

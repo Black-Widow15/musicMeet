@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class EventsAttending extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class EventsAttending extends React.Component {
         username: this.props.username
       }
     })
-    .then(({data = null}) => {
+    .then(({data}) => {
       console.log('events attending front: ', data);
       this.setState({
         eventsAttending: data
@@ -25,7 +25,6 @@ class EventsAttending extends React.Component {
   }
 
   render() {
-    //below, the link is a placeholder but would like for the user to be brought to the corresponding EventPage
     return(
       <div className="column">
         <div className="notification is-primary has-text-centered">
@@ -34,9 +33,9 @@ class EventsAttending extends React.Component {
         <ul>
           {this.state.eventsAttending.map(event => {
             return (
-              <NavLink to = {`/event/${event.id}`}>
-                <li><a>{event.name}</a></li>
-              </NavLink>
+              <li>
+              {event.name}
+              </li>
             )
           })}
         </ul>

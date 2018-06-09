@@ -38,7 +38,7 @@ const getMessages = (req, res) => {
     if (err) {
       console.error(err);
     } else {
-      console.log('messages: ', result);
+      console.log('got messages!');
       res.send(result);
     }
   });

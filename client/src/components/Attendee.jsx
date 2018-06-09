@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 // Data needed: commentId, text, timestamp, username, avatar URL
 // We will have to add functionality to link to the actual event page.
@@ -14,9 +15,9 @@ const Attendee = (props) => (
     <div className="media-content">
       <div className="content">
         <p>
-        <NavLink to = {`/user/${props.username}`}>
-          <strong><a>{props.username}</a></strong>
-        </NavLink>
+          <NavLink to = {`/user/${props.username}`}>
+            <p><a>{props.username}</a></p>
+          </NavLink>
         </p>
       </div>
     </div>

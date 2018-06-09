@@ -51,7 +51,7 @@ class Messages extends React.Component {
       console.log('data from adding message and then getting messages: ', data);
       this.setState({
         messages: data
-      }, () => console.log(this.state.messages))
+      }, () => console.log('got messages!'))
     })
     .catch(err => {
       console.error('could not post message!');
