@@ -11,22 +11,8 @@ const { connection } = require('./connection.js');
 const checkUserPasswordMatchDB = (username, password, callback) => {
   const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    if (err) {
-      callback(err);
-    } else {
-      if (result.length === 0) {
-        console.log('Invalid username');
-        callback(result);
-      } else if (result.length === 1) {
-        if (password === result[0].password) {
-          console.log('Username and password match');
-          callback();
-        } else if (password !== result[0].password) {
-          console.error('Invalid password. Try again');
-          callback();
-        }
-      }
-    }
+    console.log(result,username)
+     callback(err, result)
   });
 };
 
