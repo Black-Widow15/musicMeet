@@ -4,7 +4,7 @@ const user = require('../database/userQueries.js');
 const login = (req, res) => {
   user.checkUserPasswordMatchDB(req.body.username, req.body.password, (err) => {
     if (err) {
-      console.error('Error checking username and password in database');
+      console.error('Invalid username and/or password');
     } else {
       res.sendStatus(200);
     }

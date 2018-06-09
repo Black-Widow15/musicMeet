@@ -12,15 +12,20 @@ const checkUserPasswordMatchDB = (username, password, callback) => {
   const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
     if (err) {
-      console.error('invalid username!');
       callback(err);
-    } else if (password === result[0].password) {
-      console.log(password, result[0].password);
-      console.log('username and password match');
-      callback();
     } else {
-      console.error('invalid password, try again');
-      callback();
+      if (result.length === 0) {
+        console.log('Invalid username');
+        callback(result);
+      } else if (result.length === 1) {
+        if (password === result[0].password) {
+          console.log('Username and password match');
+          callback();
+        } else if (password !== result[0].password) {
+          console.error('Invalid password. Try again');
+          callback();
+        }
+      }
     }
   });
 };
