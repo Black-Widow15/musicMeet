@@ -9,8 +9,8 @@ class User extends React.Component {
 
     this.state = {
       id: '',
-      username: '',
-      image: 'fake image url',
+      username: 'makm',
+      imgUrl: 'fake image url',
       displayName: '',
       musician: null,
       upcomingGigs: [],
@@ -23,15 +23,16 @@ class User extends React.Component {
 
   componentDidMount() {
     axios.get('/users', {
-      params: { 
+      params: {
         username: this.state.username
       }
     })
     .then(({data}) => {
+      console.log('data', data);
       this.setState({
         id: data[0].id,
         username: data[0].username,
-        image: data[0].imgurl,
+        imgUrl: data[0].imgurl,
         displayName: data[0].display_name,
         musician: data[0].musician,
         bio: data[0].bio
@@ -48,7 +49,7 @@ class User extends React.Component {
           <div className="level-left">
             <div className="level-item">
               <figure className="image is-128x128 is-square">
-                <img src={this.state.image}/>
+                <img src={this.state.imgUrl}/>
               </figure>
             </div>
             <div className="level-item">

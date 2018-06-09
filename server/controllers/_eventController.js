@@ -1,7 +1,7 @@
-const event = require('../database/eventQueries.js')
+const event = require('../database/eventQueries.js');
+
 
 const saveNewEvent = (req, res) => {
- 
     event.saveEventDB(req.body, (err, result) => {
         if(err){
             console.log('Event not saved into the database')
@@ -27,7 +27,7 @@ const deleteEvent = (req, res) => {
         if(err) {
             console.log(`Could not delete event ${req.body.id}`)
         }
-        res.status(201).end()
+        res.sendStatus(200);
     })
 }
 

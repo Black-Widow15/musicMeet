@@ -23,12 +23,12 @@ router.post('/login', registerController.login)
 router.post('/signup', registerController.signup);
 
 // User page
-router.get('/users/:username', userController.retrieveUserInfo);
-router.put('/users/:username/edit', userController.editUser);
-router.post('/users/:username/messages', userController.addMessage);
-router.get('/users/:username/messages', userController.getMessages);
-router.get('/users/:username/attending', userController.getEventsAttending);
-router.get('/users/:username/hosting', userController.getEventsHosting);
+router.get('/users', userController.retrieveUserInfo);
+router.put('/users/edit', userController.editUser);
+router.post('/users/messages', userController.addMessage);
+router.get('/users/messages', userController.getMessages);
+router.get('/users/attending', userController.getEventsAttending);
+router.get('/users/hosting', userController.getEventsHosting);
 
 module.exports = {
   router,

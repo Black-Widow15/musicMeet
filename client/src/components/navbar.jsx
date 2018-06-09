@@ -66,7 +66,7 @@ class NavBar extends React.Component {
                     <NavLink className="navbar-link" to = '/create'>
                     Create an Event
                     </NavLink>
-                    <NavLink className="navbar-link" to = '/user'>
+                    <NavLink className="navbar-link" to = '/users'>
                     Profiles
                     </NavLink>
                     <NavLink className="navbar-link" to = '/event'>

@@ -39,13 +39,11 @@ class Messages extends React.Component {
         username: this.props.username,
         text: this.state.input
       })
-    .then(() => {
-      axios.get('/users/messages', {
+    .then(axios.get('/users/messages', {
         params: {
           username: this.props.username
         }
-      })
-    })
+      }))
     .then(({data}) => {
       console.log('data from adding message and then getting messages: ', data);
       this.setState({
@@ -67,7 +65,7 @@ class Messages extends React.Component {
           </div>
       </div>
       <div className="control">
-        <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
+        <button className="button is-primary" onClick={() => this.addMessage}>Send</button><br/>
       </div>
       <ul>
         {this.state.messages.map(message => {

@@ -5,7 +5,7 @@ class CreateEvent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
+            name: '',
             date: '',
             time: '12:00',
             description: '',
@@ -21,7 +21,7 @@ class CreateEvent extends React.Component {
         axios.post('/events', this.state)
         .then(() => {
             this.setState({
-                username: '',
+                name: '',
                 date: '',
                 time: '12:00',
                 description: '',
