@@ -73,7 +73,8 @@ const editUserDB = (username, values) => {
 
 // Retrieve user data:
 const retrieveUserInfoDB = (username, callback) => {
-  const queryString = `SELECT * FROM users WHERE username = '${username}'`;
+  const username1 = username.split('\'').join('');
+  const queryString = `SELECT * FROM users WHERE username = '${username1}'`;
 
   connection.query(queryString, (err, result) => {
     if (err) {
@@ -87,7 +88,10 @@ const retrieveUserInfoDB = (username, callback) => {
 
 // Post a message on a user's page
 const addMessageDB = (text, username, sender, callback) => {
-  const queryString = `INSERT INTO messages(text, timestamp, username, sender) VALUES('${text}', now(), '${username}', '${sender}')`;
+  const text1 = text.split('\'').join('');
+  const username1 = username.split('\'').join('');
+  const sender1 = sender.split('\'').join('');
+  const queryString = `INSERT INTO messages(text, timestamp, username, sender) VALUES('${text1}', now(), '${username1}', '${sender1}')`;
 
   connection.query(queryString, (err, result) => {
     if (err) {

@@ -3,8 +3,15 @@ const db = require('./connection.js');
 const saveEventDB = ({
   name, date, time, description, imgurl, address, city, host
 }, callback) => {
+  const name1 = name.split('\'').join('');
+  const description1 = description.split('\'').join('');
+  const imgurl1 = imgurl.split('\'').join('');
+  const address1 = address.split('\'').join('');
+  const city1 = city.split('\'').join('');
+  const host1 = host.split('\'').join('');
+
   const queryString = `INSERT INTO events (name, date, time, description, imgurl, address, city, host) 
-                       VALUES ('${name}', '${date}', '${time}' , '${description}', '${imgurl}', '${address}', '${city}', '${host}')`;
+                       VALUES ('${name1}', '${date}', '${time}' , '${description1}', '${imgurl1}', '${address1}', '${city1}', '${host1}')`;
   db.connection.query(queryString, (err, result) => {
     if (err) {
       console.log('Could not create event');
@@ -30,7 +37,13 @@ const getAllEventsDB = (callback) => {
 const updateEventDB = ({
     id, name, date, time, description, imgurl, address, city, host 
 }, callback) => {
-  const queryString = `UPDATE events SET name = '${name}', date = '${date}', time = '${time}', description = '${description}', imgurl = '${imgurl}', address = '${address}', city = '${city}', host = '${host}' WHERE id = ${id}`;
+  const name1 = name.split('\'').join('');
+  const description1 = description.split('\'').join('');
+  const imgurl1 = imgurl.split('\'').join('');
+  const address1 = address.split('\'').join('');
+  const city1 = city.split('\'').join('');
+  const host1 = host.split('\'').join('');
+  const queryString = `UPDATE events SET name = '${name1}', date = '${date}', time = '${time}', description = '${description1}', imgurl = '${imgurl1}', address = '${address1}', city = '${city1}', host = '${host1}' WHERE id = ${id}`;
   db.connection.query(queryString, (err, result) => {
     if (err) {
       console.log('Error upating event in DB');
@@ -84,6 +97,20 @@ const getEventCommentsDB = (eventId, callback) => {
   });
 };
 
+const postEventCommentDB = ({ eventId, message, sender }, callback) => {
+  const message1 = message.split('\'').join('');
+  const sender1 = sender.split('\'').join('');
+  const queryString = `INSERT INTO event_comments(id_event, message, timestamp, sender) VALUES('${eventId}', '${message1}', now(), '${sender1}')`;
+
+  db.connection.query(queryString, (err) => {
+    if (err) {
+      console.error('Unable to add comment');
+    } else {
+      callback();
+    }
+  });
+};
+
 const getSpecificEventDB = (eventId, callback) => {
   const queryString = `SELECT * FROM events WHERE id=${eventId};`;
 
@@ -104,6 +131,7 @@ module.exports = {
   getRecentEventsDB,
   getEventAttendeesDB,
   getEventCommentsDB,
+  postEventCommentDB,
   getSpecificEventDB,
 };
 

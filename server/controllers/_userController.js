@@ -8,9 +8,6 @@ const editUser = (req, res) => {
 };
 
 const retrieveUserInfo = (req, res) => {
-  console.log('body:', req.body);
-  console.log('query:', req.query);
-  console.log('params:', req.params);
   user.retrieveUserInfoDB(req.query.username, (err, result) => {
     if (err) {
       console.error('Error getting user info', err);
