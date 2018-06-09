@@ -83,7 +83,7 @@ class Events extends React.Component {
                 host={event.host}
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 address={event.address}
                 city={event.city}
                 description={event.description}
@@ -105,7 +105,7 @@ class Events extends React.Component {
                 host={event.host} 
                 date={event.date} 
                 time={event.time}
-                imgUrl={event.imgUrl}
+                imgUrl={event.imgurl}
                 address={event.address}
                 city={event.city}
                 description={event.description}

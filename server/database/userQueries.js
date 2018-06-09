@@ -11,8 +11,8 @@ const { connection } = require('./connection.js');
 const checkUserPasswordMatchDB = (username, password, callback) => {
   const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    console.log(result,username)
-     callback(err, result)
+    console.log(result, username);
+    callback(err, result);
   });
 };
 

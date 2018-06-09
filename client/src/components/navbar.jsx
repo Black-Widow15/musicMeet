@@ -44,6 +44,7 @@ class NavBar extends React.Component {
             username: e.username
         }, () => {
             this.props.handleLogin(this.state.username)
+            console.log('navbar state', this.state);
         })
   
     }
