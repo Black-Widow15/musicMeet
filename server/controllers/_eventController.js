@@ -102,7 +102,9 @@ const getSpecificEvent = (req, res) => {
   });
 };
 
+const addAttendee = (req, res) => {
 
+}
 module.exports = {
   saveNewEvent,
   getAllEvents,
@@ -115,3 +117,24 @@ module.exports = {
   postEventComment,
   getSpecificEvent,
 };
+
+<<<<<<<
+
+=======
+
+
+
+
+module.exports= {
+    saveNewEvent,
+    getAllEvents,
+    deleteEvent,
+    updateEvent,
+    getPopularEvents,
+    getRecentEvents,
+    getAttendeeList,
+    getEventComments,
+    getSpecificEvent,
+    addAttendee,
+}
+>>>>>>>

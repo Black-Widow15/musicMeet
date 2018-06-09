@@ -38,6 +38,7 @@ class EventPage extends React.Component {
       }, // Same data that was in the Event Summary cards.
       isAttending: false, 
   	};
+
     this.rsvp = this.rsvp.bind(this);
     this.fillEventData = this.fillEventData.bind(this);    
     this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
@@ -45,13 +46,15 @@ class EventPage extends React.Component {
   }
   rsvp () {
     let current = this.state.isAttending;
-    let elem = document.getElementById('rsvp');
-    console.log(elem);
+    // let elem = document.getElementById('rsvp');
+    // console.log(elem);
+    console.log('event page props', this.props);
 
     this.setState({
       isAttending: !current,
     })
   }
+
   fillEventData () {
     axios.get(`/event/${this.state.id}`)
         .then((response) => {
@@ -80,6 +83,7 @@ class EventPage extends React.Component {
         console.log(err);
       })
   }
+
   fillAttendeeFeed () {
     axios.get('/events/attendees', {
       params: {

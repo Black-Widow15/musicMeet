@@ -9,7 +9,7 @@ class CreateEvent extends React.Component {
             date: '',
             time: '12:00',
             description: '',
-            imgUrl: '',
+            imgurl: '',
             address: '',
             city: '',
         }
@@ -25,7 +25,7 @@ class CreateEvent extends React.Component {
                 date: '',
                 time: '12:00',
                 description: '',
-                imgUrl: '',
+                imgurl: '',
                 address: '',
                 city: '',
             })
@@ -123,7 +123,10 @@ class CreateEvent extends React.Component {
                     <div className="field-body">
                         <div className="field">
                         <div className="control">
-                            <textarea name = 'imgUrl' className="textarea" placeholder="Enter an image URL for your event!" value = {this.state.imgUrl} onChange = {this.handleChange}></textarea>
+                            <textarea name = 'imgurl' 
+                            className="textarea" 
+                            placeholder="Enter an image URL for your event!" 
+                            value = {this.state.imgurl} onChange = {this.handleChange}></textarea>
                         </div>
                         </div>
                     </div>
