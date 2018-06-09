@@ -34,9 +34,8 @@ class Events extends React.Component {
   	// These event objects are quick summaries.
   	// Data needed: name, date, time, imgUrl, location, description
     this.fillEventsFeed = this.fillEventsFeed.bind(this);
-    this.launchModal = this.launchModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
   }
+
   fillEventsFeed () {
   	// Grab data from the database and set the state.
     axios.get('/events')
@@ -59,22 +58,13 @@ class Events extends React.Component {
         console.log(err);
       })
   }
-  launchModal (modalId) {
-    let modal = document.getElementById(modalId);
-    modal.classList.add('is-active');
-  }
-  closeModal (modalId) {
-    let modal = document.getElementById(modalId);
-    modal.classList.remove('is-active');
-  }
+
   componentDidMount() {
   	this.fillEventsFeed();
   }
+
   // Data needed: name, date, time, imgUrl, location, description
   render () {
-    let launchModal = this.launchModal;
-    let closeModal = this.closeModal;
-
   	return (
       <div className="columns">
     		<div className="column">POPULAR
@@ -92,19 +82,6 @@ class Events extends React.Component {
                 location={event.location}
                 description={event.description}
                 launchModal={launchModal}
-              /> 
-           
-              <EventModal
-                id={event.name}
-                closeModal={closeModal}   
-
-                name={event.name}
-                host={event.host}  
-                date={event.date} 
-                time={event.time}
-                imgUrl={event.imgurl}
-                location={event.location}
-                description={event.description}             
               />
             </div>
             )
@@ -127,18 +104,6 @@ class Events extends React.Component {
                 description={event.description}
                 launchModal={launchModal}
               /> 
-              <EventModal
-                id={event.name}
-                closeModal={closeModal}   
-
-                name={event.name}
-                host={event.host} 
-                date={event.date} 
-                time={event.time}
-                imgUrl={event.imgurl}
-                location={event.location}
-                description={event.description}             
-              />
             </div>
             )
           })
