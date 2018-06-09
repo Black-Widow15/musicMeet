@@ -88,34 +88,33 @@ const getMessagesDB = (username, callback) => {
       console.error(err);
       callback(err);
     } else {
-      console.log('messages: ', result);
+      console.log('got messages!');
       callback(null, result);
     }
   });
 };
 
 const getEventsAttendingDB = (username, callback) => {
-  // let queryString1 = `SELECT id FROM users where username = '${username}'`;
-  // connection.query(queryString1, (err, result) => {
-  //   if (err) {
-  //     console.error('This user does not exist', err);
-  //     callback(err);
-  //   }else {
-  //     console.log('user of id is: ', result);
-  //     let userID = result[0].id;
-  //     console.log(userID);
-  //     let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
-  //     connection.query(queryString2, (error, results) => {
-  //       if (err) {
-  //         console.error(`Error finding events that ${userID} is attending`, error);
-  //         callback(err);
-  //       }else {
-  //         console.log(`${userID} is attending these events: `, results);
-  //         callback(null, results);
-  //       }
-  //     });
-  //   }
-  // });
+  let queryString1 = `SELECT id FROM users where username = '${username}'`;
+  connection.query(queryString1, (err, result) => {
+    if (err) {
+      console.error('This user does not exist', err);
+      callback(err);
+    }else {
+      let userID = result[0].id;
+      console.log(userID);
+      let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
+      connection.query(queryString2, (error, results) => {
+        if (err) {
+          console.error(`Error finding events that ${userID} is attending`, error);
+          callback(err);
+        }else {
+          console.log(`${userID} is attending these events: `, results);
+          callback(null, results);
+        }
+      });
+    }
+  });
 };
 
 

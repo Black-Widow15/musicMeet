@@ -21,9 +21,6 @@ const retrieveUserInfo = (req, res) => {
 };
 
 const addMessage = (req, res) => {
-  console.log('adding message body:', req.body);
-  console.log('adding msg query:', req.query);
-  console.log('adding message params:', req.params);
   user.addMessageDB(req.body.text, req.body.username, (err, result) => {
     if (err) {
       console.error(err);
@@ -54,6 +51,7 @@ const getEventsAttending = (req, res) => {
     }
   });
 };
+
 // getEventsHosting below has not been tested except in Postman (it works)
 const getEventsHosting = (req, res) => {
   user.getEventsHostingDB(req.query.username, (err, result) => {

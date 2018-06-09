@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 class EventsAttending extends React.Component {
   constructor(props) {
@@ -33,9 +33,9 @@ class EventsAttending extends React.Component {
         <ul>
           {this.state.eventsAttending.map(event => {
             return (
-              <li>
-              {event.name}
-              </li>
+            <NavLink to = {`/event/${event.id}`}>
+            <li><a>{event.name}</a></li>
+            </NavLink>
             )
           })}
         </ul>
