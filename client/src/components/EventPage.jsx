@@ -12,34 +12,31 @@ class EventPage extends React.Component {
   	this.state = {
       // id is the identifier for all events upon componentDidMount
       // id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
-      loggedInUser: {
-        id: 2,
-        username: 'joe',
-      },
+      loggedInUser: 'joe',
       isAttending: false, 
       comments: [
-        {
-          commentId: 1,
-          text: 'this is a comment',
-          timestamp: '4:31pm',
-          username: 'bonJoviRules',
-          avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        }
+      //   {
+      //     commentId: 1,
+      //     text: 'this is a comment',
+      //     timestamp: '4:31pm',
+      //     username: 'bonJoviRules',
+      //     avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+      //   }
       ], // Array of objects pulled from messages table in db
       attendees: [
-        {
-          username: 'howdy',
-          avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        }
+        // {
+        //   username: 'howdy',
+        //   avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+        // }
       ], // Array of objects pulled from users table in db
       info: {
-        name: 'Concert',
-        date: 'June 7',
-        time: '11pm',
-        imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
-        location: 'Madison Square Garden',
-        description: 'Its a huge concert!',
-        host: 'Metallica',
+      //   name: 'Concert',
+      //   date: 'June 7',
+      //   time: '11pm',
+      //   imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+      //   location: 'Madison Square Garden',
+      //   description: 'Its a huge concert!',
+      //   host: 'Metallica',
       }, // Same data that was in the Event Summary cards.
   	};
 
@@ -123,6 +120,7 @@ class EventPage extends React.Component {
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
+
     this.fillEventData();
     this.fillAttendeeFeed();
     this.fillCommentsFeed();

@@ -37,7 +37,7 @@ class App extends React.Component {
                     <Route exact path = '/create' component = {CreateEvent}/>
                     <Route exact path = '/users' component = {User}/>
                     <Route exact path = '/event/:number' 
-                       render = {(props) => <EventPage username={this.state.username} {...props} />} />
+                       render = {(props) => <EventPage loggedInUser={this.state.username} {...props} />} />
 
                 </Switch>
                 

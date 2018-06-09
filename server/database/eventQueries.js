@@ -117,7 +117,8 @@ const getSpecificEventDB = (eventId, callback) => {
     if (err) {
       console.log('Error getting event data');
     }
-  }
+    callback(err, result);
+  });
 };
 
 const addAttendeeDB = (eventId, userId, callback) => {
