@@ -9,15 +9,24 @@ const { connection } = require('./connection.js');
 // error 'invalid password for username'
 
 const checkUserPasswordMatchDB = (username, password, callback) => {
-  let queryString = `SELECT username FROM users WHERE username = '${username}'`;
+  const queryString = `SELECT username, password FROM users WHERE username = '${username}'`;
   connection.query(queryString, (err, result) => {
-    console.log(result,username)
-     callback(err, result)
+    if (err) {
+      console.error('invalid username!');
+      callback(err);
+    } else if (password === result[0].password) {
+      console.log(password, result[0].password);
+      console.log('username and password match');
+      callback();
+    } else {
+      console.error('invalid password, try again');
+      callback();
+    }
   });
 };
 
 const saveNewUserDB = ({
-  name, display_name, password, imgurl, email, bio
+  name, display_name, password, imgurl, email, bio,
 }, callback) => {
   const queryString = `INSERT INTO users (username, display_name, password, imgurl, email, bio) VALUES ('${name}', '${display_name}','${password}', '${imgurl}', '${email}', '${bio}')`;
   console.log(queryString);
@@ -34,7 +43,6 @@ const saveNewUserDB = ({
 // Edit User data:
   // Define the query string.
 const editUserDB = (username, values) => {
-  
   // Set the query string based on this new object. Submit the query string.
   const queryString =
       `UPDATE users
@@ -95,20 +103,20 @@ const getMessagesDB = (username, callback) => {
 };
 
 const getEventsAttendingDB = (username, callback) => {
-  let queryString1 = `SELECT id FROM users where username = '${username}'`;
+  const queryString1 = `SELECT id FROM users where username = '${username}'`;
   connection.query(queryString1, (err, result) => {
     if (err) {
       console.error('This user does not exist', err);
       callback(err);
-    }else {
-      let userID = result[0].id;
+    } else {
+      const userID = result[0].id;
       console.log(userID);
-      let queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
+      const queryString2 = `SELECT events.* FROM events, users_events where users_events.id_user = '${userID}'`;
       connection.query(queryString2, (error, results) => {
         if (err) {
           console.error(`Error finding events that ${userID} is attending`, error);
           callback(err);
-        }else {
+        } else {
           console.log(`${userID} is attending these events: `, results);
           callback(null, results);
         }
