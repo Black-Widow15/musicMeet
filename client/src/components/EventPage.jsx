@@ -124,6 +124,10 @@ class EventPage extends React.Component {
                     </h1><p></p>
                     <h2 className="subtitle">
                     <strong>Hosted by: {this.state.info.host}</strong>
+                    <p>{date}, {this.state.info.time}</p>
+                    <button id="rsvp" className="button is-link" onClick={(e) => {this.rsvp()}}>
+                    {this.state.isAttending ? 'Cancel' : 'RSVP' }
+                    </button>
                     </h2>
                   </div>
                 </div>
@@ -132,11 +136,7 @@ class EventPage extends React.Component {
           </div>
         </section>
         <section>
-          {date}, {this.state.info.time}
           <br/>
-          <button id="rsvp" className="is-link" onClick={(e) => {this.rsvp()}}>
-          {this.state.isAttending ? 'Cancel' : 'RSVP' }
-          </button>
           <div className="columns">
             <Comments commentList={this.state.comments}/>
             <AttendeeList attendees={this.state.attendees} />
