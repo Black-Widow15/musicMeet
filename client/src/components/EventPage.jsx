@@ -86,14 +86,14 @@ class EventPage extends React.Component {
         id: this.state.id,
       }
     })
-      .then( (response) => {
-        this.setState({
-          attendees: response.data,
-        })
+    .then((response) => {
+      this.setState({
+        attendees: response.data
       })
-      .catch( (err) => {
-        console.log(err);
-      })
+    })
+    .catch( (err) => {
+      console.log(err);
+    })
   }
 
   componentDidMount () {

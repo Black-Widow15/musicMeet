@@ -55,14 +55,14 @@ class Login extends React.Component {
                 <div className="modal-content">
                     <div className="box">
                         <div className="field">
-                            <label className="label">Name</label>
+                            <label className="label">Username</label>
                             <div className="control">
                                 <input name = 'username' className="input" type="text" placeholder="Text input" value = {this.state.username} onChange = {this.handleChange}/>
                             </div>
                         </div>
 
                         <div className="field">
-                            <label className="label">Username</label>
+                            <label className="label">Password</label>
                             <div className="control has-icons-left has-icons-right">
                                 <input name = 'password' className="input" type="text" placeholder="Text input"  onChange = {this.handleChange}/>
                             </div>

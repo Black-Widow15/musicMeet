@@ -136,7 +136,7 @@ class CreateEvent extends React.Component {
                     <div className="field-body">
                         <div className="field">
                         <div className="control">
-                            <input name = 'address' className="input" type="text" placeholder="How can people find you?" value = {this.state.address} onChange = {this.handleChange}/>
+                            <textarea name = 'address' className="input" type="text" placeholder="How can people find you?" value = {this.state.address} onChange = {this.handleChange}></textarea>
                         </div>
                         </div>
                     </div>
