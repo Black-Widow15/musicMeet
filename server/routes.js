@@ -17,6 +17,7 @@ router.get('/events/recent', eventController.getRecentEvents);
 // Event page
 router.get('/event/:number', eventController.getSpecificEvent);
 router.get('/events/attendees', eventController.getAttendeeList);
+router.post('/events/attendees', eventController.addRemoveAttendee);
 router.get('/events/comments', eventController.getEventComments);
 router.post('/events/comments', eventController.postEventComment); // working on controller
 
@@ -30,6 +31,7 @@ router.put('/users/edit', userController.editUser);
 router.post('/users/messages', userController.addMessage);
 router.get('/users/messages', userController.getMessages);
 router.get('/users/attending', userController.getEventsAttending);
+router.post('/users/attending', userController.getEventsAttending);
 router.get('/users/hosting', userController.getEventsHosting);
 
 module.exports = {

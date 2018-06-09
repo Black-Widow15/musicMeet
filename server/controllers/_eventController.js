@@ -102,6 +102,14 @@ const getSpecificEvent = (req, res) => {
   });
 };
 
+const addRemoveAttendee = (req, res) => {
+    console.log('adding/removing attendee', req.body);
+    if (req.body.isAttending) {
+        event.removeAttendeeDB()
+    } else {
+        event.addAttendeeDB()
+    }
+    // event.addAttendeeDB(req.body);
 
 module.exports = {
   saveNewEvent,
@@ -115,3 +123,5 @@ module.exports = {
   postEventComment,
   getSpecificEvent,
 };
+
+    addRemoveAttendee,

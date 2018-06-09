@@ -19,9 +19,13 @@ class App extends React.Component {
         }
         this.handleLogin = this.handleLogin.bind(this)
     }
+
     handleLogin(username) {
-        this.setState({username})
+        // console.log('passed in username', username)
+        this.setState({username: username})
+        // console.log('app state', this.state);
     }
+
     render() {
         return (
             <Router>

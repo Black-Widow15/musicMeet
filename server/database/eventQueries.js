@@ -122,6 +122,28 @@ const getSpecificEventDB = (eventId, callback) => {
   });
 };
 
+const addAttendeeDB = () => {
+  const queryString = ``
+
+  db.connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log('Error adding attendee');
+    }
+    callback(err, result);
+  });
+}
+
+const removeAttendeeDB = () => {
+  const queryString = ``
+
+  db.connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log('Error remoiving attendee');
+    }
+    callback(err, result);
+  });
+}
+
 module.exports = {
   saveEventDB,
   getAllEventsDB,
@@ -133,5 +155,7 @@ module.exports = {
   getEventCommentsDB,
   postEventCommentDB,
   getSpecificEventDB,
+  addAttendeeDB,
+  removeAttendeeDB,
 };
 
