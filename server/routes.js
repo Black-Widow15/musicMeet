@@ -16,6 +16,7 @@ router.get('/events/recent', eventController.getRecentEvents);
 // Event page
 router.get('/event/:number', eventController.getSpecificEvent);
 router.get('/events/attendees', eventController.getAttendeeList);
+router.post('/events/attendees', eventController.addAttendee);
 router.get('/events/comments', eventController.getEventComments);
 
 // Landing page
@@ -28,6 +29,7 @@ router.put('/users/edit', userController.editUser);
 router.post('/users/messages', userController.addMessage);
 router.get('/users/messages', userController.getMessages);
 router.get('/users/attending', userController.getEventsAttending);
+router.post('/users/attending', userController.getEventsAttending);
 router.get('/users/hosting', userController.getEventsHosting);
 
 module.exports = {

@@ -92,6 +92,10 @@ const getSpecificEvent = (req, res) => {
     })
 }
 
+const addAttendee = (req, res) => {
+
+}
+
 
 
 
@@ -106,4 +110,5 @@ module.exports= {
     getAttendeeList,
     getEventComments,
     getSpecificEvent,
+    addAttendee,
 }
