@@ -11,9 +11,9 @@ class EventPage extends React.Component {
 
   	this.state = {
       // id is the identifier for all events upon componentDidMount
-      id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      // id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
       loggedInUser: {
-        id: 1,
+        id: 2,
         username: 'joe',
       },
       isAttending: false, 
@@ -60,7 +60,8 @@ class EventPage extends React.Component {
       isAttending: this.state.isAttending,
     })
       .then( (response) => {
-
+        console.log('changed rsvp');
+        this.fillAttendeeFeed();
       })
       .catch( (err) => {
         console.error(err);
@@ -105,6 +106,14 @@ class EventPage extends React.Component {
     .then((response) => {
       this.setState({
         attendees: response.data
+      })
+
+      this.state.attendees.forEach( (attendee) => {
+        if (this.state.loggedInUser.username === attendee.username) {
+          this.setState({
+            isAttending: true,
+          })
+        } 
       })
     })
     .catch( (err) => {

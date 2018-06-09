@@ -121,7 +121,6 @@ const addRemoveAttendee = (req, res) => {
       }
     });
   }
-  // event.addAttendeeDB(req.body);
 };
 
 /*

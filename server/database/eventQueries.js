@@ -117,6 +117,27 @@ const getSpecificEventDB = (eventId, callback) => {
     if (err) {
       console.log('Error getting event data');
     }
+  }
+};
+
+const addAttendeeDB = (eventId, userId, callback) => {
+  const queryString = `INSERT INTO users_events (id_user, id_event) VALUES (${userId}, ${eventId});`
+
+  db.connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log('Error adding attendee');
+    }
+    callback(err, result);
+  });
+}
+
+const removeAttendeeDB = (eventId, userId, callback) => {
+  const queryString = `DELETE FROM users_events WHERE id_user=${userId} AND id_event=${eventId};`
+
+  db.connection.query(queryString, (err, result) => {
+    if (err) {
+      console.log('Error removing attendee');
+    }
     callback(err, result);
   });
 };
@@ -131,6 +152,8 @@ module.exports = {
   getEventAttendeesDB,
   getEventCommentsDB,
   postEventCommentDB,
+  removeAttendeeDB,
+  addAttendeeDB,
   getSpecificEventDB,
 };
 
