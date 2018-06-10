@@ -72,6 +72,7 @@ const getAttendeeList = (req, res) => {
 };
 
 const getEventComments = (req, res) => {
+  console.log(req.query);
   event.getEventCommentsDB(req.query.id, (err, result) => {
     if (err) {
       console.error('Could not get event comments');
