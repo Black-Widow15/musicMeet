@@ -122,7 +122,7 @@ class EventPage extends React.Component {
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
-    console.log('props', this.props);
+    // console.log('props', this.props);
 
     this.fillEventData();
     this.fillAttendeeFeed();
@@ -163,7 +163,11 @@ class EventPage extends React.Component {
         <section>
           <br/>
           <div className="columns">
-            <Comments commentList={this.state.comments}/>
+            <Comments 
+              loggedInUser={this.state.loggedInUser} 
+              commentList={this.state.comments}
+              eventId={this.state.id}
+            />
             <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
           </div>
         </section>

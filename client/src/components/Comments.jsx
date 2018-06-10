@@ -7,11 +7,17 @@ class Comments extends React.Component {
     
     this.state = {
       text: '',
-      sender: '',
+      sender: this.props.loggedInUser,
     }
 
     // Props will include a array of comment objects.
     // Comment object properties: id, text, timestamp, username, avatarUrl
+    // <div className="field">
+    //       <label className="label">Sent by...</label>
+    //         <div className="control">
+    //           <input className="input" type="text" placeholder="your name here" onChange={(e) => this.setSender(e)}/>
+    //         </div>
+    //     </div>
 
     this.changeText = this.changeText.bind(this);
     this.setSender = this.setSender.bind(this);
@@ -33,7 +39,9 @@ class Comments extends React.Component {
   }
 
   postComment() {
-    axios.post('/event/comments', {
+    console.log('posting commment', this.state);
+    axios.post('/events/comments', {
+      eventId: this.props.eventId,
       message: this.state.text,
       sender: this.state.sender,
     })
@@ -58,14 +66,9 @@ class Comments extends React.Component {
               <input className="input" type="text" placeholder="start typing here!" onChange={(e) => this.changeText(e)}/>
             </div>
         </div>
-        <div className="field">
-          <label className="label">Sent by...</label>
-            <div className="control">
-              <input className="input" type="text" placeholder="your name here" onChange={(e) => this.setSender(e)}/>
-            </div>
-        </div>
+        
         <div className="control">
-          <button className="button is-primary" onClick={this.postComment}>Send</button><br/>
+          <button className="button is-primary" onClick={(e) => {this.postComment()}}>Send</button><br/>
         </div>
         <ul>
         {this.props.commentList.map((comment) => {
@@ -79,3 +82,6 @@ class Comments extends React.Component {
   }
 }
 export default Comments
+
+
+
