@@ -54,6 +54,14 @@ class NavBar extends React.Component {
   
     }
 
+    handleLogout (e) {
+        this.setState({
+            loggedin: false,
+            userId: null,
+            username: '',
+        })
+    }
+
 
 
     render () {
@@ -73,15 +81,9 @@ class NavBar extends React.Component {
                     Create an Event
                     </NavLink>
                     <NavLink className="navbar-link" to = '/users'>
-                    Profiles
-                    </NavLink>
-                    <NavLink className="navbar-link" to = '/event'>
-                    Event Page
+                    My Profile
                     </NavLink>
                     <hr className="navbar-divider"/>
-                    <NavLink className="navbar-link" to = '/'>
-                    Events
-                    </NavLink>
                     </div>
                 </div>
                 </div>
@@ -89,10 +91,19 @@ class NavBar extends React.Component {
                 <div className="navbar-end">
                 <div className="navbar-item">
                     {this.state.loggedin ? 
-                    (<div className = "navbar-item">{this.state.username}</div>)
+                    (<div className="field is-grouped">
+                    <div className = "navbar-item">{this.state.username}</div>
+                     <div> <a className="navbar-item" href="#"
+                            onClick={(e) => this.handleLogout()}> 
+                                Logout
+                            </a>
+                        </div>
+                    </div>)
+
                     :
                     (<div className="field is-grouped">
-                    <a className="navbar-item" href="#" onClick={(e) => (this.launchLoginModal())}>
+                    <a className="navbar-item" href="#" 
+                    onClick={(e) => (this.launchLoginModal())}>
                         Login
                     </a>
                     <a className="navbar-item" href="#" onClick = {(e) => this.launchSignupModal()}>
