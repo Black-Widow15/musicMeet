@@ -8,6 +8,7 @@ class NavBar extends React.Component {
         super(props)
         this.state = {
             loggedin: false,
+            userId: null,
             username: ''
         }
 
@@ -41,10 +42,14 @@ class NavBar extends React.Component {
     handleLoggedin (e) {
         this.setState({
             loggedin: !this.state.loggedin,
-            username: e.username
+            userId: e[0],
+            username: e[1],
         }, () => {
-            this.props.handleLogin(this.state.username)
-            console.log('navbar state', this.state);
+            this.props.handleLogin({
+                userId: this.state.userId,
+                username: this.state.username,
+            })
+            // console.log('navbar state', this.state);
         })
   
     }

@@ -15,15 +15,18 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: ''
+            user: null,
         }
         this.handleLogin = this.handleLogin.bind(this)
     }
 
-    handleLogin(username) {
-        // console.log('passed in username', username)
-        this.setState({username: username})
-        // console.log('app state', this.state);
+    handleLogin(user) {
+        console.log('passed in user', user)
+        this.setState({
+            user: user,
+        }, () => {
+            console.log('app state', this.state);
+        });
     }
 
     render() {
@@ -35,9 +38,10 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path = '/' component = {Events}/>
                     <Route exact path = '/create' component = {CreateEvent}/>
-                    <Route exact path = '/users' component = {User}/>
-                    <Route exact path = '/event/:number' 
-                       render = {(props) => <EventPage username={this.state.username} {...props} />} />
+                    <Route exact path = '/users' render = {(props) =>
+                       <User loggedInUser={this.state.user} {...props}  /> } />
+                    <Route exact path = '/event/:number' render = {(props) => 
+                        <EventPage loggedInUser={this.state.user} {...props} />} />
 
                 </Switch>
                 

@@ -11,26 +11,23 @@ class EventPage extends React.Component {
 
   	this.state = {
       // id is the identifier for all events upon componentDidMount
-      // id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
-      loggedInUser: {
-        id: 2,
-        username: 'joe',
-      },
+      id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
+      loggedInUser: 'joe',
       isAttending: false, 
       comments: [
-        {
-          commentId: 1,
-          text: 'this is a comment',
-          timestamp: '4:31pm',
-          username: 'bonJoviRules',
-          avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        }
+      //   {
+      //     commentId: 1,
+      //     text: 'this is a comment',
+      //     timestamp: '4:31pm',
+      //     username: 'bonJoviRules',
+      //     avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+      //   }
       ], // Array of objects pulled from messages table in db
       attendees: [
-        {
-          username: 'howdy',
-          avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        }
+        // {
+        //   username: 'howdy',
+        //   avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+        // }
       ], // Array of objects pulled from users table in db
       info: {
         name: 'Concert',
@@ -69,6 +66,7 @@ class EventPage extends React.Component {
   }
 
   fillEventData () {
+    console.log('filling event', this.state);
     axios.get(`/event/${this.state.id}`)
         .then((response) => {
           // console.log('Event data', response.data)
@@ -123,10 +121,11 @@ class EventPage extends React.Component {
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
+    console.log('props', this.props);
+
     this.fillEventData();
     this.fillAttendeeFeed();
     this.fillCommentsFeed();
-    console.log('props', this.props);
   }
 
   render () {
