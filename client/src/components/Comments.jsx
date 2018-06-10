@@ -39,19 +39,22 @@ class Comments extends React.Component {
   }
 
   postComment() {
-    console.log('posting commment', this.state);
+    // console.log('posting commment', this.state);
     axios.post('/events/comments', {
       eventId: this.props.eventId,
       message: this.state.text,
       sender: this.state.sender,
     })
-    .then(()=> {
-      return axios.get('/events/comments', {
-        params: {
-          id: this.props.id
-        }
-      })
+    .then(() => {
+      this.props.fillCommentsFeed();
     })
+    // .then(()=> {
+    //   return axios.get('/events/comments', {
+    //     params: {
+    //       id: this.props.id
+    //     }
+    //   })
+    // })
   }
 
   render () {

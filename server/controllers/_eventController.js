@@ -83,7 +83,7 @@ const getEventComments = (req, res) => {
 
 const postEventComment = (req, res) => {
   console.log('trying to post a comment', req.body);
-  event.postEventCommentDB(req.body.eventId, req.body.message, req.body.sender.userId, (err) => {
+  event.postEventCommentDB(req.body.eventId, req.body.message, req.body.sender.username, (err) => {
     if (err) {
       console.error('Unable to post event comment');
     } else {

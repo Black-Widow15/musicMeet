@@ -53,7 +53,7 @@ CREATE TABLE `event_comments` (
   `id`                    SMALLINT(10) NOT NULL AUTO_INCREMENT,
   `message`               VARCHAR(300) DEFAULT NULL,
   `timestamp`             TIMESTAMP,
-  `sender`               SMALLINT(10) NOT NULL,
+  `sender`                VARCHAR(100) NOT NULL,
   `id_event`              SMALLINT(10) NOT NULL,
   PRIMARY KEY(`id`)
 );

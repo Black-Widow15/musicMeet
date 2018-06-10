@@ -167,6 +167,7 @@ class EventPage extends React.Component {
               loggedInUser={this.state.loggedInUser} 
               commentList={this.state.comments}
               eventId={this.state.id}
+              fillCommentsFeed={this.fillCommentsFeed}
             />
             <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
           </div>
