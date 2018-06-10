@@ -96,10 +96,14 @@ const getEventCommentsDB = (eventId, callback) => {
   });
 };
 
-const postEventCommentDB = ({ eventId, message, sender }, callback) => {
+const postEventCommentDB = (eventId, message, sender , callback) => {
+  console.log('posteventcommendtDB', eventId, message, sender);
+
   const message1 = message.split('\'').join('') || '';
-  const sender1 = sender.split('\'').join('') || '';
-  const queryString = `INSERT INTO event_comments(id_event, message, timestamp, sender) VALUES('${eventId}', '${message1}', now(), '${sender1}')`;
+  // const sender1 = sender.split('\'').join('') || '';
+  const queryString = `INSERT INTO event_comments(id_event, message, timestamp, sender) 
+                          VALUES('${eventId}', '${message1}', now(), '${sender}')`;
+  console.log(queryString);
 
   db.connection.query(queryString, (err) => {
     if (err) {

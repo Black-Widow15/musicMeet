@@ -12,7 +12,7 @@ class EventPage extends React.Component {
   	this.state = {
       // id is the identifier for all events upon componentDidMount
       id: this.props.match.params.number,  //React-Router passes in this parameter from the url.
-      loggedInUser: 'joe',
+      loggedInUser: this.props.loggedInUser,
       isAttending: false, 
       comments: [
       //   {
@@ -50,10 +50,11 @@ class EventPage extends React.Component {
     this.setState({
       isAttending: !current,
     })
+    console.log('rsvp props', this.props);
 
     axios.post('/events/attendees', {
       eventId: this.state.id, 
-      userId: this.state.loggedInUser.id,
+      userId: this.state.loggedInUser.userId,
       isAttending: this.state.isAttending,
     })
       .then( (response) => {
@@ -121,7 +122,7 @@ class EventPage extends React.Component {
 
   componentDidMount () {
     // function to fill the comments, the attendee list, other info
-    console.log('props', this.props);
+    // console.log('props', this.props);
 
     this.fillEventData();
     this.fillAttendeeFeed();
@@ -162,7 +163,11 @@ class EventPage extends React.Component {
         <section>
           <br/>
           <div className="columns">
-            <Comments commentList={this.state.comments}/>
+            <Comments 
+              loggedInUser={this.state.loggedInUser} 
+              commentList={this.state.comments}
+              eventId={this.state.id}
+            />
             <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
           </div>
         </section>

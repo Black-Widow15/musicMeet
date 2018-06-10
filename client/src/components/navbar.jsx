@@ -65,6 +65,12 @@ class NavBar extends React.Component {
 
 
     render () {
+        let userPath;
+        if (this.state.loggedin) {
+          userPath = `/users/${this.state.username}`;
+        } else {
+          userPath = '/';
+        }
         return (
         <nav className="navbar is-fixed-top">
             <div className="navbar-menu">
@@ -80,8 +86,8 @@ class NavBar extends React.Component {
                     <NavLink className="navbar-link" to = '/create'>
                     Create an Event
                     </NavLink>
-                    <NavLink className="navbar-link" to = '/users'>
-                    My Profile
+                    <NavLink className="navbar-link" to = {userPath}>
+                        Your Profile
                     </NavLink>
                     <hr className="navbar-divider"/>
                     </div>

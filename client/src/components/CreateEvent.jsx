@@ -12,6 +12,7 @@ class CreateEvent extends React.Component {
             imgurl: '',
             address: '',
             city: '',
+            host: this.props.loggedInUser.username,
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -37,6 +38,7 @@ class CreateEvent extends React.Component {
         })
     }
     render () {
+        console.log(this.props);
         return (
             <form onSubmit = {this.handleSubmit} className = "field">
                 <div className="field is-horizontal">
