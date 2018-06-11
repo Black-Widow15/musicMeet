@@ -86,7 +86,7 @@ const getEventAttendeesDB = (eventId, callback) => {
 
 const getEventCommentsDB = (eventId, callback) => {
   console.log(eventId);
-  const queryString = `SELECT event_comments.id, message, timestamp, display_name, imgurl  
+  const queryString = `SELECT event_comments.id, message, timestamp, display_name, sender, imgurl  
                         FROM event_comments INNER JOIN users
                         WHERE id_event=${eventId} AND sender=username;`;
   db.connection.query(queryString, (err, result) => {

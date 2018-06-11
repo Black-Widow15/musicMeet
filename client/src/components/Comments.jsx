@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {NavLink} from 'react-router-dom';
+
 
 class Comments extends React.Component {
   constructor (props) {
@@ -75,8 +77,15 @@ class Comments extends React.Component {
         </div>
         <ul>
         {this.props.commentList.map((comment) => {
+          console.log(comment);
           return (
-            <li><strong>{comment.sender}</strong> [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: {comment.message}</li>
+            <li>
+              <NavLink to = {`/users/${comment.sender}`}>
+                <strong>{comment.display_name}</strong> 
+              </NavLink>
+              [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: 
+              {comment.message}
+            </li>
           )
         })}
         </ul>
