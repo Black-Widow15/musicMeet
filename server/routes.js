@@ -1,38 +1,40 @@
-const router = express.Router()
+const express = require('express');
+const registerController = require('../server/controllers/_registerController.js');
+const eventController = require('../server/controllers/_eventController.js');
+const userController = require('../server/controllers/_userController.js');
 
+const router = express.Router();
 
-router.get('/register', (req, res, next) => {
-    // respond to register endpoint
-    next()
-})
+// CRUD for events
+router.post('/events', eventController.saveNewEvent);
+router.get('/events', eventController.getAllEvents);
+router.delete('/events', eventController.deleteEvent);
+router.put('/events', eventController.updateEvent);
+// Home
+router.get('/events/popular', eventController.getPopularEvents);
+router.get('/events/recent', eventController.getRecentEvents);
 
-router.get('/events', (req, res, next) => {
-    // respond to events endpoint
-    next()
-})
+// Event page
+router.get('/event/:number', eventController.getSpecificEvent);
+router.get('/events/attendees', eventController.getAttendeeList);
+router.post('/events/attendees', eventController.addRemoveAttendee);
+router.get('/events/comments', eventController.getEventComments);
+router.post('/events/comments', eventController.postEventComment); // working on controller
 
+// Landing page
+router.post('/login', registerController.login);
+router.post('/signup', registerController.signup);
 
-router.get('/events', (req, res, next) => {
-    // respond to events get
-    next()
-})
-router.post('/events', (req, res, next) => {
-    // respond to events post
-    next()
-})
+// User page
+router.put('/users/edit', userController.editUser);
+router.post('/users/messages', userController.addMessage);
+router.get('/users/messages', userController.getMessages);
+router.get('/users/attending', userController.getEventsAttending);
+// router.post('/users/attending', userController.getEventsAttending);
+router.get('/users/hosting', userController.getEventsHosting);
+router.get('/users/:username', userController.retrieveUserInfo);
 
-router.get('/users', (req, res, next) => {
-    // respond to get users
-    next()
-})
+module.exports = {
+  router,
+};
 
-router.post('/users', (req, res, next) => {
-    // respond to users post
-    next()
-})
-
-router.get('/error', (req, res, next) => {
-    res.status(404).send('Error!')
-})
-
-export default router
