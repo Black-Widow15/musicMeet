@@ -19,7 +19,8 @@ class AttendeeList extends React.Component {
             {this.props.attendees.map(attendee => {
               return (
                 <li><NavLink to = {`/users/${attendee.username}`}>
-                {attendee.username}</NavLink></li>
+                  {attendee.username}
+                </NavLink></li>
               )
             })}
           </ul>

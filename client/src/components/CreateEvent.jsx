@@ -21,6 +21,7 @@ class CreateEvent extends React.Component {
         e.preventDefault()
         axios.post('/events', this.state)
         .then(() => {
+            alert('Event created!');
             this.setState({
                 name: '',
                 date: '',

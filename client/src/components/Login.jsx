@@ -42,6 +42,7 @@ class Login extends React.Component {
             }
         })
         .catch(()=> {
+            alert('Bad password!');
             this.setState({
                 username:'',
                 password: ''
