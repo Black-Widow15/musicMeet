@@ -20,7 +20,7 @@ class AttendeeList extends React.Component {
         {this.props.attendees.map(attendee => {
           return (
           <NavLink to = {`/users/${attendee.username}`}>
-          <li><a>{attendee.username}</a></li>
+            <li><a>{attendee.username}</a></li>
           </NavLink>
           )
         })}
