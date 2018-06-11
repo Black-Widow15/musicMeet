@@ -74,30 +74,30 @@ class CreateEvent extends React.Component {
                         <div className="control">
                             <div className="select is-fullwidth">
                             <select name = 'time' value = {this.state.time} onChange ={this.handleChange}>
-                                <option value = "12:00">12:00:00 AM</option>
-                                <option value = "1:00">1:00:00 AM</option>
-                                <option value = "2:00">2:00:00 AM</option>
-                                <option value = "3:00">3:00:00 AM</option>
-                                <option value = "4:00">4:00:00 AM</option>
-                                <option value = "5:00">5:00:00 AM</option>
-                                <option value = "6:00">6:00:00 AM</option>
-                                <option value = "7:00">7:00:00 AM</option>
-                                <option value = "8:00">8:00:00 AM</option>
-                                <option value = "9:00">9:00:00 AM</option>
-                                <option value = "10:00">10:00:00 AM</option>
-                                <option value = "11:00">11:00:00 AM</option>
-                                <option value = "12:00">12:00:00 PM</option>
-                                <option value = "1:00">1:00:00 PM</option>
-                                <option value = "2:00">2:00:00 PM</option>
-                                <option value = "3:00">3:00:00 PM</option>
-                                <option value = "4:00">4:00:00 PM</option>
-                                <option value = "5:00">5:00:00 PM</option>
-                                <option value = "6:00">6:00:00 PM</option>
-                                <option value = "7:00">7:00:00 PM</option>
-                                <option value = "8:00">8:00:00 PM</option>
-                                <option value = "9:00">9:00:00 PM</option>
-                                <option value = "10:00">10:00:00 PM</option>
-                                <option value = "11:00">11:00:00 PM</option>
+                                <option value = "12:00">12:00 AM</option>
+                                <option value = "1:00">1:00 AM</option>
+                                <option value = "2:00">2:00 AM</option>
+                                <option value = "3:00">3:00 AM</option>
+                                <option value = "4:00">4:00 AM</option>
+                                <option value = "5:00">5:00 AM</option>
+                                <option value = "6:00">6:00 AM</option>
+                                <option value = "7:00">7:00 AM</option>
+                                <option value = "8:00">8:00 AM</option>
+                                <option value = "9:00">9:00 AM</option>
+                                <option value = "10:00">10:00 AM</option>
+                                <option value = "11:00">11:00 AM</option>
+                                <option value = "12:00">12:00 PM</option>
+                                <option value = "13:00">1:00 PM</option>
+                                <option value = "14:00">2:00 PM</option>
+                                <option value = "15:00">3:00 PM</option>
+                                <option value = "16:00">4:00 PM</option>
+                                <option value = "17:00">5:00 PM</option>
+                                <option value = "18:00">6:00 PM</option>
+                                <option value = "19:00">7:00 PM</option>
+                                <option value = "20:00">8:00 PM</option>
+                                <option value = "21:00">9:00 PM</option>
+                                <option value = "22:00">10:00 PM</option>
+                                <option value = "11:00">11:00 PM</option>
                             </select>
                             </div>
                         </div>
