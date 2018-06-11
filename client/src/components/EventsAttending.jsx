@@ -17,7 +17,6 @@ class EventsAttending extends React.Component {
       }
     })
     .then(({data}) => {
-      console.log('events attending front: ', data);
       this.setState({
         eventsAttending: data
       }, () => console.log(this.state.eventsAttending))

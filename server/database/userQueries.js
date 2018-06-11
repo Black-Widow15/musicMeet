@@ -16,7 +16,6 @@ const checkUserPasswordMatchDB = (username, password, callback) => {
       callback(err);
     } else {
       if (result.length === 0) {
-        throw Error;
         callback();
       } else if (result.length === 1) {
         if (password === result[0].password) {
@@ -24,7 +23,6 @@ const checkUserPasswordMatchDB = (username, password, callback) => {
           callback(null, [result[0].id, result[0].username]);
         } else if (password !== result[0].password) {
           console.error('Invalid password. Try again');
-          throw Error;
           callback();
         }
       }

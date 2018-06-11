@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 class AttendeeList extends React.Component {
   constructor (props) {
@@ -10,25 +10,24 @@ class AttendeeList extends React.Component {
   }
   render () {
     return (
-    
       <div className="column">
-      <div className="notification is-primary has-text-centered">
-        Users attending
+        <div className="notification is-primary has-text-centered">
+          Users attending
+        </div>
+        {this.props.attendees.length === 0 ? <p>No one has RSVP'd for this event yet.</p> :
+          <ul>
+            {this.props.attendees.map(attendee => {
+              return (
+                <li><Link to = {`users/${attendee.username}`}>
+                {attendee.username}</Link></li>
+              )
+            })}
+          </ul>
+        }
       </div>
-      {this.props.attendees.length === 0 ? <p>No one has RSVP'd for this event yet.</p> :
-      <ul>
-        {this.props.attendees.map(attendee => {
-          return (
-          <NavLink to = {`/user/${attendee.username}`}>
-          <li><a>{attendee.username}</a></li>
-          </NavLink>
-          )
-        })}
-      </ul>
-    }
-    </div>
     )
   }
+
 }
 
 export default AttendeeList;
