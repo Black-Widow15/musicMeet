@@ -30,13 +30,15 @@ class EventPage extends React.Component {
         // }
       ], // Array of objects pulled from users table in db
       info: {
-        name: 'Concert',
-        date: 'June 7',
-        time: '11pm',
-        imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
-        location: 'Madison Square Garden',
-        description: 'Its a huge concert!',
-        host: 'Metallica',
+        name: '',
+        date: '',
+        time: '',
+        imgurl: '',
+        // location: '',
+        address: '',
+        city: '',
+        description: '',
+        host: '',
       }, // Same data that was in the Event Summary cards.
   	};
 

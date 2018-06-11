@@ -39,6 +39,7 @@ const getMessages = (req, res) => {
 };
 
 const getEventsAttending = (req, res) => {
+  console.log('getting events attending now');
   user.getEventsAttendingDB(req.query.username, (err, result) => {
     if (err) {
       console.error(err);

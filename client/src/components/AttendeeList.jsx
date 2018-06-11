@@ -10,25 +10,25 @@ class AttendeeList extends React.Component {
   }
   render () {
     return (
-    
       <div className="column">
-      <div className="notification is-primary has-text-centered">
-        Users attending
+        <div className="notification is-primary has-text-centered">
+          Users attending
+        </div>
+        {this.props.attendees.length === 0 ? <p>No one has RSVP'd for this event yet.</p> :
+          <ul>
+            {this.props.attendees.map(attendee => {
+              return (
+                <li><NavLink to = {`/users/${attendee.username}`}>
+                  {attendee.username}
+                </NavLink></li>
+              )
+            })}
+          </ul>
+        }
       </div>
-      {this.props.attendees.length === 0 ? <p>No one has RSVP'd for this event yet.</p> :
-      <ul>
-        {this.props.attendees.map(attendee => {
-          return (
-          <NavLink to = {`/users/${attendee.username}`}>
-            <li><a>{attendee.username}</a></li>
-          </NavLink>
-          )
-        })}
-      </ul>
-    }
-    </div>
     )
   }
+
 }
 
 export default AttendeeList;

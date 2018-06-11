@@ -26,7 +26,7 @@ router.post('/login', registerController.login);
 router.post('/signup', registerController.signup);
 
 // User page
-router.get('/users', userController.retrieveUserInfo);
+router.get('/users/:username', userController.retrieveUserInfo);
 router.put('/users/edit', userController.editUser);
 router.post('/users/messages', userController.addMessage);
 router.get('/users/messages', userController.getMessages);
