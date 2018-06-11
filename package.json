@@ -1,5 +1,5 @@
 {
-  "name": "black-widow",
+  "name": "music-meet",
   "version": "1.0.0",
   "description": "Social hub and event finder for music lovers",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Black-Widow15/bwMeetup.git"
+    "url": "https://github.com/Black-Widow15/beatsmeet.git"
   },
   "author": "Michael Cortez, Mandy Mak, Ian Schmidt",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Black-Widow15/bwMeetup/issues"
+    "url": "https://github.com/Black-Widow15/beatsmeet/issues"
   },
-  "homepage": "https://github.com/Black-Widow15/bwMeetup#readme",
+  "homepage": "https://github.com/Black-Widow15/beatsmeet#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
