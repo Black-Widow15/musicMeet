@@ -119,11 +119,7 @@ const getMessagesDB = (username, callback) => {
 
 // Retrieve all events that a user is attending
 const getEventsAttendingDB = (username, callback) => {
-  const queryString = `SELECT events.* FROM events INNER JOIN users_events 
-                        WHERE users_events.id_user = 
-                        (SELECT id FROM users WHERE username = '${username}')
-                        AND events.id = id_event;`
-  
+  const queryString = `SELECT events.* FROM events, users_events where users_events.id_user = (SELECT username FROM users where username = '${username}')`;
   connection.query(queryString, (err, result) => {
     if (err) {
       console.error(`Error finding events that ${username} is attending`);
