@@ -7,7 +7,7 @@ class CreateEvent extends React.Component {
         this.state = {
             name: '',
             date: '',
-            time: '12:00',
+            time: '',
             description: '',
             imgurl: '',
             address: '',
