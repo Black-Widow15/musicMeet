@@ -9,10 +9,10 @@ class User extends React.Component {
 
     this.state = {
       id: '',
-      username: 'makm',
-      imgurl: 'fake image url',
+      username: this.props.match.params.username,
+      imgurl: '',
       displayName: '',
-      musician: null,
+      musician: 0,
       upcomingGigs: [],
       bio: '',
       photos: [],
@@ -22,7 +22,7 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/users', {
+    axios.get('/users/:username', {
       params: {
         username: this.state.username
       }

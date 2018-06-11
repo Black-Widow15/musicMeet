@@ -11,13 +11,14 @@ class EventsAttending extends React.Component {
     }
   }
   componentDidMount() {
+    console.log('trying to get events attending (react)');
     axios.get('/users/attending', {
       params: {
         username: this.props.username
       }
     })
     .then(({data}) => {
-      console.log('events attending front: ', data);
+      console.log('data from eventsAttending request', data);
       this.setState({
         eventsAttending: data
       }, () => console.log(this.state.eventsAttending))

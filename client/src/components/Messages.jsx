@@ -94,7 +94,7 @@ class Messages extends React.Component {
         {this.state.messages.map(message => {
           return (
             
-            <li><strong>{message.sender}</strong> [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>
+            <li><strong>{message.sender}</strong> {message.text}</li>
           )
         })}
       </ul>
@@ -104,3 +104,5 @@ class Messages extends React.Component {
 }
 
 export default Messages;
+
+//<li><strong>{message.sender}</strong> [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>

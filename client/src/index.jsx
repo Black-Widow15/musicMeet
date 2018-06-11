@@ -47,7 +47,7 @@ class App extends React.Component {
                     <Route exact path = '/' component = {Events}/>
                     <Route exact path = '/create' render = {(props) => 
                         <CreateEvent loggedInUser={this.state.user} {...props} />}/>
-                    <Route exact path = '/users/:name' render = {(props) =>
+                    <Route exact path = '/users/:username' render = {(props) =>
                        <User loggedInUser={this.state.user} {...props}  />}/>
                     <Route exact path = '/event/:number' render = {(props) => 
                         <EventPage loggedInUser={this.state.user} {...props} />}/>
