@@ -11,7 +11,7 @@ class Signup extends React.Component {
             imgurl: '',
             email: '',
             bio: '',
-            musician: 6
+            musician: 0
         }
         
         this.handleChange = this.handleChange.bind(this)
@@ -28,6 +28,15 @@ class Signup extends React.Component {
         e.preventDefault()
         // grab username and password from state and send to user schema    
         axios.post('/signup', this.state)
+        .then(() => this.setState({
+            name: '',
+            display_name: '',
+            password: '',
+            imgurl: '',
+            email: '',
+            bio: '',
+            musician: 0
+        }))
         .then( () => this.closeSignupModal())
     }
     closeSignupModal () {
@@ -45,12 +54,16 @@ class Signup extends React.Component {
                 
                     <label className="label">Username</label>
                     <div className="control">
-                        <input name = 'name' className="input" type="text" placeholder="Username" value = {this.state.name} onChange = {this.handleChange}/>
+                        <input name = 'name' className="input" 
+                        type="text" placeholder="Username" 
+                        value = {this.state.name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Display Name</label>
                     <div className="control">
-                        <input name = 'display_name' className="input" type="text" placeholder="Display name" value = {this.state.display_name} onChange = {this.handleChange}/>
+                        <input name = 'display_name' className="input" 
+                        type="text" placeholder="Display name" 
+                        value = {this.state.display_name} onChange = {this.handleChange}/>
                     </div>
 
                     <label className="label">Password</label>
