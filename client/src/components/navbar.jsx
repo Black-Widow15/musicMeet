@@ -99,11 +99,11 @@ class NavBar extends React.Component {
                     {this.state.loggedin ? 
                     (<div className="field is-grouped">
                     <div className = "navbar-item">{this.state.username}</div>
-                     <div> <a className="navbar-item" href="#"
-                            onClick={(e) => this.handleLogout()}> 
+                     <NavLink to='/'> <div> 
+                       <a className="navbar-item" href="#" onClick={(e) => this.handleLogout()}> 
                                 Logout
-                            </a>
-                        </div>
+                       </a>
+                    </div> </NavLink>
                     </div>)
 
                     :
