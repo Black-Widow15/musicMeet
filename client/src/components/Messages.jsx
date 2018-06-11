@@ -49,7 +49,7 @@ class Messages extends React.Component {
     axios.post('/users/messages', {
         username: this.state.username,
         text: this.state.input,
-        sender: this.state.sender
+        sender: this.props.loggedInUser
       })
     .then(() => {
       return axios.get('/users/messages', {

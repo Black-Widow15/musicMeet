@@ -18,6 +18,7 @@ class User extends React.Component {
       photos: [],
       messages: [],
       eventsAttending: [],
+      loggedInUser: this.props.loggedInUser
     };
   }
 
@@ -71,7 +72,7 @@ class User extends React.Component {
           <h2><strong>About me</strong></h2>
           <p>{this.state.bio}</p>
           <div className="columns">
-            <Messages username={this.state.username}/>
+            <Messages username={this.state.username} loggedInUser={this.state.loggedInUser}/>
             <EventsAttending username={this.state.username}/>
           </div>
       </section>
