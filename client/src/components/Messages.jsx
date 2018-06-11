@@ -81,15 +81,6 @@ class Messages extends React.Component {
             <input className="input" type="text" placeholder="start typing here!" onChange={(e) => this.changeText(e)}/>
           </div>
       </div>
-      <div className="field">
-        <label className="label">Sent by...</label>
-          <div className="control">
-            <input className="input" type="text" placeholder="let me know who you are!" onChange={(e) => this.setSender(e)}/>
-          </div>
-      </div>
-      <div className="control">
-        <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
-      </div>
       <ul>
         {this.state.messages.map(message => {
           return (
