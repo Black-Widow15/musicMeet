@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 class AttendeeList extends React.Component {
   constructor (props) {
@@ -18,8 +18,8 @@ class AttendeeList extends React.Component {
           <ul>
             {this.props.attendees.map(attendee => {
               return (
-                <li><Link to = {`users/${attendee.username}`}>
-                {attendee.username}</Link></li>
+                <li><NavLink to = {`users/${attendee.username}`}>
+                {attendee.username}</NavLink></li>
               )
             })}
           </ul>

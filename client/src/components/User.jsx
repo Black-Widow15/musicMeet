@@ -22,7 +22,11 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/users/${this.setState.username}`)
+    axios.get('/users/:username', {
+      params: {
+        username: this.state.username
+      }
+    })
     .then(({data}) => {
       if (data.length > 0) {
         this.setState({
