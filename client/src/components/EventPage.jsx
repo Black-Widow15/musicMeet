@@ -171,6 +171,10 @@ class EventPage extends React.Component {
           </div>
         </section>
         <section>
+          <p><strong>About the event</strong></p>
+          <p>{this.state.info.description}</p>
+          </section>
+        <section>
           <br/>
           <div className="columns">
             <Comments 
