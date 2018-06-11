@@ -60,6 +60,7 @@ class NavBar extends React.Component {
             userId: null,
             username: '',
         })
+        this.props.handleLogout();
     }
 
 

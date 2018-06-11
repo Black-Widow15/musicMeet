@@ -17,7 +17,9 @@ class App extends React.Component {
         this.state = {
             user: null,
         }
-        this.handleLogin = this.handleLogin.bind(this)
+        this.handleLogin = this.handleLogin.bind(this);
+        this.handleLogout = this.handleLogout.bind(this)
+
     }
 
     handleLogin(user) {
@@ -29,11 +31,17 @@ class App extends React.Component {
         });
     }
 
+    handleLogout() {
+        this.setState({
+            user: null,
+        })
+    }
+
     render() {
         return (
             <Router>
                 <div>
-                <NavBar handleLogin = {this.handleLogin}/>
+                <NavBar handleLogin = {this.handleLogin} handleLogout={this.handleLogout}/>
 
                 <Switch>
                     <Route exact path = '/' component = {Events}/>
