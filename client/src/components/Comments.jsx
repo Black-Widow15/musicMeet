@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import {NavLink} from 'react-router-dom';
+
 
 class Comments extends React.Component {
   constructor (props) {
@@ -39,19 +41,22 @@ class Comments extends React.Component {
   }
 
   postComment() {
-    console.log('posting commment', this.state);
+    // console.log('posting commment', this.state);
     axios.post('/events/comments', {
       eventId: this.props.eventId,
       message: this.state.text,
       sender: this.state.sender,
     })
-    .then(()=> {
-      return axios.get('/events/comments', {
-        params: {
-          id: this.props.id
-        }
-      })
+    .then(() => {
+      this.props.fillCommentsFeed();
     })
+    // .then(()=> {
+    //   return axios.get('/events/comments', {
+    //     params: {
+    //       id: this.props.id
+    //     }
+    //   })
+    // })
   }
 
   render () {
@@ -72,8 +77,15 @@ class Comments extends React.Component {
         </div>
         <ul>
         {this.props.commentList.map((comment) => {
+          console.log(comment);
           return (
-            <li><strong>{comment.sender}</strong> [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: {comment.message}</li>
+            <li>
+              <NavLink to = {`/users/${comment.sender}`}>
+                <strong>{comment.display_name}</strong> 
+              </NavLink>
+              [{comment.timestamp.slice(0,10)} @ {comment.timestamp.slice(12,16)}]: 
+              {comment.message}
+            </li>
           )
         })}
         </ul>

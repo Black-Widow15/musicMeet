@@ -85,9 +85,10 @@ const getEventAttendeesDB = (eventId, callback) => {
 };
 
 const getEventCommentsDB = (eventId, callback) => {
-  const queryString = `SELECT event_comments.id, message, timestamp, display_name, imgurl  
+  console.log(eventId);
+  const queryString = `SELECT event_comments.id, message, timestamp, display_name, sender, imgurl  
                         FROM event_comments INNER JOIN users
-                        WHERE id_event=${eventId} AND id_user=users.id;`;
+                        WHERE id_event=${eventId} AND sender=username;`;
   db.connection.query(queryString, (err, result) => {
     if (err) {
       console.log('Error getting comments');
@@ -97,13 +98,13 @@ const getEventCommentsDB = (eventId, callback) => {
 };
 
 const postEventCommentDB = (eventId, message, sender , callback) => {
-  console.log('posteventcommendtDB', eventId, message, sender);
+  // console.log('posteventcommendtDB', eventId, message, sender);
 
   const message1 = message.split('\'').join('') || '';
   // const sender1 = sender.split('\'').join('') || '';
   const queryString = `INSERT INTO event_comments(id_event, message, timestamp, sender) 
                           VALUES('${eventId}', '${message1}', now(), '${sender}')`;
-  console.log(queryString);
+  // console.log(queryString);
 
   db.connection.query(queryString, (err) => {
     if (err) {

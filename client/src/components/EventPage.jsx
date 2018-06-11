@@ -132,6 +132,7 @@ class EventPage extends React.Component {
   }
 
   render () {
+    // console.log('state in event page', this.state);
     let date = this.state.info.date.slice(0,10);
     return (
       <div>
@@ -152,9 +153,16 @@ class EventPage extends React.Component {
                     <h2 className="subtitle">
                     <strong>Hosted by: {this.state.info.host}</strong>
                     <p>{date}, {this.state.info.time}</p>
-                    <button id="rsvp" className="button is-link" onClick={(e) => {this.rsvp()}}>
-                    {this.state.isAttending ? 'Cancel' : 'RSVP' }
-                    </button>
+                    { this.state.loggedInUser ? 
+                      <button 
+                        id="rsvp" 
+                        className="button is-link" 
+                        onClick={(e) => {this.rsvp()}}
+                      >
+                        {this.state.isAttending ? 'Cancel' : 'RSVP' }
+                      </button>
+                      : null
+                    }
                     </h2>
                   </div>
                 </div>
@@ -169,6 +177,7 @@ class EventPage extends React.Component {
               loggedInUser={this.state.loggedInUser} 
               commentList={this.state.comments}
               eventId={this.state.id}
+              fillCommentsFeed={this.fillCommentsFeed}
             />
             <AttendeeList attendees={this.state.attendees} id={this.state.id}/>
           </div>
