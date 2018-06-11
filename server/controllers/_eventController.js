@@ -72,6 +72,7 @@ const getAttendeeList = (req, res) => {
 };
 
 const getEventComments = (req, res) => {
+  console.log(req.query);
   event.getEventCommentsDB(req.query.id, (err, result) => {
     if (err) {
       console.error('Could not get event comments');
@@ -83,7 +84,7 @@ const getEventComments = (req, res) => {
 
 const postEventComment = (req, res) => {
   console.log('trying to post a comment', req.body);
-  event.postEventCommentDB(req.body.eventId, req.body.message, req.body.sender.userId, (err) => {
+  event.postEventCommentDB(req.body.eventId, req.body.message, req.body.sender.username, (err) => {
     if (err) {
       console.error('Unable to post event comment');
     } else {

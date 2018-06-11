@@ -60,6 +60,7 @@ class NavBar extends React.Component {
             userId: null,
             username: '',
         })
+        this.props.handleLogout();
     }
 
 
@@ -83,9 +84,15 @@ class NavBar extends React.Component {
                     Events
                     </NavLink>
                     <div className="navbar-dropdown is-boxed">
-                    <NavLink className="navbar-link" to = '/create'>
-                    Create an Event
-                    </NavLink>
+                    {this.state.loggedin ?
+                    (<NavLink className="navbar-link" to = '/create'>
+                        Create an Event
+                    </NavLink>)
+                    : 
+                    (<NavLink className="navbar-link" to = '/'>
+                        Need to login to create Event
+                    </NavLink>)
+                    }
                     <NavLink className="navbar-link" to = {userPath}>
                         Your Profile
                     </NavLink>
@@ -99,11 +106,11 @@ class NavBar extends React.Component {
                     {this.state.loggedin ? 
                     (<div className="field is-grouped">
                     <div className = "navbar-item">{this.state.username}</div>
-                     <div> <a className="navbar-item" href="#"
-                            onClick={(e) => this.handleLogout()}> 
+                     <NavLink to='/'> <div> 
+                       <a className="navbar-item" href="#" onClick={(e) => this.handleLogout()}> 
                                 Logout
-                            </a>
-                        </div>
+                       </a>
+                    </div> </NavLink>
                     </div>)
 
                     :

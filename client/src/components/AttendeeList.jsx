@@ -19,7 +19,7 @@ class AttendeeList extends React.Component {
       <ul>
         {this.props.attendees.map(attendee => {
           return (
-          <NavLink to = {`/user/${attendee.username}`}>
+          <NavLink to = {`/users/${attendee.username}`}>
           <li><a>{attendee.username}</a></li>
           </NavLink>
           )
