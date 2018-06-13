@@ -1,13 +1,5 @@
 const { connection } = require('./connection.js');
 
-// (user login)
-// query database to see if username matches password
-// returns an array
-// if username is not in database
-// error 'invalid username
-// if username is in database, but pasword is wrong
-// error 'invalid password for username'
-
 const checkUserPasswordMatchDB = (username, password, callback) => {
   const username1 = username.split('\'').join('') || '';
   const queryString = `SELECT id, username, password FROM users WHERE username = '${username1}'`;
