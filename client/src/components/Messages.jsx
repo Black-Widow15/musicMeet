@@ -49,7 +49,7 @@ class Messages extends React.Component {
     axios.post('/users/messages', {
         username: this.state.username,
         text: this.state.input,
-        sender: this.state.sender
+        sender: this.props.loggedInUser
       })
     .then(() => {
       return axios.get('/users/messages', {
@@ -81,20 +81,11 @@ class Messages extends React.Component {
             <input className="input" type="text" placeholder="start typing here!" onChange={(e) => this.changeText(e)}/>
           </div>
       </div>
-      <div className="field">
-        <label className="label">Sent by...</label>
-          <div className="control">
-            <input className="input" type="text" placeholder="let me know who you are!" onChange={(e) => this.setSender(e)}/>
-          </div>
-      </div>
-      <div className="control">
-        <button className="button is-primary" onClick={this.addMessage}>Send</button><br/>
-      </div>
       <ul>
         {this.state.messages.map(message => {
           return (
             
-            <li><strong>{message.sender}</strong> {message.text}</li>
+            <li><strong>{message.sender}</strong>: {message.text}</li>
           )
         })}
       </ul>
@@ -104,5 +95,3 @@ class Messages extends React.Component {
 }
 
 export default Messages;
-
-//<li><strong>{message.sender}</strong> [{message.timestamp.slice(0,10)} @ {message.timestamp.slice(12,16)}]: {message.text}</li>

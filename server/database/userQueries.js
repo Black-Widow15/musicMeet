@@ -111,7 +111,7 @@ const getMessagesDB = (username, callback) => {
 
 // Retrieve all events that a user is attending
 const getEventsAttendingDB = (username, callback) => {
-  const queryString = `SELECT events.* FROM events, users_events where users_events.id_user = (SELECT username FROM users where username = '${username}'`;
+  const queryString = `SELECT events.* FROM events, users_events where users_events.id_user = (SELECT username FROM users where username = '${username}')`;
   connection.query(queryString, (err, result) => {
     if (err) {
       console.error(`Error finding events that ${username} is attending`);

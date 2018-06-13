@@ -1,13 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
 import {BrowserRouter as Router, Route, Link, Switch, History} from 'react-router-dom'
 import User from './components/User.jsx'
-
 import Events from './components/Events.jsx'
 import EventPage from './components/EventPage.jsx'
-
-import NavBar from './components/NavBar.jsx'
+import NavBar from './components/navbar.jsx'
 import CreateEvent from './components/CreateEvent.jsx'
 
 
@@ -17,9 +14,9 @@ class App extends React.Component {
         this.state = {
             user: null,
         }
+
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this)
-
     }
 
     handleLogin(user) {
