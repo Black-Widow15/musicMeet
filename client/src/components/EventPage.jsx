@@ -149,7 +149,7 @@ class EventPage extends React.Component {
                   <div>
                     <h1 className="title">
                       {this.state.info.name}
-                    </h1><p></p>
+                    </h1>
                     <h2 className="subtitle">
                     <strong>Hosted by: {this.state.info.host}</strong>
                     <p>{date}, {this.state.info.time}</p>
