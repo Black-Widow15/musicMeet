@@ -4,23 +4,19 @@ import Messages from './Messages.jsx';
 import EventsAttending from './EventsAttending.jsx';
 
 class User extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      id: '',
-      username: this.props.match.params.username,
-      imgurl: '',
-      displayName: '',
-      musician: 0,
-      upcomingGigs: [],
-      bio: '',
-      photos: [],
-      messages: [],
-      eventsAttending: [],
-      loggedInUser: this.props.loggedInUser
-    };
-  }
+  state = {
+    id: '',
+    username: this.props.match.params.username,
+    imgurl: '',
+    displayName: '',
+    musician: 0,
+    upcomingGigs: [],
+    bio: '',
+    photos: [],
+    messages: [],
+    eventsAttending: [],
+    loggedInUser: this.props.loggedInUser
+  };
 
   componentDidMount() {
     axios

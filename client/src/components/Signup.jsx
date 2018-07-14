@@ -2,29 +2,22 @@ import React from 'react';
 import axios from 'axios';
 
 class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      display_name: '',
-      password: '',
-      imgurl: '',
-      email: '',
-      bio: '',
-      musician: 0
-    };
+  state = {
+    username: '',
+    display_name: '',
+    password: '',
+    imgurl: '',
+    email: '',
+    bio: '',
+    musician: 0
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.closeSignupModal = this.closeSignupModal.bind(this);
-  }
-
-  handleChange(e) {
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-  handleSubmit(e) {
+  };
+  handleSubmit = e => {
     e.preventDefault();
     // grab username and password from state and send to user schema
     axios
@@ -41,11 +34,11 @@ class Signup extends React.Component {
         })
       )
       .then(() => this.closeSignupModal());
-  }
-  closeSignupModal() {
+  };
+  closeSignupModal = () => {
     let modal = document.getElementById('Signup');
     modal.classList.remove('is-active');
-  }
+  };
   render() {
     return (
       <form onSubmit={this.handleSubmit}>

@@ -4,47 +4,39 @@ import Comments from './Comments.jsx';
 import AttendeeList from './AttendeeList.jsx';
 
 class EventPage extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    // id is the identifier for all events upon componentDidMount
+    id: this.props.match.params.number, //React-Router passes in this parameter from the url.
+    loggedInUser: this.props.loggedInUser,
+    isAttending: false,
+    comments: [
+      //   {
+      //     commentId: 1,
+      //     text: 'this is a comment',
+      //     timestamp: '4:31pm',
+      //     username: 'bonJoviRules',
+      //     avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+      //   }
+    ], // Array of objects pulled from messages table in db
+    attendees: [
+      // {
+      //   username: 'howdy',
+      //   avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
+      // }
+    ], // Array of objects pulled from users table in db
+    info: {
+      name: '',
+      date: '',
+      time: '',
+      imgurl: '',
+      // location: '',
+      address: '',
+      city: '',
+      description: '',
+      host: ''
+    } // Same data that was in the Event Summary cards.
+  };
 
-    this.state = {
-      // id is the identifier for all events upon componentDidMount
-      id: this.props.match.params.number, //React-Router passes in this parameter from the url.
-      loggedInUser: this.props.loggedInUser,
-      isAttending: false,
-      comments: [
-        //   {
-        //     commentId: 1,
-        //     text: 'this is a comment',
-        //     timestamp: '4:31pm',
-        //     username: 'bonJoviRules',
-        //     avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        //   }
-      ], // Array of objects pulled from messages table in db
-      attendees: [
-        // {
-        //   username: 'howdy',
-        //   avatarUrl: 'https://image.flaticon.com/icons/svg/82/82984.svg',
-        // }
-      ], // Array of objects pulled from users table in db
-      info: {
-        name: '',
-        date: '',
-        time: '',
-        imgurl: '',
-        // location: '',
-        address: '',
-        city: '',
-        description: '',
-        host: ''
-      } // Same data that was in the Event Summary cards.
-    };
-
-    this.rsvp = this.rsvp.bind(this);
-    this.fillEventData = this.fillEventData.bind(this);
-    this.fillCommentsFeed = this.fillCommentsFeed.bind(this);
-    this.fillAttendeeFeed = this.fillAttendeeFeed.bind(this);
-  }
   rsvp() {
     let current = this.state.isAttending;
     this.setState({

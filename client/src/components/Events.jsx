@@ -3,41 +3,37 @@ import axios from 'axios';
 import EventSummary from './EventSummary.jsx';
 
 class Events extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      eventsPop: [
-        // Array of event objs from db.
-        // {
-        //   id: 1,
-        //   name: 'party!',
-        //   date: 'July 4',
-        //   time: '11pm',
-        //   imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
-        //   address: '123 some street',
-        //   city: 'Chicago, IL',
-        //   description: 'Come to my party!',
-        //   host: 'Van Halen',
-        // }
-      ],
-      eventsNew: [
-        // {
-        //   id: 2,
-        //   name: 'Concert',
-        //   date: 'June 7',
-        //   time: '11pm',
-        //   imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
-        //   address: 'Madison Square Garden',
-        //   city: 'New York, NY',
-        //   description: 'Its a huge concert!',
-        //   host: 'Metallica',
-        // }
-      ] // The events that are coming up next.
-    };
-    // These event objects are quick summaries.
-    // Data needed: name, date, time, imgUrl, location, description
-    this.fillEventsFeed = this.fillEventsFeed.bind(this);
-  }
+  state = {
+    eventsPop: [
+      // Array of event objs from db.
+      // {
+      //   id: 1,
+      //   name: 'party!',
+      //   date: 'July 4',
+      //   time: '11pm',
+      //   imgurl: 'http://icons.iconarchive.com/icons/iconshow/construction/96/House-icon.png',
+      //   address: '123 some street',
+      //   city: 'Chicago, IL',
+      //   description: 'Come to my party!',
+      //   host: 'Van Halen',
+      // }
+    ],
+    eventsNew: [
+      // {
+      //   id: 2,
+      //   name: 'Concert',
+      //   date: 'June 7',
+      //   time: '11pm',
+      //   imgurl: 'https://pixel.nymag.com/imgs/daily/intelligencer/2013/10/24/madison-square-garden-tour/24-madison-square-garden-tour-10.w710.h473.jpg',
+      //   address: 'Madison Square Garden',
+      //   city: 'New York, NY',
+      //   description: 'Its a huge concert!',
+      //   host: 'Metallica',
+      // }
+    ] // The events that are coming up next.
+  };
+  // These event objects are quick summaries.
+  // Data needed: name, date, time, imgUrl, location, description
 
   fillEventsFeed() {
     // Grab data from the database and set the state.

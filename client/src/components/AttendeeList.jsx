@@ -2,11 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 class AttendeeList extends React.Component {
-  constructor(props) {
-    super(props);
-    // Props will include a array of attendee objects.
-    // attendee object properties: username, avatarUrl
-  }
+  // Props will include a array of attendee objects.
+  // attendee object properties: username, avatarUrl
+
   render() {
     return (
       <div className="column">

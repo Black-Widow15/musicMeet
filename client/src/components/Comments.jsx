@@ -3,27 +3,19 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 class Comments extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    text: '',
+    sender: this.props.loggedInUser
+  };
 
-    this.state = {
-      text: '',
-      sender: this.props.loggedInUser
-    };
-
-    // Props will include a array of comment objects.
-    // Comment object properties: id, text, timestamp, username, avatarUrl
-    // <div className="field">
-    //       <label className="label">Sent by...</label>
-    //         <div className="control">
-    //           <input className="input" type="text" placeholder="your name here" onChange={(e) => this.setSender(e)}/>
-    //         </div>
-    //     </div>
-
-    this.changeText = this.changeText.bind(this);
-    this.setSender = this.setSender.bind(this);
-    this.postComment = this.postComment.bind(this);
-  }
+  // Props will include a array of comment objects.
+  // Comment object properties: id, text, timestamp, username, avatarUrl
+  // <div className="field">
+  //       <label className="label">Sent by...</label>
+  //         <div className="control">
+  //           <input className="input" type="text" placeholder="your name here" onChange={(e) => this.setSender(e)}/>
+  //         </div>
+  //     </div>
 
   changeText(e) {
     e.preventDefault;

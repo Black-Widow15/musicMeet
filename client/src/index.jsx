@@ -1,12 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  History
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import User from './components/User.jsx';
 import Events from './components/Events.jsx';
 import EventPage from './components/EventPage.jsx';
@@ -19,12 +13,9 @@ class App extends React.Component {
     this.state = {
       user: null
     };
-
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogin(user) {
+  handleLogin = user => {
     console.log('passed in user', user);
     this.setState(
       {
@@ -34,13 +25,13 @@ class App extends React.Component {
         console.log('app state', this.state);
       }
     );
-  }
+  };
 
-  handleLogout() {
+  handleLogout = () => {
     this.setState({
       user: null
     });
-  }
+  };
 
   render() {
     return (

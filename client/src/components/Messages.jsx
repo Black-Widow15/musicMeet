@@ -2,34 +2,26 @@ import React from 'react';
 import axios from 'axios';
 
 class Messages extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    username: this.props.username,
+    input: '',
+    messages: [],
+    sender: ''
+  };
 
-    this.state = {
-      username: this.props.username,
-      input: '',
-      messages: [],
-      sender: ''
-    };
-
-    this.addMessage = this.addMessage.bind(this);
-    this.changeText = this.changeText.bind(this);
-    this.setSender = this.setSender.bind(this);
-  }
-
-  changeText(e) {
+  changeText = e => {
     e.preventDefault();
     this.setState({
       input: e.target.value
     });
-  }
+  };
 
-  setSender(e) {
+  setSender = e => {
     e.preventDefault;
     this.setState({
       sender: e.target.value
     });
-  }
+  };
 
   componentDidMount() {
     axios

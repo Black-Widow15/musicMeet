@@ -3,13 +3,10 @@ import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
 class EventsAttending extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    eventsAttending: []
+  };
 
-    this.state = {
-      eventsAttending: []
-    };
-  }
   componentDidMount() {
     console.log('trying to get events attending (react)');
     axios

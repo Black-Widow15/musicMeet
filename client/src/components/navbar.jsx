@@ -4,42 +4,33 @@ import Signup from './Signup.jsx';
 import { NavLink } from 'react-router-dom';
 
 class NavBar extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedin: false,
-      userId: null,
-      username: ''
-    };
+  state = {
+    loggedin: false,
+    userId: null,
+    username: ''
+  };
 
-    this.launchLoginModal = this.launchLoginModal.bind(this);
-    this.closeLoginModal = this.closeLoginModal.bind(this);
-    this.launchSignupModal = this.launchSignupModal.bind(this);
-    this.closeSignupModal = this.closeSignupModal.bind(this);
-    this.handleLoggedin = this.handleLoggedin.bind(this);
-  }
-
-  launchLoginModal() {
+  launchLoginModal = () => {
     let modal = document.getElementById('Login');
     modal.classList.add('is-active');
-  }
+  };
 
-  closeLoginModal() {
+  closeLoginModal = () => {
     let modal = document.getElementById('Login');
     modal.classList.remove('is-active');
-  }
+  };
 
-  launchSignupModal() {
+  launchSignupModal = () => {
     let modal = document.getElementById('Signup');
     modal.classList.add('is-active');
-  }
+  };
 
-  closeSignupModal() {
+  closeSignupModal = () => {
     let modal = document.getElementById('Signup');
     modal.classList.remove('is-active');
-  }
+  };
 
-  handleLoggedin(e) {
+  handleLoggedin = e => {
     this.setState(
       {
         loggedin: !this.state.loggedin,
@@ -54,16 +45,16 @@ class NavBar extends React.Component {
         // console.log('navbar state', this.state);
       }
     );
-  }
+  };
 
-  handleLogout(e) {
+  handleLogout = e => {
     this.setState({
       loggedin: false,
       userId: null,
       username: ''
     });
     this.props.handleLogout();
-  }
+  };
 
   render() {
     let userPath;

@@ -2,23 +2,18 @@ import React from 'react';
 import axios from 'axios';
 
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      valid: false
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.closeLoginModal = this.closeLoginModal.bind(this);
-  }
-  handleChange(e) {
+  state = {
+    username: '',
+    password: '',
+    valid: false
+  };
+
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
-  }
-  handleSubmit(e) {
+  };
+  handleSubmit = e => {
     e.preventDefault();
     axios
       .post('/login', {
@@ -52,12 +47,12 @@ class Login extends React.Component {
           password: ''
         });
       });
-  }
+  };
 
-  closeLoginModal() {
+  closeLoginModal = () => {
     let modal = document.getElementById('Login');
     modal.classList.remove('is-active');
-  }
+  };
 
   render() {
     return (

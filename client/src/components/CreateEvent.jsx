@@ -2,21 +2,17 @@ import React from 'react';
 import axios from 'axios';
 
 class CreateEvent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      date: '',
-      time: '',
-      description: '',
-      imgurl: '',
-      address: '',
-      city: '',
-      host: this.props.loggedInUser.username
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
+  state = {
+    name: '',
+    date: '',
+    time: '',
+    description: '',
+    imgurl: '',
+    address: '',
+    city: '',
+    host: this.props.loggedInUser.username
+  };
+
   handleSubmit(e) {
     e.preventDefault();
     axios.post('/events', this.state).then(() => {
