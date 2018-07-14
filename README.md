@@ -31,7 +31,7 @@ It is not possible to link to the various paths within <Switch> with a normal li
 
 
 --- BULMA ---
-This app uses the Bulma open source framework (fairly heavily).
+This app uses the Bulma open source framework.
 You can find documentation of all features utilized at: https://bulma.io/documentation/
 
 To utilize Bulma, follow the 'Getting Started' instructions here: https://bulma.io/documentation/overview/start/
